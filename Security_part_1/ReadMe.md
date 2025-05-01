@@ -49,18 +49,18 @@
 Итак, приложение при запуске генерирует и хранит имя и пароль пользователя в памяти, мы можем подсмотреть пароль в 
 консоли - вариант первый и описан выше.
 
-Но чтобы не искать пароль в консоли, можно воспользоваться файлом настроек application.yml и прописать имя/пароль там.
+Но чтобы не искать пароль в консоли, можно воспользоваться файлом настроек [application.yml ](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_1/src/main/resources/application.yml)и прописать имя/пароль там.
 
-В случае настроек доступа в файле application.properties или application.yml приложение не генерирует открытый пароль в консоли,
+В случае настроек доступа в файле application.properties или [application.yml](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_1/src/main/resources/application.yml) приложение не генерирует открытый пароль в консоли,
 мы перекрываем дефолтные настройки Spring Security.
 
 Резюме: При запуске приложения с дефолными настройками безопасности запускается встроенный механизм Spring Security и 
-демонстрируется страница авторизации. Если пароль и логин прописаны в application.yml, то дефолтные пароль и логин недоступны. 
+демонстрируется страница авторизации. Если пароль и логин прописаны в [application.yml](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_1/src/main/resources/application.yml), то дефолтные пароль и логин недоступны. 
 По умолчанию закрыты все страницы, кроме стр. аутентификации. Структура ключей в *.yaml файле специфична для Spring Boot 
 приложения. 
 
-Фактически, для демонстрации работы достаточно прописать необходимые зависимости в pom.xml, создать один эндпоинт в 
-WelcomeController.java и запускаемый файл SpringSecurityBasicApp.java.
+Фактически, для демонстрации работы достаточно прописать необходимые зависимости в [pom.xml](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_1/pom.xml), создать один эндпоинт в 
+[WelcomeController.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_1/src/main/java/me/oldboy/controller/WelcomeController.java) и запускаемый файл [SpringSecurityBasicApp.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_1/src/main/java/me/oldboy/SpringSecurityBasicApp.java).
 ________________________________________________________________________________________________________________________
 ### Reference Documentation:
 
