@@ -43,15 +43,15 @@ public class SecurityConfig {
 	@SneakyThrows
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) {
 		httpSecurity.csrf(AbstractHttpConfigurer::disable)
-				.cors(AbstractHttpConfigurer::disable)
-				.authorizeHttpRequests(config ->
+					.cors(AbstractHttpConfigurer::disable)
+					.authorizeHttpRequests(config ->
 						config.requestMatchers(antMatcher("/notices"),
-										antMatcher("/contact"))
+									           antMatcher("/contact"))
 								.permitAll()
 								.requestMatchers(antMatcher("/myAccount"),
-										antMatcher("/myBalance"),
-										antMatcher("/myLoans"),
-										antMatcher("/myCards"))
+								                 antMatcher("/myBalance"),
+										         antMatcher("/myLoans"),
+										         antMatcher("/myCards"))
 								.authenticated())
 				.httpBasic(Customizer.withDefaults())
 				.formLogin(Customizer.withDefaults());
