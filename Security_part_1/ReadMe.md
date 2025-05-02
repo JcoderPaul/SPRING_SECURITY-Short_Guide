@@ -61,6 +61,10 @@
 
 Фактически, для демонстрации работы достаточно прописать необходимые зависимости в [pom.xml](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_1/pom.xml), создать один эндпоинт в 
 [WelcomeController.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_1/src/main/java/me/oldboy/controller/WelcomeController.java) и запускаемый файл [SpringSecurityBasicApp.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_1/src/main/java/me/oldboy/SpringSecurityBasicApp.java).
+
+________________________________________________________________________________________________________________________
+Для тестирования нашего пока что единственного, но защищенного контроллера нужно вспомнить материал из [Lesson 112 - Security-Testing](https://github.com/JcoderPaul/Spring_Framework_Lessons/tree/master/Spring_part_21#lesson-112---security-testing).
+Необходимые зависимости у нас есть, прописываем требуемые аннотации и тестируем контроллер - [WelcomeControllerTest.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_1/src/test/java/me/oldboy/controller/WelcomeControllerTest.java)
 ________________________________________________________________________________________________________________________
 ### Reference Documentation:
 
