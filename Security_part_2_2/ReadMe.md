@@ -8,11 +8,11 @@
 
 Следующий шаг - используем более современную кодовую базу. Условия те же, что и на предыдущем шаге, добавили 6-ть страниц, 
 часть из которых открыта всем, а часть доступна только после аутентификации. Пароль и логин для доступа к закрытым страницам, 
-через форму аутентификации (см. application.yml). 
+через форму аутентификации (см. [application.yml](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_2_2/src/main/resources/application.yml)). 
 
 Основной интерес представляет файл конфигурации (отсюда и далее):
-- SecurityConfig.java - файл настройки системы защиты Spring-a;
-- build.gradle - файл зависимостей;
+- [SecurityConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_2_2/src/main/java/me/oldboy/config/SecurityConfig.java) - файл настройки системы защиты Spring-a;
+- [build.gradle](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_2_2/build.gradle) - файл зависимостей;
 ________________________________________________________________________________________________________________________
 ### Reference Documentation:
 
