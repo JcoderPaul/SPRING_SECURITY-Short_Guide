@@ -55,8 +55,10 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		/*
 		В самой первой версии программы мы брали пароль и логин пользователя из файла настроек application.yml,
 		который по умолчанию подхватывается Spring Boot приложением и в нем должны находиться соответствующие,
-		заранее обговоренные в документации пары (key:value): spring.security.user.name:
-															  spring.security.user.password:
+		заранее обговоренные в документации пары (key:value):
+
+			spring.security.user.name:
+			spring.security.user.password:
 
 		В данном случае мы немного изменили подход и использовали другой способ определения паролей и логинов,
 		а так же способ их размещать в менеджере аутентификации, см. ниже.
