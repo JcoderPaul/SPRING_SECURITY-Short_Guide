@@ -31,13 +31,9 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers("/notices",
-										"/contact")
+				.antMatchers("/notices", "/contact")
 				.permitAll()
-				.antMatchers("/myAccount",
-										"/myBalance",
-										"/myLoans",
-										"/myCards")
+				.antMatchers("/myAccount", "/myBalance", "/myLoans", "/myCards")
 				.authenticated()
 				.antMatchers("/clientList")
 				.hasAuthority("ADMIN")
