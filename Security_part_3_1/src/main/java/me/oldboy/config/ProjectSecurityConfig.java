@@ -32,12 +32,12 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 				.antMatchers("/notices",
-				                		"/contact")
+										"/contact")
 				.permitAll()
 				.antMatchers("/myAccount",
-						                "/myBalance",
-						                "/myLoans",
-						                "/myCards")
+										"/myBalance",
+										"/myLoans",
+										"/myCards")
 				.authenticated()
 				.antMatchers("/clientList")
 				.hasAuthority("ADMIN")
