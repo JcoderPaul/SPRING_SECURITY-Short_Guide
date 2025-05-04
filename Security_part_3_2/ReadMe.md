@@ -1,4 +1,4 @@
-### Simple Spring Boot Security App (Part 3_2) - получение данным из БД и настройка авторизации краткий пример.
+### Simple Spring Boot Security App (Part 3_2) - получение данных из БД и настройка авторизации краткий пример.
 
 - Spring Boot 2.6.15
 - Spring Core 5.3.27
@@ -52,8 +52,8 @@
 #### Настройка авторизации.
 
 Чтобы настроить авторизацию, надо точно так же, как мы делали при настройке аутентификации, переопределить метод 
-*.configure() в старых версиях Spring и метод *.filterChain() в новых, только теперь с другим аргументом HttpSecurity, см.
-пример SecurityConfig.java
+[*.configure()](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_2/src/main/java/me/oldboy/config/SecurityConfig.java#L43) в старых версиях Spring и метод *.filterChain() в новых, только теперь с другим аргументом HttpSecurity, см.
+пример [SecurityConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_2/src/main/java/me/oldboy/config/SecurityConfig.java)
 
 Именно этот объект HttpSecurity и нужно настраивать. Создавать его как бин не надо, его создает Spring Security, а мы 
 получаем к нему доступ из метода configure(HttpSecurity http). Несложно заметить, что по умолчанию Spring Security дает 
@@ -101,9 +101,9 @@
 один доступный только для пользователей с определенной ролью, остальные доступны после аутентификации, см. код.
 
 Основной интерес представляет файл конфигурации:
-- SecurityConfig.java - файл настройки системы защиты Spring-a;
-- application.properties - файл свойств, откуда приложение берет настройки БД;
-- pom.xml - файл зависимостей;
+- [SecurityConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_2/src/main/java/me/oldboy/config/SecurityConfig.java) - файл настройки системы защиты Spring-a;
+- [application.properties](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_2/src/main/resources/application.properties) - файл свойств, откуда приложение берет настройки БД;
+- [pom.xml](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_2/pom.xml) - файл зависимостей;
 ________________________________________________________________________________________________________________________
 ### Reference Documentation:
 
