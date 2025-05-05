@@ -14,7 +14,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 * /myLoans - Secured
 	 * /myCards - Secured
 	 * /notices - Not Secured
-	 * /contact - Not Secured
+	 * /contact - Secured
 	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -36,8 +36,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		     .antMatchers("/myBalance").authenticated()
 		     .antMatchers("/myLoans").authenticated()
 		     .antMatchers("/myCards").authenticated()
+			 .antMatchers("/contact").authenticated()
 			 .antMatchers("/notices").permitAll()
-		     .antMatchers("/contact").permitAll()
+
 				 .and()
 				 .formLogin()
 				 .and()
