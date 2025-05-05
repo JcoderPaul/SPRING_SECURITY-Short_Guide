@@ -22,7 +22,7 @@ class ContactControllerTest {
 
     @Test
     @SneakyThrows
-    void shouldReturnOkWithAuthenticatedGetContactDetails() {
+    void shouldReturnOkWithoutAuthGetContactDetails() {
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/contact"))
                 .andExpect(status().isOk())
                 .andReturn();
