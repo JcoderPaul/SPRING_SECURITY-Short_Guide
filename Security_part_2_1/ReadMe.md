@@ -28,5 +28,9 @@ ________________________________________________________________________________
 * [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
 * [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
 * [Spring Guides](https://spring.io/guides)
+
+### About tests article
+
+* [Using @Autowired and @InjectMocks in Spring Boot Tests](https://www.baeldung.com/spring-test-autowired-injectmocks)
 ________________________________________________________________________________________________________________________
 
