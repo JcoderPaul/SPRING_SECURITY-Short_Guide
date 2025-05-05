@@ -1,0 +1,16 @@
+ext {
+    versions = [
+            'spring': '6.2.0',
+            'security':'6.4.2',
+            'data_jpa':'3.4.2',
+            'jakarta_servlet_api':'6.1.0',
+            'jakarta_persistence_api':'3.2.0',
+            'jakarta_annotation':'3.0.0',
+            'jackson':'2.17.2',
+            'postgres':'42.6.0',
+            'hibernate':'6.6.5.Final',
+            'snakeyaml':'2.3',
+            'slf4j_log4j_binding':'2.0.16',
+            'aspectj':'1.9.22.1'
+    ]
+}
