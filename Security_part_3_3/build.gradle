@@ -25,7 +25,7 @@ dependencies {
     implementation "org.springframework:spring-webmvc:${versions.spring}"
     implementation "org.springframework:spring-beans:${versions.spring}"
 
-    /* Зависимость позволяющая использовать функционал Spring JPA */
+    /* Зависимость позволяющая использовать функционал Spring WEB */
     implementation "org.springframework.security:spring-security-web:${versions.security}"
     implementation "org.springframework.security:spring-security-config:${versions.security}"
     implementation "org.springframework.security:spring-security-taglibs:${versions.security}"
