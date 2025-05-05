@@ -127,6 +127,7 @@ GenericConverter, Filter, WebMvcConfigurer и HandlerMethodArgumentResolver.
 точки (endpoint-ы).
 
 Простой пример аннотирования на уровне класса - [WelcomeControllerTest.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_1/src/test/java/me/oldboy/controller/WelcomeControllerTest.java)
+
 Простой пример аннотирования на уровне метода - [BalanceControllerTest.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_2_1/src/test/java/me/oldboy/controller/BalanceControllerTest.java)
 ________________________________________________________________________________________________________________________
 ### Reference Documentation:
