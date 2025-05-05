@@ -6,7 +6,7 @@
 - Gradle
 
 В данном примере мы продолжаем исследовать работу Spring Security приложения, но, на этот раз в non Boot варианте. 
-Т.е. для его запуска оного нам понадобится TomCat или любой другой контейнер сервлетов. В прошлом разделе мы развернули 
+Т.е. для запуска оного нам понадобится TomCat или любой другой контейнер сервлетов. В прошлом разделе мы развернули 
 и настроили БД согласно определенным принципам. Таблицы в ней имеют поля с четко заданными названиями и связями. Это 
 позволяет до определенного момента избежать использования (реализации) интерфейса [UserDetails](https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/core/userdetails/UserDetails.html) 
 ([см. док](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/user-details.html)).
@@ -29,7 +29,7 @@
 достаточно стандартного процесса инциализации. Это применимо и к другим абстрактным реализациям WebApplicationInitializer.
 
 Основной интерес представляют файлы конфигурации:
-- A[ppSecurityConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_3/src/main/java/me/oldboy/config/AppSecurityConfig.java) - файл настройки системы безопасности Spring-a;
+- [AppSecurityConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_3/src/main/java/me/oldboy/config/AppSecurityConfig.java) - файл настройки системы безопасности Spring-a;
 - [AppSecurityInitializer.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_3/src/main/java/me/oldboy/config/AppSecurityInitializer.java) - файл регистрирующий нашу цепочку фильтров FilterChain в контейнере сервлетов;
 - [AppWebInitializer.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_3/src/main/java/me/oldboy/config/AppWebInitializer.java) - файл инициализирующий сервлет-контекст;
 - [DataSourceConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_3/src/main/java/me/oldboy/config/DataSourceConfig.java) - файл конфигурации источника данных (в Spring Boot приложении все происходило автомагически, 
