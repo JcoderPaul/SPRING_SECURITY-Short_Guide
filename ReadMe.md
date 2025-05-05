@@ -6,7 +6,7 @@ ________________________________________________________________________________
 ________________________________________________________________________________________________________________________
 
 - [Security_part_2_1 - Частичное ограничение доступа к ресурсам приложения ("Light legacy") (Maven).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_2_1)
-  - [Тестирование теория и практика применения (@SpringBootTest, @AutoConfigureMockMvc, @WebMvcTest, @WithMockUser)](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_2_1#%D0%BD%D0%B5%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE-%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8-springboottest-autoconfiguremockmvc-webmvctest-withmockuser)
+  - [Тестирование, теория и практика применения (@SpringBootTest, @AutoConfigureMockMvc, @WebMvcTest, @WithMockUser)](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_2_1#%D0%BD%D0%B5%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE-%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8-springboottest-autoconfiguremockmvc-webmvctest-withmockuser)
 - [Security_part_2_2 - Частичное ограничение доступа к ресурсам приложения ("свежая кодовая база") (Gradle).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_2_2)
 ________________________________________________________________________________________________________________________
 
