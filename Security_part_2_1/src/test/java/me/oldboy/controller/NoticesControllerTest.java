@@ -19,7 +19,10 @@ class NoticesControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    /* Явно пробросим исключение */
+    /*
+    Явно пробросим исключение. К данному endpoint-у могут получить доступ все и
+    поэтому особых настроек по имитации аутентифицированного пользователя тут нет.
+    */
     @Test
     void shouldReturnOkWithoutAuthGetNotices() throws Exception {
         MvcResult mvcResult = mockMvc.perform(get("/notices"))
