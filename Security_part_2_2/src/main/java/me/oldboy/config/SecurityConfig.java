@@ -45,9 +45,13 @@ public class SecurityConfig {
 		httpSecurity.csrf(AbstractHttpConfigurer::disable)
 			    .cors(AbstractHttpConfigurer::disable)
 			    .authorizeHttpRequests(config ->
-						config.requestMatchers(antMatcher("/notices"), antMatcher("/contact"))
+						config.requestMatchers(antMatcher("/notices"),
+										antMatcher("/contact"))
 								.permitAll()
-								.requestMatchers(antMatcher("/myAccount"), antMatcher("/myBalance"), antMatcher("/myLoans"), antMatcher("/myCards"))
+								.requestMatchers(antMatcher("/myAccount"),
+										antMatcher("/myBalance"),
+										antMatcher("/myLoans"),
+										antMatcher("/myCards"))
 								.authenticated())
 				.httpBasic(Customizer.withDefaults())
 			    .formLogin(Customizer.withDefaults());
