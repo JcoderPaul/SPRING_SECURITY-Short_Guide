@@ -9,11 +9,11 @@ ________________________________________________________________________________
 - [Security_part_2_2 - Частичное ограничение доступа к ресурсам приложения ("свежая кодовая база") (Gradle).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_2_2)
 ________________________________________________________________________________________________________________________
 
-- [Security_part_3_1 - Использование нескольких пользователей при доступе к приложению (in-memory аутентификация) (Light legacy) (Maven).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_3_1)
+- [Security_part_3_1 - Использование нескольких пользователей при доступе к приложению (in-memory аутентификация) ("Light legacy") (Maven).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_3_1)
 - [Security_part_3_2 - Получение данным из БД и настройка авторизации краткий пример ("Light legacy") (Maven).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_3_2)
   - [Настройка авторизации.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_2/ReadMe.md#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D1%80%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8)
   - [Настройка доступа (роли, разрешения).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_2/ReadMe.md#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0-%D1%80%D0%BE%D0%BB%D0%B8-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F)
-- Security_part_3_3 - Получение данным из БД и настройка авторизации краткий пример ("свежая кодовая база") (non Boot) (Gradle).
+- [Security_part_3_3 - Получение данным из БД и настройка авторизации краткий пример ("свежая кодовая база") (non Boot) (Gradle).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_3_3)
 - Security_part_3_4 - Получение данным из БД и настройка авторизации краткий пример ("свежая кодовая база") (Spring Boot) (Gradle).
 ________________________________________________________________________________________________________________________
 
