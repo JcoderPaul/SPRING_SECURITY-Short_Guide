@@ -24,7 +24,7 @@ class ClientsControllerTest {
 
     @Test
     @SneakyThrows
-    @WithMockUser(authorities = {"ADMIN"}) // Позволяем получить данные пользователю с ролью ADMIN
+    @WithMockUser(authorities = {"ADMIN"}) // Переопределяем аннотацию над классом, позволяем получить данные пользователю с ролью ADMIN
     void shouldReturnClientListWithAdminRoleGetClientListTest() {
         MvcResult mvcResult = mockMvc.perform(get("/clientList"))
                 .andExpect(status().isOk())
@@ -36,7 +36,7 @@ class ClientsControllerTest {
 
     @Test
     @SneakyThrows
-    @WithMockUser(authorities = {"USER"}) // Поскольку роль задана USER, то пользователь не сможет получить доступ к ресурсу
+    @WithMockUser(authorities = {"USER"}) // Переопределяем аннотацию над классом, роль задаем USER и пользователь не сможет получить доступ к ресурсу
     void shouldReturn401WithUserRoleGetClientListTest() {
         MvcResult mvcResult = mockMvc.perform(get("/clientList"))
                 .andExpect(status().is4xxClientError())
