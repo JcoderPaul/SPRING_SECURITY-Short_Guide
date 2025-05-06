@@ -8,7 +8,7 @@ public class ContactController {
 	
 	@GetMapping("/contact")
 	public String getContactDetails() {
-		return "Inquiry details are saved to the DB";
+		return "Get details from DB";
 	}
 
 }
