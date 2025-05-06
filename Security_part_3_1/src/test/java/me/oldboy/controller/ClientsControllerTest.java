@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-/* Общая аннотация задает только имя и пароль, роли и привилегии задаем в каждом методе отдельно */
+/* Общая аннотация задает только имя и пароль, роли и привилегии задаем в каждом методе отдельно, хотя тут можно и вовсе без нее обойтись */
 @WithMockUser(username = "test@test.com", password = "test")
 class ClientsControllerTest {
 
