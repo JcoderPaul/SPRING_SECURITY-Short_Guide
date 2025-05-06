@@ -98,12 +98,13 @@
 Но суть в том, что обе приведенные выше строки указывают Spring Security, как именно он должен брать из запроса имя пользователя и пароль.
 
 Резюме: В данном приложении мы имеем несколько защищенных аутентификацией эндпоинтов (см. комментарии), два открытых и 
-один доступный только для пользователей с определенной ролью, остальные доступны после аутентификации, см. код.
+один доступный только для пользователей с определенной ролью, остальные доступны после [аутентификации, см. код.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_2/src/main/java/me/oldboy/config/SecurityConfig.java)
 
 Основной интерес представляет файл конфигурации:
 - [SecurityConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_2/src/main/java/me/oldboy/config/SecurityConfig.java) - файл настройки системы защиты Spring-a;
 - [application.properties](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_2/src/main/resources/application.properties) - файл свойств, откуда приложение берет настройки БД;
 - [pom.xml](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_2/pom.xml) - файл зависимостей;
+- [Тесты](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_3_2/src/test/java/me/oldboy);
 ________________________________________________________________________________________________________________________
 ### Reference Documentation:
 
