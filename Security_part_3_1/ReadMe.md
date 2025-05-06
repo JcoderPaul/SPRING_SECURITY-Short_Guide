@@ -6,7 +6,7 @@
 - Java 8
 - Maven
 
-В данном примере мы в файл application.properties добавим еще одного пользователя, а файл LikeBase.java будет имитировать БД. 
+В данном примере мы в файл [application.properties](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_1/src/main/resources/application.properties) добавим еще одного пользователя, а файл [LikeBase.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_1/src/main/java/me/oldboy/likebase/LikeBase.java) будет имитировать БД. 
 В конфигурационном файле мы извлечем сведения обоих пользователей и поместим их "память", откуда они будут извлекаться по
 мере обращения каждого из пользователей к приложению и сравниваться с их "допусками". Пароль и логин для доступа к 
 закрытым страницам снова получаем через встроенную в Spring форму аутентификации. 
