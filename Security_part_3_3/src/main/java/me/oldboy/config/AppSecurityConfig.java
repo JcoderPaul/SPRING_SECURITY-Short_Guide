@@ -46,15 +46,11 @@ public class AppSecurityConfig {
 		httpSecurity.csrf(AbstractHttpConfigurer::disable)
 				.cors(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests(config ->
-						config.requestMatchers("/notices",
-										                "/contact")
+						config.requestMatchers("/notices", "/contact")
 								.permitAll()
-								.requestMatchers("/myAccount",
-														  "/myBalance",
-														  "/myLoans",
-														  "/myCards")
+								.requestMatchers("/myAccount", "/myBalance", "/myLoans")
 								.authenticated()
-								.requestMatchers("/roleList")
+								.requestMatchers("/roleList", "/myCards")
 								.hasRole("HR")
 								.anyRequest()
 								.authenticated())
