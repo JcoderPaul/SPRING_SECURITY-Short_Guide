@@ -26,7 +26,7 @@
 остаётся только реализовать методы getRootConfigClasses() и getServletConfigClasses(), как это указано в документации.
 
 Первый способ можно использовать, когда нужен полный контроль над процессом инициализации сервлет-контекста, второй - когда 
-достаточно стандартного процесса инциализации. Это применимо и к другим абстрактным реализациям WebApplicationInitializer.
+достаточно стандартного процесса инициализации. Это применимо и к другим абстрактным реализациям WebApplicationInitializer.
 
 Основной интерес представляют файлы конфигурации:
 - [AppSecurityConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_3/src/main/java/me/oldboy/config/AppSecurityConfig.java) - файл настройки системы безопасности Spring-a;
