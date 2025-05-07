@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration>
+
+    <appender name="log_to_console" class="org.apache.log4j.ConsoleAppender">
+        <param name="target" value="System.out"/>
+
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="conversionPattern" value="[%d{HH:mm:ss,SSS}] %p [%c: %L] %m%n"/>
+        </layout>
+
+    </appender>
+
+    <appender name="log_to_file" class="org.apache.log4j.RollingFileAppender">
+        <param name="file" value="log_files\\logging.log"/>
+
+        <param name="append" value="true"/> <!-- Каждое log сообщение дописывается в файл, а не перетирает предыдущие -->
+        <param name="maxFileSize" value="10MB"/> <!-- Размер лог файла -->
+        <param name="maxBackupIndex" value="10"/> <!-- Количество резервных копий лог файла -->
+
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="conversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss,SSS}] %p [%c: %L] %m%n"/>
+        </layout>
+
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="ALL"/>
+        </filter>
+    </appender>
+
+    <root>
+        <level value="info"/>
+        <appender-ref ref="log_to_file"/>
+        <appender-ref ref="log_to_console"/>
+    </root>
+
+</log4j:configuration>
