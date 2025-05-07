@@ -18,7 +18,7 @@ ________________________________________________________________________________
 - [Security_part_3_4 - Получение данным из БД и настройка авторизации краткий пример ("свежая кодовая база") (Spring Boot) (Gradle).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_3_4)
 ________________________________________________________________________________________________________________________
 
-- Security_part_4_1 - Пользовательская аутентификация в Spring Security (кастомный UserDetailsService и UserDetails) (Spring Boot).
+- [Security_part_4_1 - Пользовательская аутентификация в Spring Security (кастомный UserDetailsService и UserDetails) (Spring Boot).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_4_1)
 - Security_part_4_2 - Пользовательская аутентификация в Spring Security (кастомный UserDetailsService и UserDetails) (non Boot).
 ________________________________________________________________________________________________________________________
 
