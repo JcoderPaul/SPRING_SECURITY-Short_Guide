@@ -11,6 +11,10 @@ ext {
             'hibernate':'6.6.5.Final',
             'snakeyaml':'2.3',
             'slf4j_log4j_binding':'2.0.16',
-            'aspectj':'1.9.22.1'
+            'aspectj':'1.9.22.1',
+            'mockito':'5.17.0',
+            'junit':'5.11.4',
+            'assertj': '3.26.0',
+            'hamcrest':'3.0'
     ]
 }
