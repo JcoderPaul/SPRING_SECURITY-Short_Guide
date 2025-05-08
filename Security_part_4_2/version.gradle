@@ -1,0 +1,18 @@
+ext {
+    versions = [
+            'spring': '6.2.0',
+            'security':'6.4.2',
+            'data_jpa':'3.4.2',
+            'jakarta_servlet_api':'6.1.0',
+            'jakarta_validation':'3.1.1',
+            'jackson':'2.17.2',
+            'postgres':'42.6.0',
+            'hibernate':'6.6.5.Final',
+            'validator':'8.0.2.Final',
+            'snakeyaml':'2.3',
+            'slf4j_log4j_binding':'2.0.16',
+            'aspectj':'1.9.22.1',
+            'mapstruct':'1.6.0',
+            'lombok_map_struct':'0.2.0'
+    ]
+}
