@@ -6,10 +6,10 @@
 - Gradle
 
 Данное приложение по структуре дублирует предыдущее, но оно non Boot и значит у него появятся дополнительные классы 
-настройки (конфигурации) см. раздел - config. Так же изменился файл зависимостей - build.gradle. И как всегда для его 
+настройки (конфигурации) см. раздел - [config](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_4_2/src/main/java/me/oldboy/config). Так же изменился файл зависимостей - [build.gradle](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_2/build.gradle). И как всегда для его 
 запуска нам нужен TomCat.
 
-В данном demo-проекте мы используем БД и пару связанных двунаправленными отношениями one-to-one таблиц см. scripts.sql 
+В данном demo-проекте мы используем БД и пару связанных двунаправленными отношениями one-to-one таблиц см. [scripts.sql ](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_2/DOC/scripts.sql)
 и в данной реализации SQL скрипта таблица client_details ссылается на таблицу clients. Т.е. все с точностью до наоборот,
 как и было обещано ранее. 
 
