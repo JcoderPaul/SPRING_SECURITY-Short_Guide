@@ -5,7 +5,7 @@
 - Java 17
 - Gradle
 
-На предыдущем шаге мы реализовали наши кастомный UserDetailsService и UserDetails, где "объяснили" Spring Security, как и 
+На предыдущем шаге мы реализовали наши кастомный [UserDetailsService](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_2/src/main/java/me/oldboy/config/securiry_details/ClientDetailsService.java) и [UserDetails](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_2/src/main/java/me/oldboy/config/securiry_details/SecurityClientDetails.java), где "объяснили" Spring Security, как и 
 откуда брать данные для аутентификации пользователей нашего сервиса (приложения). У нас использовался DaoAuthenticationProvider
 предоставляемый системой безопасности Spring-a по-умолчанию. Теперь мы хотим реализовать наш собственный [AuthenticationProvider](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_5_1/src/main/java/me/oldboy/config/auth_provider/CustomAuthProvider.java). 
 
