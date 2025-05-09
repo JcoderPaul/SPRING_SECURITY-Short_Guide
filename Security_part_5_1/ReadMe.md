@@ -5,17 +5,17 @@
 - Java 17
 - Gradle
 
-На предыдущем шаге мы реализовали наши кастомный UserDetailsService и UserDetails, где "объяснили" Spring Security как и 
+На предыдущем шаге мы реализовали наши кастомный UserDetailsService и UserDetails, где "объяснили" Spring Security, как и 
 откуда брать данные для аутентификации пользователей нашего сервиса (приложения). У нас использовался DaoAuthenticationProvider
-предоставляемый системой безопасности Spring-a по-умолчанию. Теперь мы хотим реализовать наш собственный AuthenticationProvider. 
+предоставляемый системой безопасности Spring-a по-умолчанию. Теперь мы хотим реализовать наш собственный [AuthenticationProvider](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_5_1/src/main/java/me/oldboy/config/auth_provider/CustomAuthProvider.java). 
 
-При реализации собственного AuthenticationProvider требуется переопределить метод *.authenticate() в котором нужно:
+При реализации собственного [AuthenticationProvider](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_5_1/src/main/java/me/oldboy/config/auth_provider/CustomAuthProvider.java) требуется переопределить метод [*.authenticate()](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_5_1/src/main/java/me/oldboy/config/auth_provider/CustomAuthProvider.java#L27) в котором нужно:
 - самостоятельно сравнить полученный из БД пароль и логин с переданным из формы и выбросить исключение если это необходимо;
 - вернуть UsernamePasswordAuthenticationToken, который расширяет AbstractAuthenticationToken, а тот в свою очередь реализует Authentication;
 
 Получается следующее, метод *.authenticate() нашего CustomAuthProvider-а принимает на вход параметр Authentication, который
 уже содержит имя и пароль, взятые из запроса/из формы. Если аутентификация прошла успешно, мы извлекаем из БД сведения об 
-аутентифицированном пользователе, а значит у нас есть все, чтобы создать, заполнить и вернуть приложению новый UsernamePasswordAuthenticationToken:
+аутентифицированном пользователе, а значит у нас есть все, чтобы создать, заполнить и вернуть приложению новый [UsernamePasswordAuthenticationToken](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_5_1/src/main/java/me/oldboy/config/auth_provider/CustomAuthProvider.java#L46):
 
     public UsernamePasswordAuthenticationToken(Object principal, Object credentials, Collection<? extends GrantedAuthority> authorities) 
 
@@ -26,7 +26,7 @@
 Не сложно заметить, что в структуре нашего CustomAuthProvider-a в неявном виде присутствует код работавший ранее в наших
 реализациях UserDetailsService и UserDetails. Для наглядности выделим его и вынесем пример в отдельное приложение см. след.
 
-Для наглядности процесса аутентификации реализуем слушатель (фильтр) AbstractAuthenticationEvent. Он позволяет выводить в 
+Для наглядности процесса аутентификации реализуем слушатель (фильтр) [AbstractAuthenticationEvent](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_5_1/src/main/java/me/oldboy/config/auth_event_listener/AuthenticationEventListener.java). Он позволяет выводить в 
 консоль результат работы метода аутентификации.
 ________________________________________________________________________________________________________________________
 ### Reference Documentation:
