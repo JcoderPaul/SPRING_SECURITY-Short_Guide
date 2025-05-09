@@ -22,7 +22,7 @@ ________________________________________________________________________________
 - [Security_part_4_2 - Пользовательская аутентификация в Spring Security (кастомный UserDetailsService и UserDetails) (non Boot).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_4_2)
 ________________________________________________________________________________________________________________________
 
-- Security_part_5_1 - Пользовательский AuthenticationProvider (Spring Boot).
+- [Security_part_5_1 - Пользовательский AuthenticationProvider (Spring Boot).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_5_1)
 - Security_part_5_2 - Пользовательский AuthenticationProvider, UserDetailsService и UserDetails (Spring Boot).
 ________________________________________________________________________________________________________________________
 
