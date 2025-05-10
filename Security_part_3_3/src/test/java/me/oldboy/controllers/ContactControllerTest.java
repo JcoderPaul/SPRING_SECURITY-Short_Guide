@@ -1,6 +1,6 @@
 package me.oldboy.controllers;
 
-import me.oldboy.config.AppWebInitializer;
+import me.oldboy.config.web_inint.AppWebInitializer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
