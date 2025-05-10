@@ -29,13 +29,22 @@
 достаточно стандартного процесса инициализации. Это применимо и к другим абстрактным реализациям WebApplicationInitializer.
 
 Основной интерес представляют файлы конфигурации:
-- [AppSecurityConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_3/src/main/java/me/oldboy/config/AppSecurityConfig.java) - файл настройки системы безопасности Spring-a;
-- [AppSecurityInitializer.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_3/src/main/java/me/oldboy/config/AppSecurityInitializer.java) - файл регистрирующий нашу цепочку фильтров FilterChain в контейнере сервлетов;
-- [AppWebInitializer.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_3/src/main/java/me/oldboy/config/AppWebInitializer.java) - файл инициализирующий сервлет-контекст;
-- [DataSourceConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_3/src/main/java/me/oldboy/config/DataSourceConfig.java) - файл конфигурации источника данных (в Spring Boot приложении все происходило автомагически, 
+- [AppSecurityConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_3/src/main/java/me/oldboy/config/security/AppSecurityConfig.java) - файл настройки системы безопасности Spring-a;
+- [AppSecurityInitializer.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_3/src/main/java/me/oldboy/config/security/AppSecurityInitializer.java) - файл регистрирующий нашу цепочку фильтров FilterChain в контейнере сервлетов;
+- [AppWebInitializer.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_3/src/main/java/me/oldboy/config/web_inint/AppWebInitializer.java) - файл инициализирующий сервлет-контекст;
+- [DataSourceConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_3/src/main/java/me/oldboy/config/data_source/DataSourceConfig.java) - файл конфигурации источника данных (в Spring Boot приложении все происходило автомагически, 
 данные для настройки связи с БД и т.д., брались из [application.yml](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_3/src/main/resources/application.yml) или application.properties, а необходимые bean-ы 
 загружались в контекст приложения без нашего участия);
 - [build.gradle](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/edit/master/Security_part_3_3/build.gradle) - файл зависимостей;
+
+В данном разделе для тестирования мы использовали InMemory H2 Base. Для этого в конфигурационном файле gradle добавляем 
+нужную зависимость:
+
+        testImplementation "com.h2database:h2:${versions.h2}"
+
+Для тестов нам понадобится тестовое окружение (по крайней мере [для одного теста точно](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_3/src/test/java/me/oldboy/integration/controller/RoleControllerTest.java)) и [файл свойств](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_3/src/test/resources/application-test.yml), а также [скрипт тестовой БД](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_3_3/src/test/resources/sql_scripts/data.sql):
+- тестовые ресурсы - [resources](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_3_3/src/test/resources);
+- файлы формирующие тестовый контекст - [test_context](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_3_3/src/test/java/me/oldboy/config/test_context);
 ________________________________________________________________________________________________________________________
 ### Reference Documentation:
 
