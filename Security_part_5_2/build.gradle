@@ -1,0 +1,46 @@
+plugins {
+    id 'org.springframework.boot' version '3.3.8'
+    id "io.spring.dependency-management" version '1.1.7'
+    id "io.freefair.lombok" version "8.3"
+    id 'java'
+}
+
+group 'me.oldboy'
+version '1.0-SNAPSHOT'
+
+apply from: 'version.gradle'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    implementation "org.postgresql:postgresql:${versions.postgres}"
+
+    /* Подключим Hibernate */
+    implementation "org.hibernate:hibernate-core:${versions.hibernate}"
+    implementation "org.hibernate:hibernate-validator:${versions.validator}"
+
+    /* Подключим библиотеку Mapstruct */
+    implementation "org.projectlombok:lombok-mapstruct-binding:${versions.lombok_map_struct}"
+    implementation "org.mapstruct:mapstruct:${versions.mapstruct}"
+    implementation "org.mapstruct:mapstruct-processor:${versions.mapstruct}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${versions.mapstruct}",
+            "org.projectlombok:lombok-mapstruct-binding:${versions.lombok_map_struct}"
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+wrapper {
+    gradleVersion '8.2.1'
+}
