@@ -23,7 +23,7 @@ ________________________________________________________________________________
 ________________________________________________________________________________________________________________________
 
 - [Security_part_5_1 - Пользовательский AuthenticationProvider (Spring Boot).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_5_1)
-- Security_part_5_2 - Пользовательский AuthenticationProvider, UserDetailsService и UserDetails (Spring Boot).
+- [Security_part_5_2 - Пользовательский AuthenticationProvider, UserDetailsService и UserDetails (Spring Boot).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_5_2)
 ________________________________________________________________________________________________________________________
 
 - Security_part_6_1 - Remember-Me Authentication (Spring Boot).
