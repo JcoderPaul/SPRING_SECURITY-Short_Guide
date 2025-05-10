@@ -77,6 +77,9 @@ dependencies {
 
     testImplementation "org.hamcrest:hamcrest:${versions.hamcrest}"
 
+    /* Подключим тестовую inMemory БД */
+    testImplementation "com.h2database:h2:${versions.h2}"
+
     /* Подключим log4j */
     implementation "org.slf4j:slf4j-log4j12:${versions.slf4j_log4j_binding}"
 }
