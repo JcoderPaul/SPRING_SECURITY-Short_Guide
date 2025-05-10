@@ -5,10 +5,10 @@
 - Java 17
 - Gradle
 
-На предыдущем шаге - Security_part_4_1 - мы реализовали наши кастомный UserDetailsService и UserDetails, где "объяснили" Spring Security как и 
+На предыдущем шаге - [Security_part_4_1](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_4_1) - мы реализовали наши кастомный [UserDetailsService](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_1/src/main/java/me/oldboy/config/securiry_details/ClientDetailsService.java) и [UserDetails](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_1/src/main/java/me/oldboy/config/securiry_details/SecurityClientDetails.java), где "объяснили" Spring Security как и 
 откуда брать данные для аутентификации пользователей нашего сервиса (приложения). 
 
-Далее мы реализовали наш собственный AuthenticationProvider - Security_part_5_1. 
+Далее мы реализовали наш собственный [AuthenticationProvider](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_5_1/src/main/java/me/oldboy/config/auth_provider/CustomAuthProvider.java) - [Security_part_5_1](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_5_1). 
 
 При реализации собственного AuthenticationProvider требуется переопределить метод *.authenticate() в котором нужно:
 - самостоятельно сравнить полученный из БД пароль и логин с переданным из формы и выбросить исключение если это необходимо;
@@ -30,14 +30,14 @@
 реализациях UserDetailsService и UserDetails. Для наглядности выделим их.
 
 Теперь у нас есть наши собственные кастомные:
-- SecurityClientDetails реализация [UserDetails](https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/core/userdetails/UserDetails.html) - Предоставляет основную информацию о пользователе. Реализации не используются 
+- [SecurityClientDetails](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_5_2/src/main/java/me/oldboy/config/securiry_details/SecurityClientDetails.java) реализация [UserDetails](https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/core/userdetails/UserDetails.html) - Предоставляет основную информацию о пользователе. Реализации не используются 
 Spring Security напрямую в целях безопасности. Они просто хранят информацию о пользователе, которая позже инкапсулируется 
 в объекты аутентификации - [Authentication](https://docs.spring.io/spring-security/reference/features/authentication/index.html). Это позволяет хранить не связанную с безопасностью информацию о пользователе 
 (такую как адреса электронной почты, номера телефонов и т. д.) в удобном месте.
-- ClientDetailsService реализация [UserDetailsService](https://docs.spring.io/spring-security/reference/api/java/org/springframework/security/core/userdetails/UserDetailsService.html) - Основной интерфейс, который загружает пользовательские данные. Он 
+- [ClientDetailsService](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_5_2/src/main/java/me/oldboy/config/securiry_details/ClientDetailsService.java) реализация [UserDetailsService](https://docs.spring.io/spring-security/reference/api/java/org/springframework/security/core/userdetails/UserDetailsService.html) - Основной интерфейс, который загружает пользовательские данные. Он 
 используется во всей структуре как пользовательский DAO и является стратегией, используемой DaoAuthenticationProvider-ом. 
 Интерфейс требует реализации одного метода только для чтения, что упрощает поддержку новых стратегий доступа к данным.
-- CustomAuthProvider реализация [AuthenticationProvider](https://docs.spring.io/spring-security/reference/api/java/org/springframework/security/authentication/AuthenticationProvider.html);
+- [CustomAuthProvider](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_5_2/src/main/java/me/oldboy/config/auth_provider/CustomAuthProvider.java) реализация [AuthenticationProvider](https://docs.spring.io/spring-security/reference/api/java/org/springframework/security/authentication/AuthenticationProvider.html);
 ________________________________________________________________________________________________________________________
 ### Reference Documentation:
 
