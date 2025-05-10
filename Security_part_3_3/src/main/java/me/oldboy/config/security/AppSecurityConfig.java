@@ -22,9 +22,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
-@ComponentScan({"me.oldboy.config.web_init",
-				"me.oldboy.repository",
-				"me.oldboy.config.data_source"})
+@ComponentScan({"me.oldboy.config.web_init", "me.oldboy.repository", "me.oldboy.config.data_source"})
 public class AppSecurityConfig {
 
 	@Autowired
@@ -37,8 +35,7 @@ public class AppSecurityConfig {
 	}
 
 	@Bean
-	public AuthenticationManager authenticationManager(UserDetailsService userDetailsService,
-													   PasswordEncoder passwordEncoder) {
+	public AuthenticationManager authenticationManager(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
 		DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
 		authenticationProvider.setUserDetailsService(userDetailsService);
 		authenticationProvider.setPasswordEncoder(passwordEncoder);
