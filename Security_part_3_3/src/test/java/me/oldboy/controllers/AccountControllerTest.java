@@ -1,9 +1,7 @@
 package me.oldboy.controllers;
 
 import lombok.SneakyThrows;
-import me.oldboy.config.AppSecurityConfig;
-import me.oldboy.config.AppSecurityInitializer;
-import me.oldboy.config.AppWebInitializer;
+import me.oldboy.config.web_inint.AppWebInitializer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,9 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 с каким контекстом им взаимодействовать (для тестирования нужен хоть какой-то контекст приложения).
 */
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {AppWebInitializer.class,
-                                 AppSecurityInitializer.class,
-                                 AppSecurityConfig.class})
+@ContextConfiguration(classes = {AppWebInitializer.class})
 @WebAppConfiguration
 class AccountControllerTest {
 
