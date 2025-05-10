@@ -1,8 +1,9 @@
-package me.oldboy.config;
+package me.oldboy.config.data_source;
 
 import jakarta.persistence.EntityManagerFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import me.oldboy.config.YamlPropertySourceFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +23,8 @@ import java.util.Properties;
 
 @Slf4j
 @Configuration
-@PropertySource(value = "classpath:application.yml", factory = YamlPropertySourceFactory.class)
+@PropertySource(value = "classpath:application.yml",
+                factory = YamlPropertySourceFactory.class)
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "me.oldboy.repository")
 @RequiredArgsConstructor
