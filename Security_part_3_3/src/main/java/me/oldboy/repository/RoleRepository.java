@@ -1,5 +1,7 @@
 package me.oldboy.repository;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import me.oldboy.models.PrintAuthorities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
