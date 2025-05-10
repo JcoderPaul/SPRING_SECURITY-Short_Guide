@@ -15,6 +15,7 @@ ext {
             'mockito':'5.17.0',
             'junit':'5.11.4',
             'assertj': '3.26.0',
-            'hamcrest':'3.0'
+            'hamcrest':'3.0',
+            'h2':'2.3.232'
     ]
 }
