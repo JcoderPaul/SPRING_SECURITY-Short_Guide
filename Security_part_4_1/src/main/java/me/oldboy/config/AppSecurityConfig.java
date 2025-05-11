@@ -23,16 +23,6 @@ import static org.springframework.security.web.util.matcher.AntPathRequestMatche
 @ComponentScan("me.oldboy")
 public class AppSecurityConfig {
 
-	/**
-	 * Controller endpoint:
-	 * /myAccount - Secured
-	 * /myBalance - Secured
-	 * /myLoans - Secured
-	 * /myCards - Secured
-	 * /notices - Not Secured
-	 * /contact - Not Secured
-	 */
-
 	/*
 	Что интересно в Spring Boot приложении, так это то, что о многих вещах просто забываешь, т.к. фреймворк на
 	основании application.yml проделывает множество настроек сам. И например тут, ситуацию не сильно изменит
