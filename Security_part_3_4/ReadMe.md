@@ -30,6 +30,7 @@
 делать нужно. 
 
 Тут нам на помощь приходит интерфейс UserDetails. Его применение рассмотрим в следующем разделе.
+________________________________________________________________________________________________________________________
 Для понимания отличия настройки тестирования nonBoot и Boot приложений можно изучить:
 - [тесты текущего (Boot приложения)](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_3_4/src/test);
 - [тесты предыдущего (non Boot приложения)](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_3_3/src/test);
