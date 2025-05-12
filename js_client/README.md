@@ -71,9 +71,9 @@ NPM (Node Package Manager) — это менеджер пакетов для м�
       http://localhost:4200/
 
 Если Spring приложение запущено, и настройки CORS в Spring Security filterChain сделаны должным образом, то JS HTTP клиент 
-обратится к нему, и отобразит данные полученные из контроллера NoticesController.java - это строка: "Here are the notices details from the DB"
+обратится к нему, и отобразит данные полученные из контроллера [NoticesController.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_1/src/main/java/me/oldboy/controllers/api/NoticesController.java) - это строка: "Here are the notices details from the DB"
 
-См. описание в ReadMe файле Spring приложения.
+См. [описание в ReadMe файле Spring приложения](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_1/ReadMe.md).
 
 Фича приложения сделанного при помощи Angular в том, что после его запуска, изменения сделанные в среде разработки 
 (Visual Studio и т.п.) в любом компоненте приложения автоматически прогружаются (на лету, без специальной остановки) 
