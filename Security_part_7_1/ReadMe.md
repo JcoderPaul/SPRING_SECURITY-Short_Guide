@@ -108,19 +108,19 @@ ________________________________________________________________________________
 
 Мы не будем проводить имитацию CSRF атаки, а просто посмотрим, как выглядит код формы без CSRF защиты в консоли разработчика 
 браузера, пока у нас защита отключена и естественно отсутствуют какие-либо упоминания в коде форм о CSRF:
-![см. форма аутентификации](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_1/DOC/JPG/CSRF/No_CSRF_Security_LoginForm.jpg);
+![см. форма аутентификации](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_1/DOC/JPG/CSRF/No_CSRF_Security_LoginForm.jpg)
 
 и 
 
-![см. форма регистрации](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_1/DOC/JPG/CSRF/No_CSRF_Security_RegForm.jpg);
+![см. форма регистрации](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_1/DOC/JPG/CSRF/No_CSRF_Security_RegForm.jpg)
 
 Теперь мы убрали из цепочки фильтров метод явно дезактивирующий CSRF защиту и снова посмотрим, как будет выглядеть код 
 формы в консоли разработчика (т.е. CSRF защита включена): 
-![см. форма аутентификации](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_1/DOC/JPG/CSRF/With_CSRF_SecurityToken_LoginForm.jpg);
+![см. форма аутентификации](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_1/DOC/JPG/CSRF/With_CSRF_SecurityToken_LoginForm.jpg)
 
 и
 
-![см. форма регистрации](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_1/DOC/JPG/CSRF/With_CSRF_SecurityToken_RegForm.jpg);
+![см. форма регистрации](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_1/DOC/JPG/CSRF/With_CSRF_SecurityToken_RegForm.jpg)
 
 Как и в случае с CORS, включение защиты с помощью CSRF-токена идет в Spring Security "из коробки", если мы сами явно не 
 отключаем его в цепочке фильтров безопасности. Теперь когда пользователь аутентифицируется в нашем приложении (сервисе), 
