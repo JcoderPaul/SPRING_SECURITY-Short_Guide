@@ -110,7 +110,7 @@ ________________________________________________________________________________
 браузера, пока у нас защита отключена и естественно отсутствуют какие-либо упоминания в коде форм о CSRF:
 ![см. форма аутентификации](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_1/DOC/JPG/CSRF/No_CSRF_Security_LoginForm.jpg)
 
-и 
+________________________________________________________________________________________________________________________
 
 ![см. форма регистрации](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_1/DOC/JPG/CSRF/No_CSRF_Security_RegForm.jpg)
 
@@ -118,7 +118,7 @@ ________________________________________________________________________________
 формы в консоли разработчика (т.е. CSRF защита включена): 
 ![см. форма аутентификации](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_1/DOC/JPG/CSRF/With_CSRF_SecurityToken_LoginForm.jpg)
 
-и
+________________________________________________________________________________________________________________________
 
 ![см. форма регистрации](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_1/DOC/JPG/CSRF/With_CSRF_SecurityToken_RegForm.jpg)
 
