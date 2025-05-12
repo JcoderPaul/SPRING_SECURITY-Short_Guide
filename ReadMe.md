@@ -31,12 +31,12 @@ ________________________________________________________________________________
   - [Настройка Remember-Me аутентификации.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_6_1#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-remember-me-%D0%B0%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8)
 ________________________________________________________________________________________________________________________
 
-- Security_part_7_1 - Настройка CORS, CSRF и еще раз немного о RememberMe (Spring Boot).
-  - Настройка Security CORS в Spring приложении.
-  - Генерация Security CSRF-токена в Spring приложении (самописные формы аутентификации и регистрации).
-  - Еще раз о настройке Remember-Me Authentication и управление сессиями.
-  - Важные моменты.
-  - Особенности настройки отображения.
+- [Security_part_7_1 - Настройка CORS, CSRF и еще раз немного о RememberMe (Spring Boot).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_7_1)
+  - [Настройка Security CORS в Spring приложении.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_7_1#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-security-cors-%D0%B2-spring-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8)
+  - [Генерация Security CSRF-токена в Spring приложении (самописные формы аутентификации и регистрации).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_7_1#%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F-security-csrf-%D1%82%D0%BE%D0%BA%D0%B5%D0%BD%D0%B0-%D0%B2-spring-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8-%D1%81%D0%B0%D0%BC%D0%BE%D0%BF%D0%B8%D1%81%D0%BD%D1%8B%D0%B5-%D1%84%D0%BE%D1%80%D0%BC%D1%8B-%D0%B0%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8-%D0%B8-%D1%80%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D0%B8)
+  - [Еще раз о настройке Remember-Me Authentication и управление сессиями.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_7_1#%D0%B5%D1%89%D0%B5-%D1%80%D0%B0%D0%B7-%D0%BE-%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5-remember-me-authentication-%D0%B8-%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D1%81%D0%B5%D1%81%D1%81%D0%B8%D1%8F%D0%BC%D0%B8)
+  - [Важные моменты.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_7_1#%D0%B2%D0%B0%D0%B6%D0%BD%D1%8B%D0%B5-%D0%BC%D0%BE%D0%BC%D0%B5%D0%BD%D1%82%D1%8B)
+  - [Особенности настройки отображения.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_7_1#%D0%BE%D1%81%D0%BE%D0%B1%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8-%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8-%D0%BE%D1%82%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F)
 - Security_part_7_2 - Немного об отличиях Role от Authority (non Boot).
 ________________________________________________________________________________________________________________________
 
