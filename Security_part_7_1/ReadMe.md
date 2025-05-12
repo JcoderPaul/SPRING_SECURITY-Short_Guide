@@ -203,12 +203,12 @@ Spring Security не будет использовать файлы cookie, и �
 приложение не сможем (по крайней мере, на защищенные страницы), система безопасности просто не знает как аутентифицировать 
 пользователя (Security сессии нет, authentication-a дергать не откуда) см. ниже: 
 
-SessionCreationPolicy_STATELESS.jpg
+![SessionCreationPolicy_STATELESS.jpg](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_1/DOC/JPG/RememberMe/SessionCreationPolicy_STATELESS.jpg)
 
 Однако стоит поставить галочку в поле Remember Me и мы успешно проходим на страницу приветствия с отображением Login-a, 
 а также Cookies remember-me:
 
-SessionCreationPolicy_STATELESS_RememberMe.jpg
+![SessionCreationPolicy_STATELESS_RememberMe.jpg](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_1/DOC/JPG/RememberMe/SessionCreationPolicy_STATELESS_RememberMe.jpg)
 
 Данный эффект был описан в разделе "Настройка Remember-Me аутентификации" ReadMe файла предыдущей части. Обычно политику -
 SessionCreationPolicy.STATELESS применяют при аутентификации с токенами.
