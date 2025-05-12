@@ -31,7 +31,7 @@ class ContactControllerTest {
     /* Мы подгружаем контекст безопасности, но данный эндпоинт доступен для всех, т.е. @WithMockUser нам не нужна */
     @Test
     @SneakyThrows
-    void saveContactInquiryDetails() {
+    void shouldReturnOkGetDetailsTest() {
         mockMvc.perform(MockMvcRequestBuilders.get("/contact"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string("Get details from DB"));
