@@ -10,25 +10,25 @@
 <form th:action="@{/webui/registration}" class="form-reg" enctype="form-data" method="post" th:object="${client}">
 
     <fieldset>
-    <legend>Authentication data:</legend>
-    <label for="email"> 
-    <input id="email" type="text" name="email" class="form-control" placeholder="Email" required th:value="*{email}">
-    </label><br>
-    <label for="rawPassword">
-    <input id="rawPassword" type="password" name="pass" class="form-control" placeholder="Password" required>
-    </label><br>
+        <legend>Authentication data:</legend>
+        <label for="email">
+            <input id="email" type="text" name="email" class="form-control" placeholder="Email" required th:value="*{email}">
+        </label><br>
+        <label for="rawPassword">
+            <input id="rawPassword" type="password" name="pass" class="form-control" placeholder="Password" required>
+        </label><br>
     </fieldset>
 
     <fieldset for="details" th:object="${details}">
         <legend>Personal data:</legend>
         <label for="client_name">
-        <input id="client_name" type="text" name="clientName" class="form-control" placeholder="Name" required th:value="*{clientName}">
+            <input id="client_name" type="text" name="clientName" class="form-control" placeholder="Name" required th:value="*{clientName}">
         </label><br>
         <label for="client_sur_name">
-        <input id="client_sur_name" type="text" name="clientSurName" class="form-control" placeholder="Surname" required th:value="*{clientSurName}">
+            <input id="client_sur_name" type="text" name="clientSurName" class="form-control" placeholder="Surname" required th:value="*{clientSurName}">
         </label><br>
         <label for="age">
-        <input id="age" type="number" name="age" class="form-control" placeholder="Age" required th:value="*{age}">
+            <input id="age" type="number" name="age" class="form-control" placeholder="Age" required th:value="*{age}">
         </label>
     </fieldset>
 
