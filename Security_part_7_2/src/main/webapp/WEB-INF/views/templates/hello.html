@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello</title>
+</head>
+<body>
+
+<H1> HELLO FROM MODEL ATTRIBUTE: <span style="color: green" th:text="${user.client.email}">EMAIL</span> </H1>
+
+<H1> HELLO FROM SPRING SECURITY CONTEXT: <span style="color: red" th:text="${#authentication.principal.username}">Username</span> </H1>
+
+</body>
+</html>
