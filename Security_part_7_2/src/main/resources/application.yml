@@ -1,0 +1,26 @@
+# Префикс для работы с логерами (их настройки)
+logging:
+  # Зададим уровень логирования корневого логера
+  level:
+    # Будем фиксировать сообщения типа WARN (и все что выше ERROR и FATAL)
+    root: INFO
+    # Так же мы можем настроить логер для конкретного класса
+    org.springframework.jdbc.core: TRACE
+  # Записываем лог в файл
+  file.name: Logs/oldboy.log
+
+  # Настроим подключение к БД
+datasource:
+  url: jdbc:postgresql://localhost:5437/postgres
+  username: admin
+  password: admin
+  driver-class-name: org.postgresql.Driver
+  # Настроим свойства Hibernate
+jpa:
+  properties.hibernate:
+    batch_size: 50
+    fetch_size: 50
+    show_sql: true
+    format_sql: true
+    hbm2ddl.auto: validate
+  open-in-view: false
