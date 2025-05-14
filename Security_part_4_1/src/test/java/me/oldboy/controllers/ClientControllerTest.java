@@ -11,6 +11,7 @@ import me.oldboy.models.Client;
 import me.oldboy.models.Details;
 import me.oldboy.models.Role;
 import me.oldboy.services.ClientService;
+import me.oldboy.test_content.TestFields;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -55,8 +56,6 @@ class ClientControllerTest {
     private DetailsCreateDto testDetailsCreateDto;
     private ClientCreateDto testClientCreateDto;
     private ClientReadDto testClientReadDto;
-    private String testEmail, testPass, testClientName, testClientSurName;
-    private Integer testAge;
     private Client testClient;
     private Details testDetails;
 
@@ -71,27 +70,31 @@ class ClientControllerTest {
     void setUp(){
         MockitoAnnotations.openMocks(this);
 
-        testEmail = "test@mail.com";
-        testPass = "test_pass";
-        testClientName = "Malcolm";
-        testClientSurName = "Stone";
-        testAge = 18;
+        testClientReadDto = new ClientReadDto(TestFields.TEST_EMAIL,
+                                              Role.USER.name(),
+                                              TestFields.TEST_CLIENT_NAME,
+                                              TestFields.TEST_CLIENT_SUR_NAME,
+                                              TestFields.TEST_AGE);
 
-        testClientReadDto = new ClientReadDto(testEmail, Role.USER.name(), testClientName, testClientSurName, testAge);
-        testDetailsCreateDto = new DetailsCreateDto(testClientName, testClientSurName, testAge);
-        testClientCreateDto = new ClientCreateDto(testEmail, testPass, testDetailsCreateDto);
+        testDetailsCreateDto = new DetailsCreateDto(TestFields.TEST_CLIENT_NAME,
+                                                    TestFields.TEST_CLIENT_SUR_NAME,
+                                                    TestFields.TEST_AGE);
+
+        testClientCreateDto = new ClientCreateDto(TestFields.TEST_EMAIL,
+                                                  TestFields.TEST_PASS,
+                                                  testDetailsCreateDto);
 
         testDetails = Details.builder()
-                            .clientName(testClientName)
-                            .clientSurName(testClientSurName)
-                            .age(testAge)
+                            .clientName(TestFields.TEST_CLIENT_NAME)
+                            .clientSurName(TestFields.TEST_CLIENT_SUR_NAME)
+                            .age(TestFields.TEST_AGE)
                             .client(testClient)
                             .build();
 
         testClient = Client.builder()
                             .id(1L)
-                            .email(testEmail)
-                            .pass(testPass)
+                            .email(TestFields.TEST_EMAIL)
+                            .pass(TestFields.TEST_PASS)
                             .role(Role.USER)
                             .details(testDetails)
                             .build();
@@ -100,14 +103,14 @@ class ClientControllerTest {
     @Test
     void shouldReturnWelcomeStringAdminNameTest() {
         /* Задаем поведение mock "заглушек" */
-        when(clientDetails.getClientName()).thenReturn(testClientName);
+        when(clientDetails.getClientName()).thenReturn(TestFields.TEST_CLIENT_NAME);
         when(authentication.getPrincipal()).thenReturn(clientDetails);
         when(securityContext.getAuthentication()).thenReturn(authentication);
 
         SecurityContextHolder.setContext(securityContext); // Задаем SecurityContext mock
         String result = clientController.getAdminName(); // Вызываем тестируемый метод
 
-        String expected = "This page for ADMIN only! \nHello: " + testClientName;
+        String expected = "This page for ADMIN only! \nHello: " + TestFields.TEST_CLIENT_NAME;
         assertThat(result).isEqualTo(expected); // Сравниваем результат и ожидание
     }
 
