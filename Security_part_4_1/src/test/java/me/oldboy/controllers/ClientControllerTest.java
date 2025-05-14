@@ -136,8 +136,8 @@ class ClientControllerTest {
         assertThat(methodAnswer.getStatusCode().is2xxSuccessful()).isTrue();
 
         String expectedBody = new ObjectMapper().writer()
-                .withDefaultPrettyPrinter()
-                .writeValueAsString(testClientReadDto);
+                                                .withDefaultPrettyPrinter()
+                                                .writeValueAsString(testClientReadDto);
         assertThat(methodAnswer.getBody()).isEqualTo(expectedBody);
 
         verify(mockClientService, times(1)).findByEmail(anyString());
