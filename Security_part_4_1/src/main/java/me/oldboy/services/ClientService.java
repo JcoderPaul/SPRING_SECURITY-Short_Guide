@@ -35,6 +35,7 @@ public class ClientService {
         Client toCreateClient = ClientMapper.INSTANCE.mapToClient(clientCreateDto);
         toCreateClient.setRole(Role.USER);
         toCreateClient.setPass(encodedPass);
+
         Client createdClient = clientRepository.save(toCreateClient);
         ClientReadDto toPrintClient = ClientMapper.INSTANCE.mapToClientReadDto(createdClient);
 
