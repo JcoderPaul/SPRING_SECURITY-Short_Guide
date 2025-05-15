@@ -189,8 +189,12 @@ class ClientControllerTest {
     void shouldReturn_ValidationErrors_RegistrationClientTest() throws JsonProcessingException {
         /* Формируем массив потенциально известных ошибок */
         List<ObjectError> errors = Arrays.asList(
-                new FieldError("clientCreateDto", "pass", "Field size value can be between 2 and 64"),
-                new FieldError("clientCreateDto", "email", "Standard e-mail structure - email_name@email_domain.top_lavel_domain (for example: paul@tradsystem.ru)")
+                new FieldError("clientCreateDto",
+                                    "pass",
+                                    "Field size value can be between 2 and 64"),
+                new FieldError("clientCreateDto",
+                                    "email",
+                                    "Standard e-mail structure - email_name@email_domain.top_lavel_domain (for example: paul@tradsystem.ru)")
         );
 
         /* Mock-аем работу методов BindingResult */
