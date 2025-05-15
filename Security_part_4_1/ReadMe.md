@@ -45,6 +45,11 @@
 и в данной реализации SQL скрипта таблица clients ссылается на таблицу client_details. В следующем non Boot проекте,
 который будет почти дублировать текущий, за исключением конфигурации и зависимостей, мы сделаем обратную ссылку.
 ________________________________________________________________________________________________________________________
+Еще раз о тестах в Spring Boot (и nonBoot) проектах (кратко, с примерами):
+- [Интеграционные тесты в Spring проектах](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_1/DOC/Once_again_about_tests/AboutIntegrationTest.md);
+- [Как тестировать Spring non Boot проекты](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_1/DOC/Once_again_about_tests/SpringNonBootAppTests.md);
+- [Тестирование non Boot Spring приложений использующих Spring Security](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_1/DOC/Once_again_about_tests/TestsNonBootAppWithSpringSecurity.md);
+________________________________________________________________________________________________________________________
 ### Reference Documentation:
 
 * [JDBC Authentication](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/jdbc.html#servlet-authentication-jdbc-datasource)
