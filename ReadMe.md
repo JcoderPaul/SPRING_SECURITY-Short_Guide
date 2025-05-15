@@ -19,6 +19,7 @@ ________________________________________________________________________________
 ________________________________________________________________________________________________________________________
 
 - [Security_part_4_1 - Пользовательская аутентификация в Spring Security (кастомный UserDetailsService и UserDetails) (Spring Boot).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_4_1)
+  - [Краткая теория о тестировании Spring Boot (и non Boot) приложений. ](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_4_1/DOC/Once_again_about_tests) 
 - [Security_part_4_2 - Пользовательская аутентификация в Spring Security (кастомный UserDetailsService и UserDetails) (non Boot).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_4_2)
 ________________________________________________________________________________________________________________________
 
