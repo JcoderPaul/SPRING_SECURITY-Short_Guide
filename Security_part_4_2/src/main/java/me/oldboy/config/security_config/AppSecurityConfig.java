@@ -10,16 +10,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
-import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
 @Slf4j
 @Configuration
@@ -40,6 +36,12 @@ public class AppSecurityConfig {
 	private ClientDetailsService clientDetailsService;
 
 	@Bean
+	@SneakyThrows
+	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) {
+		return FilterChainConfig.getSecurityFilterChain(httpSecurity);
+	}
+
+	@Bean
 	public AuthenticationManager authenticationManager(PasswordEncoder passwordEncoder) {
 		DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
 		authenticationProvider.setUserDetailsService(clientDetailsService);
@@ -53,27 +55,4 @@ public class AppSecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 
-	@Bean
-	@SneakyThrows
-	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) {
-		httpSecurity.csrf(AbstractHttpConfigurer::disable)
-				.cors(AbstractHttpConfigurer::disable)
-				.authorizeHttpRequests(config ->
-						config.requestMatchers(antMatcher("/notices"),
-										       antMatcher("/contact"))
-								.permitAll()
-								.requestMatchers(antMatcher("/myAccount"),
-										antMatcher("/myBalance"),
-										antMatcher("/myLoans"),
-										antMatcher("/myCards"))
-								.authenticated()
-								.requestMatchers(antMatcher("/admin/**"))
-								.hasAuthority("ADMIN")
-								.anyRequest()
-								.authenticated())
-				.httpBasic(Customizer.withDefaults())
-				.formLogin(Customizer.withDefaults());
-
-		return httpSecurity.build();
-	}
 }
