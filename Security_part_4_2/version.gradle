@@ -13,6 +13,11 @@ ext {
             'slf4j_log4j_binding':'2.0.16',
             'aspectj':'1.9.22.1',
             'mapstruct':'1.6.0',
-            'lombok_map_struct':'0.2.0'
+            'lombok_map_struct':'0.2.0',
+            'mockito':'5.17.0',
+            'junit':'5.11.4',
+            'assertj': '3.26.0',
+            'hamcrest':'3.0',
+            'h2':'2.3.232'
     ]
 }
