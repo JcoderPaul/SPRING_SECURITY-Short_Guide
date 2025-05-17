@@ -1,0 +1,12 @@
+datasource:
+  url: jdbc:h2:mem:test
+  username:
+  password:
+  driver-class-name: org.h2.Driver
+jpa:
+  properties.hibernate:
+    batch_size: 50
+    fetch_size: 50
+    show_sql: true
+    format_sql: true
+    hbm2ddl.auto: create
