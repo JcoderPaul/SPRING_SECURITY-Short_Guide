@@ -30,7 +30,7 @@ public class ClientController {
     private ClientService clientService;
 
     @GetMapping("/helloAdmin")
-    public String getClientList() {
+    public String getHelloAdmin() {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         SecurityClientDetails clientDetails = (SecurityClientDetails) authentication.getPrincipal();
