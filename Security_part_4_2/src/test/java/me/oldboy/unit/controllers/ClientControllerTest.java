@@ -1,8 +1,9 @@
-package me.oldboy.controllers;
+package me.oldboy.unit.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import me.oldboy.config.securiry_details.SecurityClientDetails;
+import me.oldboy.controllers.ClientController;
 import me.oldboy.dto.client_dto.ClientCreateDto;
 import me.oldboy.dto.client_dto.ClientReadDto;
 import me.oldboy.dto.details_dto.DetailsCreateDto;
