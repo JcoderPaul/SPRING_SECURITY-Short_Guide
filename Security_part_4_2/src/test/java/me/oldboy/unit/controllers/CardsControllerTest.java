@@ -1,4 +1,4 @@
-package me.oldboy.controllers;
+package me.oldboy.unit.controllers;
 
 import me.oldboy.config.AppWebInitializer;
 import org.junit.jupiter.api.BeforeEach;
