@@ -1,4 +1,4 @@
-package me.oldboy.controllers;
+package me.oldboy.unit.controllers;
 
 import lombok.SneakyThrows;
 import me.oldboy.config.AppWebInitializer;
