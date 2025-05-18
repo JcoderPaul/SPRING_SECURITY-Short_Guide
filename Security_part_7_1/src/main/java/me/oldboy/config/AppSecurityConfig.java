@@ -36,27 +36,27 @@ public class AppSecurityConfig {
 	@Bean
 	@SneakyThrows
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) {
-		httpSecurity.authorizeHttpRequests(urlConfig ->
-						urlConfig.requestMatchers(antMatcher("/notices"),
+		httpSecurity.authorizeHttpRequests(urlConfig ->	urlConfig.
+						requestMatchers(antMatcher("/notices"),
 										antMatcher("/contact"),
 										antMatcher("/css/**"),
 										antMatcher("/webui/login"),
 										antMatcher("/webui/registration"))
-								.permitAll()
-								.requestMatchers(antMatcher("/myAccount"),
+						.permitAll()
+						.requestMatchers(antMatcher("/myAccount"),
 										antMatcher("/myBalance"),
 										antMatcher("/myLoans"),
 										antMatcher("/myCards"),
 										antMatcher("/webui/hello"))
-								.authenticated()
-								.requestMatchers(antMatcher("/admin/**"))
-								.hasAuthority("ADMIN")
-								.anyRequest().authenticated())
-								.sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
-								.rememberMe((remember) -> remember.rememberMeParameter("remember-me")
+						.authenticated()
+						.requestMatchers(antMatcher("/admin/**"))
+						.hasAuthority("ADMIN")
+						.anyRequest().authenticated())
+						.sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
+						.rememberMe((remember) -> remember.rememberMeParameter("remember-me")
 										.tokenRepository(tokenRepository())
 										.alwaysRemember(true))
-								.formLogin(login -> login.loginPage("/webui/login")
+						.formLogin(login -> login.loginPage("/webui/login")
 										.defaultSuccessUrl("/webui/hello"));
 
 		return httpSecurity.build();
