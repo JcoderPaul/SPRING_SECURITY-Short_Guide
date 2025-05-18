@@ -15,7 +15,6 @@ import java.lang.annotation.Target;
 public @interface CheckDetails {
 
     String message() default "Details fields can't be blank/empty/wrong format!";
-
     Class<?>[] groups() default { };
     Class<? extends Payload>[] payload() default { };
 }
