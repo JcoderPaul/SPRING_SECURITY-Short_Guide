@@ -1,4 +1,4 @@
-package me.oldboy.config.securiry_details;
+package me.oldboy.config.security_details;
 
 import java.util.ArrayList;
 import java.util.Collection;
