@@ -23,7 +23,7 @@ ________________________________________________________________________________
 - [Примеры использования BindingResult в Spring.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_2/DOC/A_little_more_about_validation/BindingResultInSpringExample.md)
 - [Применение BindingResult и @ExceptionHandler.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_2/DOC/A_little_more_about_validation/BindingResultExceptionHandler.md)
 
-Немного о тестировании слоя контроллеров:
+Немного о тестировании слоя контроллеров и обработчиков исключений:
 - [Тестирование @ExceptionHandler в Spring контроллерах.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_2/DOC/About_Validation_Tests/ExceptionHandlerTest.md)
 - [Тестирование обработчика исключения в Spring приложениях.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_2/DOC/About_Validation_Tests/TestingControllerLayer.md)
 - [Тестирование уровня контроллера применяющего @ExceptionHandler в Spring nonBoot приложениях.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_2/DOC/About_Validation_Tests/TestingControllerNonBootSpring.md)
