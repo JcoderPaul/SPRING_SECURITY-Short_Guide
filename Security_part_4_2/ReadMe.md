@@ -17,6 +17,19 @@
 нам структуру. Нужно не забыть снова накатить или запустить БД в Docker-e, что бы не удивляться, а, что это приложение 
 падает или кидает ошибки, хотя вот только работало! 
 ________________________________________________________________________________________________________________________
+Еще раз о валидации и глобальной обработке исключений:
+- [Проверка (валидация) данных на уровне контроллера Spring.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_2/DOC/A_little_more_about_validation/ValidatingDataInControllerLayer.md)
+- [Применение @ExceptionHandler для обработки исключений в Spring приложениях.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_2/DOC/A_little_more_about_validation/SpringExceptionHandler.md)
+- [Примеры использования BindingResult в Spring.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_2/DOC/A_little_more_about_validation/BindingResultInSpringExample.md)
+- [Применение BindingResult и @ExceptionHandler.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_2/DOC/A_little_more_about_validation/BindingResultExceptionHandler.md)
+
+Немного о тестировании слоя контроллеров:
+- [Тестирование @ExceptionHandler в Spring контроллерах.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_2/DOC/About_Validation_Tests/ExceptionHandlerTest.md)
+- [Тестирование обработчика исключения в Spring приложениях.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_2/DOC/About_Validation_Tests/TestingControllerLayer.md)
+- [Тестирование уровня контроллера применяющего @ExceptionHandler в Spring nonBoot приложениях.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_2/DOC/About_Validation_Tests/TestingControllerNonBootSpring.md)
+________________________________________________________________________________________________________________________
+В данном приложении мы тоже проводили тесты - [test (покрытие Class 94%(64/68), Method 83%(182/218), Line 88%(406/458))](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_4_2/src/test)
+________________________________________________________________________________________________________________________
 ### Reference Documentation:
 
 * [JDBC Authentication](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/jdbc.html#servlet-authentication-jdbc-datasource)
