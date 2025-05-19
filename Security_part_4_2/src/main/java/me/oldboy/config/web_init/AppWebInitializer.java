@@ -1,7 +1,6 @@
-package me.oldboy.config;
+package me.oldboy.config.web_init;
 
 import lombok.extern.slf4j.Slf4j;
-import me.oldboy.config.security_config.AppSecurityConfig;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -10,7 +9,11 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 @Slf4j
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "me.oldboy")
+@ComponentScan({
+    "me.oldboy.controllers"
+    ,"me.oldboy.config.security_config"
+    ,"me.oldboy.exception"
+})
 public class AppWebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
