@@ -1,7 +1,7 @@
 package me.oldboy.unit.controllers;
 
 import lombok.SneakyThrows;
-import me.oldboy.config.AppWebInitializer;
+import me.oldboy.config.web_init.AppWebInitializer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
