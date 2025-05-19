@@ -2,7 +2,7 @@ package me.oldboy.unit.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
-import me.oldboy.config.securiry_details.SecurityClientDetails;
+import me.oldboy.config.security_details.SecurityClientDetails;
 import me.oldboy.controllers.ClientController;
 import me.oldboy.dto.client_dto.ClientCreateDto;
 import me.oldboy.dto.client_dto.ClientReadDto;
