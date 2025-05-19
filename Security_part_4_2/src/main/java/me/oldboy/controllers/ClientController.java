@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import me.oldboy.config.securiry_details.SecurityClientDetails;
+import me.oldboy.config.security_details.SecurityClientDetails;
 import me.oldboy.dto.client_dto.ClientCreateDto;
 import me.oldboy.dto.client_dto.ClientReadDto;
 import me.oldboy.exception.DuplicateClientEmailException;
