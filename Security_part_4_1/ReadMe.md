@@ -50,6 +50,8 @@ ________________________________________________________________________________
 - [Как тестировать Spring non Boot проекты](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_1/DOC/Once_again_about_tests/SpringNonBootAppTests.md);
 - [Тестирование non Boot Spring приложений использующих Spring Security](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_4_1/DOC/Once_again_about_tests/TestsNonBootAppWithSpringSecurity.md);
 ________________________________________________________________________________________________________________________
+Тесты текущего проекта (покрытие Class 96%(54/56), Method 82%(156/188), Line 87%(334/382)) - [test](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_4_1/src/test/java/me/oldboy)
+________________________________________________________________________________________________________________________
 ### Reference Documentation:
 
 * [JDBC Authentication](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/jdbc.html#servlet-authentication-jdbc-datasource)
