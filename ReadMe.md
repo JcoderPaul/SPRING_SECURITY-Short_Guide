@@ -21,6 +21,8 @@ ________________________________________________________________________________
 - [Security_part_4_1 - Пользовательская аутентификация в Spring Security (кастомный UserDetailsService и UserDetails) (Spring Boot).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_4_1)
   - [Краткая теория о тестировании Spring Boot (и non Boot) приложений. ](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_4_1/DOC/Once_again_about_tests) 
 - [Security_part_4_2 - Пользовательская аутентификация в Spring Security (кастомный UserDetailsService и UserDetails) (non Boot).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_4_2)
+  - [Статьи о валидации, обработчиках исключений (ExceptionHandler) и BindingResult.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_4_2/DOC/A_little_more_about_validation)
+  - [Статьи об особенностях тестирования nonBoot Spring приложений.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_4_2/DOC/About_Validation_Tests)
 ________________________________________________________________________________________________________________________
 
 - [Security_part_5_1 - Пользовательский AuthenticationProvider (Spring Boot).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_5_1)
