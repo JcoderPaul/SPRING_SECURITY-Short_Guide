@@ -1,6 +1,7 @@
 package me.oldboy.exception.handlers;
 
 import lombok.extern.slf4j.Slf4j;
+import me.oldboy.exception.DuplicateClientEmailException;
 import me.oldboy.exception.EmailNotFoundException;
 import me.oldboy.exception.exception_entity.ExceptionResponse;
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,8 @@ public class ClientDetailsServiceException {
 
     @ExceptionHandler({UsernameNotFoundException.class,
                        EmailNotFoundException.class,
-                       AuthenticationException.class
+                       AuthenticationException.class,
+                       DuplicateClientEmailException.class
     })
     public ResponseEntity<ExceptionResponse> handleExceptions(RuntimeException exception) {
         ExceptionResponse exceptionResponse = new ExceptionResponse(exception.getMessage());
