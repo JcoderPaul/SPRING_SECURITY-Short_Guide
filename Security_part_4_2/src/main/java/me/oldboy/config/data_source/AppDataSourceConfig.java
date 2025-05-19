@@ -1,4 +1,4 @@
-package me.oldboy.config;
+package me.oldboy.config.data_source;
 
 import jakarta.persistence.EntityManagerFactory;
 import lombok.RequiredArgsConstructor;
