@@ -1,4 +1,4 @@
-package me.oldboy.controllers;
+package me.oldboy.unit.controllers;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
