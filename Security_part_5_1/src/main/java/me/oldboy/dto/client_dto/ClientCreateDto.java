@@ -8,6 +8,7 @@ import me.oldboy.dto.details_dto.DetailsCreateDto;
 import me.oldboy.validation.annitation.CheckDetails;
 
 public record ClientCreateDto(@Email(message = "Standard e-mail structure - email_name@email_domain.top_lavel_domain (for example: paul@tradsystem.ru)")
+                              @NotBlank(message = "Field cannot be blank")
                               String email,
                               @NotBlank(message = "Field cannot be blank")
                               @Size(min = 2, max = 64, message = "Field size value can be between 2 and 64")
