@@ -32,13 +32,6 @@ public class ClientController {
 
     @GetMapping("/helloAdmin")
     public String getAdminName(Authentication authentication) {
-
-        /*
-        Очень интересный код, мы связываем заданный SecurityContext с текущим Java потоком выполнения,
-        но, если в предыдущий раз мы это делали жестко, извлекая SecurityContext из SecurityContextHolder-a
-        и уже затем извлекали Authentication. Можно сделать по другому - пробросить объект Authentication
-        как параметр метода и уже затем воспользоваться им для получения принципала.
-        */
         UserDetails clientDetails = (UserDetails) authentication.getPrincipal();
 
         return "This page for ADMIN only! \n" +
@@ -50,6 +43,12 @@ public class ClientController {
         return clientService.findAll();
     }
 
+    /*
+    Хотя в предыдущем проекте мы сократили код в этом методе за счет
+    использования глобального обработчика и переноса логики проверки
+    туда, что в дальнейшем позволит использовать его и для других DTO
+    тут все оставим без изменений.
+    */
     @PostMapping("/regClient")
     public ResponseEntity<String> registrationClient(@Validated
                                                      @RequestBody
