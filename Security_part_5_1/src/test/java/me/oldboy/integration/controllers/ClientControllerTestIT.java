@@ -65,7 +65,7 @@ class ClientControllerTestIT {
     @SneakyThrows
     void shouldReturnWelcomeStringWithAuthClientAdminNameTest() {
         mockMvc.perform(MockMvcRequestBuilders.get("/admin/helloAdmin")
-                        .with(httpBasic(TestConstantFields.EXIST_EMAIL, TestConstantFields.TEST_PASS)))
+                        .with(httpBasic(TestConstantFields.EXIST_EMAIL, TestConstantFields.TEST_PASS))) // Наш CustomAuthProvider работает с базовой аутентификацией
                 .andExpect(status().isOk())
                 .andExpect(content()
                         .string("This page for ADMIN only! \nHello: " + TestConstantFields.EXIST_EMAIL));
@@ -104,7 +104,7 @@ class ClientControllerTestIT {
     void successfulRegistration_ShouldReturnRegisteredClientData_RegistrationClientTest() {
         mockMvc.perform(post("/admin/regClient")
                         .with(httpBasic(TestConstantFields.EXIST_EMAIL,
-                                        TestConstantFields.TEST_PASS))
+                                        TestConstantFields.TEST_PASS)) // Наш CustomAuthProvider работает с базовой аутентификацией
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(new ObjectMapper().writeValueAsString(validClientCreateDto)))
                 .andExpect(status().isOk())
