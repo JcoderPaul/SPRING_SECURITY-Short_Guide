@@ -71,6 +71,7 @@ class ClientControllerTestIT {
                         .string("This page for ADMIN only! \nHello: " + TestConstantFields.EXIST_EMAIL));
     }
 
+    /* Проверяем одновременно вывод данных по запросу и наш CustomAuthProvider */
     @Test
     @SneakyThrows
     void shouldReturnJsonCollectionOfClients_AndContainsSettingString_GetAllClientTest() {
@@ -81,6 +82,7 @@ class ClientControllerTestIT {
                         .string(containsString("{\"email\":\"admin@test.com\",\"role\":\"ADMIN\",\"clientName\":\"Malkolm\",\"clientSurName\":\"Stone\",\"age\":19}")));
     }
 
+    /* Проверяем отказ в аутентификации при ошибочном username */
     @Test
     @SneakyThrows
     void shouldReturn_UnauthorizedClientWithWrongName_GetAllClientTest() {
@@ -90,6 +92,7 @@ class ClientControllerTestIT {
                 .andExpect(content().string(""));
     }
 
+    /* Проверяем отказ в аутентификации при ошибочном пароле */
     @Test
     @SneakyThrows
     void shouldReturn_UnauthorizedClientWithWrongPass_GetAllClientTest() {
@@ -99,6 +102,7 @@ class ClientControllerTestIT {
                 .andExpect(content().string(""));
     }
 
+    /* Проверяем одновременно верную регистрацию и наш CustomAuthProvider */
     @Test
     @SneakyThrows
     void successfulRegistration_ShouldReturnRegisteredClientData_RegistrationClientTest() {
@@ -113,6 +117,7 @@ class ClientControllerTestIT {
                         .writeValueAsString(testClientReadDto)));
     }
 
+    /* Проверяем одновременно попытку регистрации существующего e-mail и наш CustomAuthProvider */
     @Test
     @SneakyThrows
     void shouldReturn_4xx_DuplicateEmail_RegistrationClientTest() {
@@ -125,6 +130,7 @@ class ClientControllerTestIT {
                 .andExpect(content().string("{\"exceptionMsg\":\"Email: " + TestConstantFields.EXIST_EMAIL + " is exist.\"}"));
     }
 
+    /* Проверяем одновременно и валидацию и наш CustomAuthProvider */
     @Test
     @SneakyThrows
     void shouldReturn_4xx_NotValidDto_RegistrationClientTest() {
