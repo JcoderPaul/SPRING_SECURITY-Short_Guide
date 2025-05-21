@@ -29,6 +29,26 @@
 Для наглядности процесса аутентификации реализуем слушатель (фильтр) [AbstractAuthenticationEvent](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_5_1/src/main/java/me/oldboy/config/auth_event_listener/AuthenticationEventListener.java). Он позволяет выводить в 
 консоль результат работы метода аутентификации.
 ________________________________________________________________________________________________________________________
+Для тестирования нам понадобятся соответствующие зависимости, мы их использовали в предыдущих проектах, но явно не указывали 
+на них в описании см. build.gradle:
+
+        /* Тестовые зависимости */
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        testImplementation 'org.springframework.security:spring-security-test'
+    
+        testImplementation "org.assertj:assertj-core:${versions.assertj}"
+        testRuntimeOnly "org.assertj:assertj-core:${versions.assertj}"
+    
+        /* Зависимость тестовой inMemory БД */
+        testImplementation "com.h2database:h2:${versions.H2}"
+________________________________________________________________________________________________________________________
+Статьи по теме AuthenticationProvider и его тестировании:
+- [Что такое AuthenticationProvider в Spring Security.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_5_1/DOC/AboutAuthProvider/SpringAuthenticationProviderIs.md)
+- [Тестирование пользовательского AuthenticationProvider в Spring Security.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_5_1/DOC/AboutAuthProvider/CustomAuthProviderTests.md)
+- [Варианты тестирования пользовательского AuthenticationProvider-а.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_5_1/DOC/AboutAuthProvider/CustomAuthProviderTestLevel.md)
+________________________________________________________________________________________________________________________
+Тесты текущего проекта (покрытие Class 96%(54/56), Method 88%(148/168), Line 91%(358/392)) - [test](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_5_1/src/test/java/me/oldboy)
+________________________________________________________________________________________________________________________
 ### Reference Documentation:
 
 * [JDBC Authentication](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/jdbc.html#servlet-authentication-jdbc-datasource)
