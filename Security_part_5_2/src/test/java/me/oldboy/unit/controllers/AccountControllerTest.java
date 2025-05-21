@@ -1,0 +1,38 @@
+package me.oldboy.unit.controllers;
+
+import lombok.SneakyThrows;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.web.servlet.MockMvc;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@SpringBootTest // Загружает контекст Spring (как при запуске приложения).
+@AutoConfigureMockMvc // Позволяет тестировать REST-endpoint-ы через MockMvc.
+class AccountControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Test
+    @SneakyThrows
+    @WithMockUser // Имитируем аутентифицированного пользователя
+    void shouldReturnOkWithAuthClientGetAccountDetailsTest(){
+        mockMvc.perform(get("/myAccount"))
+               .andExpect(status().isOk())
+               .andExpect(content().string("Here are the account details from the DB"));
+    }
+
+    @Test
+    @SneakyThrows
+    void shouldReturnUnAuthWithoutAuthClientGetAccountDetailsTest(){
+        mockMvc.perform(get("/myAccount"))
+               .andExpect(status().isUnauthorized())
+               .andExpect(content().string(""));
+    }
+}
