@@ -44,7 +44,7 @@ public class AppSecurityConfig {
 										antMatcher("/myCards"))
 								.authenticated()
 								.requestMatchers(antMatcher("/admin/**"))
-								.hasAuthority("ADMIN")
+								.hasAnyAuthority("ADMIN")
 								.anyRequest()
 								.authenticated())
 				.httpBasic(Customizer.withDefaults())
