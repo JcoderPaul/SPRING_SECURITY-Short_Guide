@@ -53,16 +53,7 @@ public class ClientController {
     @PostMapping("/regClient")
     public ResponseEntity<String> registrationClient(@Validated
                                                      @RequestBody
-                                                     ClientCreateDto clientCreateDto,
-                                                     BindingResult bindingResult) throws JsonProcessingException {
-        if (bindingResult.hasErrors()){
-            List<String> errorsMessage = bindingResult.getAllErrors().stream()
-                    .map(errors -> errors.getDefaultMessage())
-                    .collect(Collectors.toList());
-            return ResponseEntity.badRequest().body(new ObjectMapper().writer()
-                    .withDefaultPrettyPrinter()
-                    .writeValueAsString(errorsMessage));
-        }
+                                                     ClientCreateDto clientCreateDto) throws JsonProcessingException {
 
         if(clientService.findByEmail(clientCreateDto.email()).isPresent()){
             throw new DuplicateClientEmailException("Email: " + clientCreateDto.email() + " is exist.");
