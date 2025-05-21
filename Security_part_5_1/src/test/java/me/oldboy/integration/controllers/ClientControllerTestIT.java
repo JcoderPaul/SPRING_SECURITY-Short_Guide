@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -61,9 +63,33 @@ class ClientControllerTestIT {
         SecurityContextHolder.clearContext();
     }
 
+    /*
+    Ниже приведены два теста на метод *.getAdminName() или "/helloAdmin" endpoint:
+    - в первом мы "мокаем" процесс аутентификации и тестируем, как метод отрабатывает запрос;
+    - во втором тестируем работу нашего AuthProvider-a при таком же запросе;
+
+    Важный момент, в том, что в первом случае мы должны подставить "почти полные" данные
+    MockUser-a в отличие от ранних тестов, для нормального прохождения теста.
+    */
     @Test
     @SneakyThrows
-    void shouldReturnWelcomeStringWithAuthClientAdminNameTest() {
+    @WithMockUser(username = TestConstantFields.EXIST_EMAIL,
+                  password = TestConstantFields.TEST_PASS,
+                  authorities = {TestConstantFields.TEST_STR_ROLE_ADMIN})
+    void shouldReturnWelcomeStringWithAuthClient_MockAuthentication_HelloAdminTest() {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext()
+                                                                     .getAuthentication()
+                                                                     .getPrincipal();
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/admin/helloAdmin"))
+                .andExpect(status().isOk())
+                .andExpect(content()
+                        .string("This page for ADMIN only! \nHello: " + userDetails.getUsername()));
+    }
+
+    @Test
+    @SneakyThrows
+    void shouldReturnWelcomeStringWithAuthClient_TestOurCustomAuthProvider_HelloAdminTest() {
         mockMvc.perform(MockMvcRequestBuilders.get("/admin/helloAdmin")
                         .with(httpBasic(TestConstantFields.EXIST_EMAIL, TestConstantFields.TEST_PASS))) // Наш CustomAuthProvider работает с базовой аутентификацией
                 .andExpect(status().isOk())
