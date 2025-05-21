@@ -33,8 +33,15 @@ dependencies {
     annotationProcessor "org.mapstruct:mapstruct-processor:${versions.mapstruct}",
             "org.projectlombok:lombok-mapstruct-binding:${versions.lombok_map_struct}"
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    /* Тестовые зависимости */
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+
+    testImplementation "org.assertj:assertj-core:${versions.assertj}"
+    testRuntimeOnly "org.assertj:assertj-core:${versions.assertj}"
+
+    /* Зависимость тестовой inMemory БД */
+    testImplementation "com.h2database:h2:${versions.H2}"
 }
 
 test {
