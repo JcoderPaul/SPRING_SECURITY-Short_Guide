@@ -1,6 +1,7 @@
 package me.oldboy.config.securiry_details;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 import me.oldboy.models.Client;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class SecurityClientDetails implements UserDetails {
 
 	private Client client;
