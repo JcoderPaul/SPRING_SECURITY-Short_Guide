@@ -39,6 +39,18 @@ Spring Security напрямую в целях безопасности. Они 
 Интерфейс требует реализации одного метода только для чтения, что упрощает поддержку новых стратегий доступа к данным.
 - [CustomAuthProvider](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_5_2/src/main/java/me/oldboy/config/auth_provider/CustomAuthProvider.java) реализация [AuthenticationProvider](https://docs.spring.io/spring-security/reference/api/java/org/springframework/security/authentication/AuthenticationProvider.html);
 ________________________________________________________________________________________________________________________
+Ранее для тестирования приложения в интеграционном формате мы использовали [InMemory H2](https://www.h2database.com/html/main.html), начиная с этого раздела и далее
+мы будем использовать [Testcontainers](https://testcontainers.com/guides/getting-started-with-testcontainers-for-java/), т.е. теперь
+тестовая БД будет разворачиваться не в памяти, а в "тестовом" Docker контейнере. Для реализации задумки нам понадобится
+зависимость:
+
+        testImplementation "org.testcontainers:postgresql:${versions.testcontainers}"
+
+Далее нам нужно настроить "подъем" тестового контейнера - [TestContainerInit.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_5_2/src/test/java/me/oldboy/integration/TestContainerInit.java)
+Подробнее о процессе настройки процесса можно почитать тут - [Тестирование приложения при работе с БД через DOCKER](https://github.com/JcoderPaul/Spring_Framework_Lessons/tree/master/Spring_part_13)
+________________________________________________________________________________________________________________________
+У нас проведены [Unit](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_5_2/src/test/java/me/oldboy/unit) и [Integration](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_5_2/src/test/java/me/oldboy/integration) тесты (покрытие Class 100%(64/64), Method 88%(182/206), Line 91%(398/436)).
+________________________________________________________________________________________________________________________
 ### Reference Documentation:
 
 * [UserDetails](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/user-details.html)
