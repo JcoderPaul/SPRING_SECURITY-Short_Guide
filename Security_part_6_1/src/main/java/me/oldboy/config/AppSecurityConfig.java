@@ -35,16 +35,12 @@ public class AppSecurityConfig {
 	@Bean
 	@SneakyThrows
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) {
-		httpSecurity.csrf(AbstractHttpConfigurer::disable)
+		httpSecurity
+				.csrf(AbstractHttpConfigurer::disable)
 				.cors(AbstractHttpConfigurer::disable)
-				.authorizeHttpRequests(config ->
-						config.requestMatchers(antMatcher("/notices"),
-										       antMatcher("/contact"))
+				.authorizeHttpRequests(config -> config.requestMatchers(antMatcher("/notices"), antMatcher("/contact"))
 								.permitAll()
-								.requestMatchers(antMatcher("/myAccount"),
-										antMatcher("/myBalance"),
-										antMatcher("/myLoans"),
-										antMatcher("/myCards"))
+								.requestMatchers(antMatcher("/myAccount"), antMatcher("/myBalance"), antMatcher("/myLoans"), antMatcher("/myCards"))
 								.authenticated()
 								.requestMatchers(antMatcher("/admin/**"))
 								.hasAuthority("ADMIN")
@@ -55,7 +51,7 @@ public class AppSecurityConfig {
 				.sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
 				.rememberMe((remember) -> remember.tokenRepository(tokenRepository())
 												  .tokenValiditySeconds(86400)
-											      .key("mySecretKey"));
+												  .key("mySecretKey"));
 
 		return httpSecurity.build();
 	}
@@ -72,5 +68,4 @@ public class AppSecurityConfig {
 	public PasswordEncoder getPasswordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-
 }
