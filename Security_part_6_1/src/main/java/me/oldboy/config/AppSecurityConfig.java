@@ -38,7 +38,8 @@ public class AppSecurityConfig {
 		httpSecurity
 				.csrf(AbstractHttpConfigurer::disable)
 				.cors(AbstractHttpConfigurer::disable)
-				.authorizeHttpRequests(config -> config.requestMatchers(antMatcher("/notices"), antMatcher("/contact"))
+				.authorizeHttpRequests(config -> config.requestMatchers(antMatcher("/notices"),
+																		antMatcher("/contact"))
 								.permitAll()
 								.requestMatchers(antMatcher("/myAccount"), antMatcher("/myBalance"), antMatcher("/myLoans"), antMatcher("/myCards"))
 								.authenticated()
