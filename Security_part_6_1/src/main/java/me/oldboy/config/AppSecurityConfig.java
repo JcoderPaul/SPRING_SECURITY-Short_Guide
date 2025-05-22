@@ -35,7 +35,8 @@ public class AppSecurityConfig {
 	@Bean
 	@SneakyThrows
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) {
-		httpSecurity.csrf(AbstractHttpConfigurer::disable)
+		httpSecurity
+				.csrf(AbstractHttpConfigurer::disable)
 				.cors(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests(config -> config
 						.requestMatchers(antMatcher("/notices"), antMatcher("/contact"))
