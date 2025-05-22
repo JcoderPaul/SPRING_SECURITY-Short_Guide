@@ -35,24 +35,23 @@ public class AppSecurityConfig {
 	@Bean
 	@SneakyThrows
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) {
-		httpSecurity
-				.csrf(AbstractHttpConfigurer::disable)
-				.cors(AbstractHttpConfigurer::disable)
-				.authorizeHttpRequests(config -> config.requestMatchers(antMatcher("/notices"),
-								                                        antMatcher("/contact"))
-								.permitAll()
-								.requestMatchers(antMatcher("/myAccount"), antMatcher("/myBalance"), antMatcher("/myLoans"), antMatcher("/myCards"))
-								.authenticated()
-								.requestMatchers(antMatcher("/admin/**"))
-								.hasAuthority("ADMIN")
-								.anyRequest()
-								.authenticated())
-				.httpBasic(Customizer.withDefaults())
-				.formLogin(Customizer.withDefaults())
-				.sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
-				.rememberMe((remember) -> remember.tokenRepository(tokenRepository())
-												  .tokenValiditySeconds(86400)
-												  .key("mySecretKey"));
+		httpSecurity.csrf(AbstractHttpConfigurer::disable)
+					.cors(AbstractHttpConfigurer::disable)
+					.authorizeHttpRequests(config -> config
+							.requestMatchers(antMatcher("/notices"), antMatcher("/contact"))
+							.permitAll()
+							.requestMatchers(antMatcher("/myAccount"), antMatcher("/myBalance"), antMatcher("/myLoans"), antMatcher("/myCards"))
+							.authenticated()
+							.requestMatchers(antMatcher("/admin/**"))
+							.hasAuthority("ADMIN")
+							.anyRequest()
+							.authenticated())
+					.httpBasic(Customizer.withDefaults())
+					.formLogin(Customizer.withDefaults())
+					.sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
+					.rememberMe((remember) -> remember.tokenRepository(tokenRepository())
+													.tokenValiditySeconds(86400)
+													.key("mySecretKey"));
 
 		return httpSecurity.build();
 	}
