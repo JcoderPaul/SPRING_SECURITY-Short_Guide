@@ -41,22 +41,19 @@ public class AppSecurityConfig {
 	@Bean
 	@SneakyThrows
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) {
-		httpSecurity.csrf(AbstractHttpConfigurer::disable)
+		httpSecurity
+				.csrf(AbstractHttpConfigurer::disable)
 				.cors(AbstractHttpConfigurer::disable)
 				.authenticationProvider(authenticationProvider())
-				.authorizeHttpRequests(config ->
-						config.requestMatchers(antMatcher("/notices"),
-										       antMatcher("/contact"))
-								.permitAll()
-								.requestMatchers(antMatcher("/myAccount"),
-										antMatcher("/myBalance"),
-										antMatcher("/myLoans"),
-										antMatcher("/myCards"))
-								.authenticated()
-								.requestMatchers(antMatcher("/admin/**"))
-								.hasAuthority("ADMIN")
-								.anyRequest()
-								.authenticated())
+				.authorizeHttpRequests(config -> config
+						.requestMatchers(antMatcher("/notices"), antMatcher("/contact"))
+						.permitAll()
+						.requestMatchers(antMatcher("/myAccount"), antMatcher("/myBalance"), antMatcher("/myLoans"), antMatcher("/myCards"))
+						.authenticated()
+						.requestMatchers(antMatcher("/admin/**"))
+						.hasAuthority("ADMIN")
+						.anyRequest()
+						.authenticated())
 				.httpBasic(Customizer.withDefaults())
 				.formLogin(Customizer.withDefaults());
 
