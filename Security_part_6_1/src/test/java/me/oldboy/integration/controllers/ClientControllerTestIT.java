@@ -54,14 +54,6 @@ class ClientControllerTestIT extends TestContainerInit {
         SecurityContextHolder.clearContext();
     }
 
-    /*
-    Ниже приведены два теста на метод *.getAdminName() или "/helloAdmin" endpoint:
-    - в первом мы "мокаем" процесс аутентификации и тестируем, как метод отрабатывает запрос;
-    - во втором тестируем работу нашего AuthProvider-a при таком же запросе;
-
-    Важный момент, в том, что в первом случае мы должны подставить "почти полные" данные
-    MockUser-a в отличие от ранних тестов, для нормального прохождения теста.
-    */
     @Test
     @SneakyThrows
     @WithMockUser(username = EXIST_EMAIL, password = TEST_PASS, authorities = {TEST_STR_ROLE_ADMIN})
@@ -80,13 +72,13 @@ class ClientControllerTestIT extends TestContainerInit {
     @SneakyThrows
     void shouldReturnWelcomeStringWithAuthClient_TestOurCustomAuthProvider_HelloAdminTest() {
         mockMvc.perform(MockMvcRequestBuilders.get("/admin/helloAdmin")
-                        .with(httpBasic(EXIST_EMAIL, TEST_PASS))) // Наш CustomAuthProvider работает с базовой аутентификацией
+                        .with(httpBasic(EXIST_EMAIL, TEST_PASS)))
                 .andExpect(status().isOk())
                 .andExpect(content()
                         .string("This page for ADMIN only! \nHello: " + EXIST_EMAIL));
     }
 
-    /* Проверяем одновременно вывод данных по запросу и наш CustomAuthProvider */
+    /* Проверяем вывод данных по запросу */
     @Test
     @SneakyThrows
     void shouldReturnJsonCollectionOfClients_AndContainsSettingString_GetAllClientTest() {
@@ -117,12 +109,12 @@ class ClientControllerTestIT extends TestContainerInit {
                 .andExpect(content().string(""));
     }
 
-    /* Проверяем одновременно верную регистрацию и наш CustomAuthProvider */
+    /* Проверяем верную регистрацию */
     @Test
     @SneakyThrows
     void successfulRegistration_ShouldReturnRegisteredClientData_RegistrationClientTest() {
         mockMvc.perform(post("/admin/regClient")
-                        .with(httpBasic(EXIST_EMAIL, TEST_PASS)) // Наш CustomAuthProvider работает с базовой аутентификацией
+                        .with(httpBasic(EXIST_EMAIL, TEST_PASS))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(new ObjectMapper().writeValueAsString(validClientCreateDto)))
                 .andExpect(status().isOk())
@@ -131,7 +123,7 @@ class ClientControllerTestIT extends TestContainerInit {
                         .writeValueAsString(testClientReadDto)));
     }
 
-    /* Проверяем одновременно попытку регистрации существующего e-mail и наш CustomAuthProvider */
+    /* Проверяем попытку регистрации существующего e-mail */
     @Test
     @SneakyThrows
     void shouldReturn_4xx_DuplicateEmail_RegistrationClientTest() {
@@ -143,7 +135,7 @@ class ClientControllerTestIT extends TestContainerInit {
                 .andExpect(content().string("{\"exceptionMsg\":\"Email: " + EXIST_EMAIL + " is exist.\"}"));
     }
 
-    /* Проверяем одновременно и валидацию и наш CustomAuthProvider */
+    /* Проверяем валидацию */
     @Test
     @SneakyThrows
     void shouldReturn_4xx_NotValidDto_RegistrationClientTest() {
