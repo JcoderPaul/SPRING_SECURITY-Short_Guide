@@ -12,7 +12,6 @@ import java.io.IOException;
 @Slf4j
 @RestController
 public class NoticesController {
-	
 	@GetMapping(value = "/notices", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getNotices() throws IOException {
 		log.info("REST request health check");
