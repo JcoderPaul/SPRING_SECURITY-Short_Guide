@@ -17,7 +17,7 @@ ________________________________________________________________________________
 - [Persistent Token](https://docs.spring.io/spring-security/reference/servlet/authentication/rememberme.html#remember-me-persistent-token);
 
 Обычно Hash-Based Token идет по умолчанию и с ним проще работать, достаточно настроить Spring Security config файл и 
-его цепочку фильтров - AppSecurityConfig.java - достаточно указать (в новых версиях Spring):
+его цепочку фильтров - [AppSecurityConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_6_1/src/main/java/me/oldboy/config/AppSecurityConfig.java) - достаточно указать (в новых версиях Spring):
 
     .rememberMe(Customizer.withDefaults())
 
@@ -139,7 +139,8 @@ remember-me:
       .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
       .rememberMe((remember) -> remember.tokenRepository(tokenRepository()).tokenValiditySeconds(86400));
 
-Чтобы задать наш секретный ключ, можно применить *.key("mySecretKey"):
+Чтобы задать наш секретный ключ, можно применить *.key("mySecretKey"), в реальности, вместо "mySecretKey" в метод,
+естественно, передается некий секретный ключ:
 
       .httpBasic(Customizer.withDefaults())
       .formLogin(Customizer.withDefaults())
@@ -156,10 +157,23 @@ remember-me:
 При отключенных сессиях так и надо делать (а флажок на форме убрать), потому что тогда Remember-Me токен остается 
 единственным способом идентифицировать пользователя при последующих запросах, а значит, он должен быть обязательным.
 ________________________________________________________________________________________________________________________
+Основные обязательные настройки приведены в [AppSecurityConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_6_1/src/main/java/me/oldboy/config/AppSecurityConfig.java). 
 
-Основные обязательные настройки приведены в AppSecurityConfig.java. Скрипт таблицы для хранения хэш-токена приведен тут -
-persistent_logins_token.sql. Его так же легко найти в официальной документации [см. Remember-Me Authentication](https://docs.spring.io/spring-security/reference/servlet/authentication/rememberme.html#remember-me-hash-token).
+Скрипт таблицы для хранения хэш-токена приведен тут - [persistent_logins_token.sql](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_6_1/DOC/persistent_logins_token.sql), его так же легко найти в официальной документации [см. Remember-Me Authentication](https://docs.spring.io/spring-security/reference/servlet/authentication/rememberme.html#remember-me-hash-token).
+________________________________________________________________________________________________________________________
+В данном приложении мы перешли на миграционный фреймворк [Liquibase](https://docs.liquibase.com/) и теперь [таблицы и стартовые данные](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_6_1/DOC/scripts.sql)
+будут разворачиваться в нашей БД при первичном его запуске. Что самое интересное, при запуске тестов мы можем развернуть 
+тестовую БД в контейнере и средствами Liquibase прогрузить туда наши таблицы и данные из ["рабочих" скриптов](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_6_1/src/main/resources/db/changelog).
+Что удобно, т.к. в тестовой БД у нас будет полная копия рабочей БД.
 
+Но на этот раз мы поступим по-старому, выгрузим данные в Testcontainer тестовые данные из тестовых ресурсов - [data.sql](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_6_1/src/test/resources/sql_scripts/data.sql),
+для проверки интеграционного взаимодействия слоев приложения.
+
+В текущих тестах мы два класса тестировали в различных вариациях с условным замером времени таковых:
+- [ac_test_config_mod](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_6_1/src/test/java/me/oldboy/unit/controllers/ac_test_config_mod) - два варианта (с @AutoConfigureMockMvc и @WebMvcTest) на класс [AccountController.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_6_1/src/main/java/me/oldboy/controllers/AccountController.java);
+- [cc_test_config_mod](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_6_1/src/test/java/me/oldboy/unit/controllers/cc_test_config_mod) - 3-и варианта ("полная изоляция", авто-конфигурация и @WebMvcTest) на класс [ClientController.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_6_1/src/main/java/me/oldboy/controllers/ClientController.java);
+
+Полный комплект тестов (покрытие Class 100%(58/58), Method 87%(170/194), Lines 90%(370/408)) - [test](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_6_1/src/test)
 ________________________________________________________________________________________________________________________
 ### Reference Documentation:
 
