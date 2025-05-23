@@ -35,6 +35,6 @@ class ContactControllerTest {
                                      .andExpect(status().isOk())
                                      .andReturn();
 
-        assertThat(mvcResult.getResponse().getContentAsString().contains("Get contact from DB"));
+        assertThat(mvcResult.getResponse().getContentAsString()).contains("Get contact from DB");
     }
 }
