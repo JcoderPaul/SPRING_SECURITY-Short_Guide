@@ -32,7 +32,7 @@ public class AppSecurityConfig {
 	@Autowired
 	private DataSource dataSource;
 
-	@Bean
+	@Bean("securityFilterChain")
 	@SneakyThrows
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) {
 		httpSecurity
