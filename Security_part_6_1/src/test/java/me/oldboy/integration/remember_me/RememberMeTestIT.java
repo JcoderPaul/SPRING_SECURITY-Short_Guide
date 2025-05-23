@@ -21,6 +21,7 @@ class RememberMeTestIT extends TestContainerInit {
     @Autowired
     private MockMvc mockMvc;
 
+    /* Имитируем установку галочки в форму */
     @Test
     @SneakyThrows
     void shouldReturn_3xx_And_RememberMeCookie_Test() {
@@ -36,5 +37,21 @@ class RememberMeTestIT extends TestContainerInit {
         assertThat(rememberMeCookie).isNotNull();
         assertThat(rememberMeCookie.getMaxAge() > 0).isTrue();
         assertThat(rememberMeCookie.getValue().isEmpty()).isFalse();
+    }
+
+    /* Имитируем отправку формы без галочки */
+    @Test
+    @SneakyThrows
+    void shouldReturn_3xx_And_ZeroRememberMeCookie_Test() {
+        MvcResult mvcResult = mockMvc.perform(post("/login")
+                        .param("username", EXIST_EMAIL)
+                        .param("password", TEST_PASS)
+                        .param("remember-me", "false"))
+                .andExpect(status().is3xxRedirection())
+                .andReturn();
+
+        Cookie rememberMeCookie = mvcResult.getResponse().getCookie("remember-me");
+
+        assertThat(rememberMeCookie).isNull();
     }
 }
