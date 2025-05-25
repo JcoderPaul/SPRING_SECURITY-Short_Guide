@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Continue</title>
+
+  <style type="text/css">
+    .txt_style {
+      color: #FF0000;
+      font-weight: bold;
+      max-width: 440px;
+      position: inherit;
+      overflow: auto;
+      min-height: 100px;
+    }
+  </style>
+
+</head>
+<body>
+
+<table width="500" border="0" align="center">
+  <tr>
+    <td>
+      <div align="center"> <strong> Ваш JWT токен:</strong> </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+        <div align="center" class="txt_style">
+          <strong>
+            <span th:text="${jwt}">JWT Токен</span>
+          </strong>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div align="center">
+        <form th:action="@{/webui/main}" id="form_ok" name="form_ok" method="post" >
+            <input type="hidden" name="jwt" th:value="${jwt}" />
+          <label>
+            <input type="submit" name="ok" id="ok" value="Продолжить работу" />
+          </label>
+        </form>
+      </div>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
