@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.thymeleaf.org ">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link href="../css/header_footer.css" rel="stylesheet" type="text/css">
+  <link href="../css/main_menu.css" rel="stylesheet" type="text/css">
+  <title>Main</title>
+  
+  <style type="text/css">
+	.main-text-style {
+      color: #FF0000;
+      font-weight: bold;
+      font-size: 36px;
+	}
+  </style>
+  
+</head>
+
+<body>
+
+<table border="0" align="center">
+  <tr>
+    <td colspan="7" bgcolor="#999999"><div th:insert="~{footer_header/header :: header}"></div></td>
+  </tr>
+  <tr>
+    <td colspan="7" bgcolor="#CCCCCC"><div th:insert="~{menu/main-menu :: main-menu}"></div></td>
+  </tr>
+  <tr>
+    <td height="200" colspan="7"><div align="center" class="main-text-style">Main page</div></td>
+  </tr>
+  <tr>
+    <td colspan="7" bgcolor="#999999"><div th:insert="~{footer_header/footer :: footer}"></div></td>
+  </tr>
+</table>
+
+</body>
+
+</html>
