@@ -8,4 +8,4 @@ CREATE TABLE IF NOT EXISTS persistent_logins (
   last_used TIMESTAMP   NOT NULL,
   PRIMARY KEY (series)
 );
---rollback DROP TABLE client_details;
+--rollback DROP TABLE persistent_logins;
