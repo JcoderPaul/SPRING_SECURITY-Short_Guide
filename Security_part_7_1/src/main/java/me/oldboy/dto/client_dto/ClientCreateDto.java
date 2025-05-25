@@ -13,6 +13,7 @@ import me.oldboy.dto.details_dto.DetailsCreateDto;
 @Setter
 @Builder
 public class ClientCreateDto{
+        @NotBlank(message = "Password cannot be blank")
         @Email(message = "Standard e-mail structure - email_name@email_domain.top_lavel_domain (for example: paul@tradsystem.ru)")
         String email;
         @NotBlank(message = "Password cannot be blank")
