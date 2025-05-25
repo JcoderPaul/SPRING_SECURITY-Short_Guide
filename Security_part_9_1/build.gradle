@@ -1,0 +1,67 @@
+plugins {
+    id 'org.springframework.boot' version '3.3.8'
+    id "io.spring.dependency-management" version '1.1.7'
+    id "io.freefair.lombok" version "8.3"
+    id 'java'
+}
+
+group 'me.oldboy'
+version '1.0-SNAPSHOT'
+
+apply from: 'version.gradle'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    /* Подключим библиотеку Thymeleaf */
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation "org.thymeleaf.extras:thymeleaf-extras-springsecurity6:${versions.thymeleaf_extras}"
+
+    implementation "org.postgresql:postgresql:${versions.postgres}"
+
+    /* Подключим Hibernate */
+    implementation "org.hibernate:hibernate-core:${versions.hibernate}"
+    implementation "org.hibernate:hibernate-validator:${versions.validator}"
+
+    /* Подключим функционал позволяющий нам работать с JWT */
+    runtimeOnly "io.jsonwebtoken:jjwt-impl:${versions.jsonwebtoken}"
+    implementation "io.jsonwebtoken:jjwt-api:${versions.jsonwebtoken}"
+    runtimeOnly "io.jsonwebtoken:jjwt-jackson:${versions.jsonwebtoken}"
+
+    /* Подключим библиотеку Mapstruct */
+    implementation "org.projectlombok:lombok-mapstruct-binding:${versions.lombok_map_struct}"
+    implementation "org.mapstruct:mapstruct:${versions.mapstruct}"
+    implementation "org.mapstruct:mapstruct-processor:${versions.mapstruct}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${versions.mapstruct}",
+            "org.projectlombok:lombok-mapstruct-binding:${versions.lombok_map_struct}"
+
+    /* Блок пакетов обслуживающий тесты */
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    /* Подключим все для тестов Testcontainers */
+    testImplementation "org.testcontainers:postgresql:${versions.testcontainers}"
+    testImplementation "org.testcontainers:junit-jupiter:${versions.testcontainers}"
+
+    /* Подключим Mockito и AssertJ */
+    testImplementation "org.mockito:mockito-core:${versions.mockito}"
+    testRuntimeOnly "org.mockito:mockito-core:${versions.mockito}"
+    testImplementation "org.mockito:mockito-junit-jupiter:${versions.mockito}"
+    testImplementation "org.assertj:assertj-core:${versions.assertj}"
+    testRuntimeOnly "org.assertj:assertj-core:${versions.assertj}"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+wrapper {
+    gradleVersion '8.2.1'
+}
