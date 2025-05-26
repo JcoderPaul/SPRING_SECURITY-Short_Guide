@@ -59,7 +59,8 @@ public class AppSecurityConfig {
 				.addFilterBefore(new JwtTokenValidatorAndBeforeFilter(authenticationEventListener), UsernamePasswordAuthenticationFilter.class) // Размещаем наш валидатор токена перед фильтром аутентификации
 				.addFilterAfter(new JwtTokenGeneratorAndAfterFilter(authenticationEventListener), UsernamePasswordAuthenticationFilter.class) // Размещаем наш генератор токена после фильтром аутентификации
 				.addFilterAfter(new SetRequestHeaderFilter(jwtSaver), LogoutFilter.class) // Размещаем установщик request header-a после Logout фильтра, т.е. строго перед нашим же фильтром валидатором токена
-				.authorizeHttpRequests(urlConfig ->	urlConfig.requestMatchers("/webui/login",
+				.authorizeHttpRequests(urlConfig ->
+						urlConfig.requestMatchers("/webui/login",
 								"/webui/registration",
 								"/webui/bye",
 								"/webui/jwt_token",
