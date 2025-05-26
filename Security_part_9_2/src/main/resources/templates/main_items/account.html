@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="../../css/header_footer.css" rel="stylesheet" type="text/css">
+    <link href="../../css/main_menu.css" rel="stylesheet" type="text/css">
+    <link href="../../css/center_of_page.css" rel="stylesheet" type="text/css">
+    <title>Account</title>
+</head>
+
+<body>
+<table border="0" align="center">
+    <tr>
+        <td colspan="7" bgcolor="#999999"><div th:insert="~{footer_header/header :: header}"></div></td>
+    </tr>
+    <tr>
+        <td colspan="7" bgcolor="#CCCCCC"><div th:insert="~{menu/main-menu :: main-menu}"></div></td>
+    </tr>
+    <tr>
+        <div align="center">
+            <td height="200" colspan="7" align="center">
+                 <table border="0" class="style-data">
+                    <tr>
+                        <td> <span th:text="${account_number}">Account number</span> </td>
+                    </tr>
+                 </table>
+                    <hr>
+                 <table border="0" class="style-data">
+                    <tr>
+                        <td colspan="2">Ваши данные:</td>
+                    </tr>
+                    <tr>
+                        <td>Email: </td>
+                        <td><span th:text="${client.email}">Client email</span></td>
+                    </tr>
+                    <tr>
+                        <td>Роль: </td>
+                        <td><span th:text="${client.role}">Client role</span></td>
+                    </tr>
+                    <tr>
+                        <td>Имя: </td>
+                        <td><span th:text="${client.clientName}">Client name</span></td>
+                    </tr>
+                    <tr>
+                        <td>Фамилия: </td>
+                        <td><span th:text="${client.clientSurName}">Client surname</span></td>
+                    </tr>
+                    <tr>
+                        <td>Возраст: </td>
+                        <td><span th:text="${client.age}">Client age</span></td>
+                    </tr>
+                </table>
+                <hr>
+                <table border="0" class="style-data">
+                    <tr>
+                        <td colspan="2">Ваш адрес:</td>
+                    </tr>
+                    <tr>
+                        <td>Город: </td>
+                        <td><span th:text="${contact.city}">City</span></td>
+                    </tr>
+                    <tr>
+                        <td>Индекс: </td>
+                        <td><span th:text="${contact.postalCode}">Postal Code</span></td>
+                    </tr>
+                    <tr>
+                        <td>Адрес: </td>
+                        <td><span th:text="${contact.address}">Address</span></td>
+                    </tr>
+                    <tr>
+                        <td>Дом: </td>
+                        <td><span th:text="${contact.building}">Building</span></td>
+                    </tr>
+                    <tr>
+                        <td>Квартира: </td>
+                        <td><span th:text="${contact.apartment}">Apartment</span></td>
+                    </tr>
+                </table>
+                <hr>
+                <table border="0" class="style-data">
+                    <tr>
+                        <td colspan="2">Ваши телефоны:</td>
+                    </tr>
+                    <tr>
+                        <td>Домашний телефон: </td>
+                        <td><span th:text="${contact.homePhone}">Home phone</span></td>
+                    </tr>
+                    <tr>
+                        <td>Мобильный телефон: </td>
+                        <td><span th:text="${contact.mobilePhone}">Mobile phone</span></td>
+                    </tr>
+                </table>
+            </td>
+        </div>
+    </tr>
+    <tr>
+        <td colspan="7" bgcolor="#999999"><div th:insert="~{footer_header/footer :: footer}"></div></td>
+    </tr>
+</table>
+
+</body>
+
+</html>
