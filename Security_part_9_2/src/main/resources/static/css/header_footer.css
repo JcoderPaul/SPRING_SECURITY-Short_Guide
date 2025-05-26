@@ -1,0 +1,30 @@
+.link {
+	text-decoration: none;
+	color: #000099;
+}
+
+.style_user_name {
+    color: #33FF00
+}
+
+.style-button {
+	font-size: x-large;
+	font-weight: bold;
+	padding: 10px;
+	text-decoration: none;
+	position: relative;
+	background-color: #CCCCCC;
+	margin: 10px;
+	max-width: 200px;
+}
+
+.style-data {
+	font-size: x-large;
+	font-weight: bold;
+	padding: 10px;
+	text-decoration: none;
+	position: relative;
+	background-color: #CCCCCC;
+	margin: 10px;
+	max-width: 650px;
+}
