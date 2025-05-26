@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -28,36 +29,35 @@ import static org.springframework.security.web.util.matcher.AntPathRequestMatche
 @EnableWebSecurity
 @EnableMethodSecurity
 @ComponentScan("me.oldboy")
-public class AppSecurityConfig {
+@Order(1)
+public class AppWebSecurityConfig {
 
 	@Autowired
 	private DataSource dataSource;
 
 	@Bean
 	@SneakyThrows
-	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) {
-		httpSecurity.authorizeHttpRequests(urlConfig ->	urlConfig.
-						requestMatchers(antMatcher("/notices"),
-								antMatcher("/contact"),
+	public SecurityFilterChain webFilterChain(HttpSecurity httpSecurity) {
+		httpSecurity
+				.securityMatcher("/webui/**", "/")
+				.authorizeHttpRequests(urlConfig ->	urlConfig.
+						requestMatchers(antMatcher("/api/notices"),
+								antMatcher("/api/contact"),
 								antMatcher("/css/**"),
 								antMatcher("/webui/login"),
 								antMatcher("/webui/registration"))
 						.permitAll()
-						.requestMatchers(antMatcher("/myAccount"),
-								antMatcher("/myBalance"),
-								antMatcher("/myLoans"),
-								antMatcher("/myCards"),
-								antMatcher("/webui/hello"))
+						.requestMatchers("/webui/hello",
+								"/webui/myBalance")
 						.authenticated()
-						.requestMatchers(antMatcher("/admin/**"))
-						.hasAuthority("ADMIN")
 						.anyRequest().authenticated())
-						.sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
-						.rememberMe((remember) -> remember.rememberMeParameter("remember-me")
-								.tokenRepository(tokenRepository())
-								.alwaysRemember(true))
-						.formLogin(login -> login.loginPage("/webui/login")
-								.defaultSuccessUrl("/webui/hello"));
+				.sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
+				.rememberMe((remember) -> remember.rememberMeParameter("remember-me")
+						.tokenRepository(tokenRepository())
+						.alwaysRemember(true))
+				.formLogin(login -> login.loginPage("/webui/login")
+						.defaultSuccessUrl("/webui/hello")
+						.permitAll());
 
 		return httpSecurity.build();
 	}
