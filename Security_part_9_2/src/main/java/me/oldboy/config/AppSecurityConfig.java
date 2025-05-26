@@ -54,36 +54,39 @@ public class AppSecurityConfig {
 	@SneakyThrows
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) {
 		httpSecurity
-					.csrf(AbstractHttpConfigurer::disable) // Отключаем CSRF
-					.sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS)) // Определяем бессессионный режим
-				    .addFilterBefore(new JwtTokenValidatorAndBeforeFilter(authenticationEventListener), UsernamePasswordAuthenticationFilter.class) // Размещаем наш валидатор токена перед фильтром аутентификации
-				    .addFilterAfter(new JwtTokenGeneratorAndAfterFilter(authenticationEventListener), UsernamePasswordAuthenticationFilter.class) // Размещаем наш генератор токена после фильтром аутентификации
-				    .addFilterAfter(new SetRequestHeaderFilter(jwtSaver), LogoutFilter.class) // Размещаем установщик request header-a после Logout фильтра, т.е. строго перед нашим же фильтром валидатором токена
-					.authorizeHttpRequests(urlConfig ->
-						urlConfig.requestMatchers("/webui/login",
-								                           "/webui/registration",
-								                           "/webui/bye",
-								                           "/webui/jwt_token",
-										                   "/notices",
-														   "/css/*.css").permitAll()
-								  .requestMatchers(antMatcher("/myAccount"),
-												   antMatcher("/myBalance"),
-												   antMatcher("/myLoans"),
-										  		   antMatcher("/webui/account"),
-										  		   antMatcher("/webui/balance"),
-												   antMatcher("/webui/loans"),
-										           antMatcher("/webui/contacts"),
-										           antMatcher("/webui/main")).authenticated()
-								  .requestMatchers(antMatcher("/admin/**")).hasRole("ADMIN")
-								  .requestMatchers( antMatcher("/webui/cards"), antMatcher("/myCards")).hasAuthority("READ")
-								  .anyRequest().authenticated())
+				.csrf(AbstractHttpConfigurer::disable) // Отключаем CSRF
+				.sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS)) // Определяем бессессионный режим
+				.addFilterBefore(new JwtTokenValidatorAndBeforeFilter(authenticationEventListener), UsernamePasswordAuthenticationFilter.class) // Размещаем наш валидатор токена перед фильтром аутентификации
+				.addFilterAfter(new JwtTokenGeneratorAndAfterFilter(authenticationEventListener), UsernamePasswordAuthenticationFilter.class) // Размещаем наш генератор токена после фильтром аутентификации
+				.addFilterAfter(new SetRequestHeaderFilter(jwtSaver), LogoutFilter.class) // Размещаем установщик request header-a после Logout фильтра, т.е. строго перед нашим же фильтром валидатором токена
+				.authorizeHttpRequests(urlConfig ->	urlConfig.requestMatchers("/webui/login",
+								"/webui/registration",
+								"/webui/bye",
+								"/webui/jwt_token",
+								"/notices",
+								"/css/*.css")
+						.permitAll()
+						.requestMatchers(antMatcher("/myAccount"),
+								antMatcher("/myBalance"),
+								antMatcher("/myLoans"),
+								antMatcher("/webui/account"),
+								antMatcher("/webui/balance"),
+								antMatcher("/webui/loans"),
+								antMatcher("/webui/contacts"),
+								antMatcher("/webui/main")).authenticated()
+						.requestMatchers(antMatcher("/admin/**"))
+						.hasRole("ADMIN")
+						.requestMatchers(antMatcher("/webui/cards"),
+								antMatcher("/myCards"))
+						.hasAuthority("READ")
+						.anyRequest().authenticated())
 				    .formLogin(login -> login.loginPage("/webui/login")
-					    	                 .defaultSuccessUrl("/webui/jwt_token"))
+							.defaultSuccessUrl("/webui/jwt_token"))
       				.logout(logout -> logout.logoutUrl("/webui/logout")
-											.logoutSuccessUrl("/webui/bye")
-											.addLogoutHandler(customLogoutHandler)
-											.deleteCookies("JSESSIONID")
-											.invalidateHttpSession(true));
+							.logoutSuccessUrl("/webui/bye")
+							.addLogoutHandler(customLogoutHandler)
+							.deleteCookies("JSESSIONID")
+							.invalidateHttpSession(true));
 
 		return httpSecurity.build();
 	}
