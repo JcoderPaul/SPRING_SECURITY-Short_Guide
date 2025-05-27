@@ -48,7 +48,8 @@ public class AppWebSecurityConfig {
 								antMatcher("/webui/registration"))
 						.permitAll()
 						.requestMatchers("/webui/hello",
-								"/webui/myBalance")
+								"/webui/myBalance",
+								"/webui/myAccount")
 						.authenticated()
 						.anyRequest().authenticated())
 				.sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
