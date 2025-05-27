@@ -28,21 +28,16 @@ class CardsControllerTest {
     @SneakyThrows
     @WithMockUser
     void shouldReturn_2xx_WithAuthUser_GetCardDetailsTest() {
-        mockMvc.perform(get("/myCards"))
+        mockMvc.perform(get("/api/myCards"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(content().string("Here are the card details from the DB"));
     }
 
-    /*
-        Раньше при отсутствии аутентификации мы получали ответ - 4хх, теперь, при текущих
-        настройках цепи безопасности, будет перенаправление запроса или ответ сервера 3хх.
-    */
     @Test
     @SneakyThrows
     void shouldReturn_3xx_WithoutAuthUser_GetCardDetailsTest() {
-        mockMvc.perform(get("/myCards"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(content().string(""))
-                .andExpect(redirectedUrlPattern("**/login"));
+        mockMvc.perform(get("/api/myCards"))
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().string(""));
     }
 }
