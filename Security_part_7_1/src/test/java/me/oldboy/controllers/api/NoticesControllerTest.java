@@ -25,7 +25,7 @@ class NoticesControllerTest {
 
     @Test
     void shouldReturn_isOk_WithAnyUser_GetNoticesTest() throws Exception {
-        mockMvc.perform(get("/notices"))
+        mockMvc.perform(get("/api/notices"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("[\"Here are the notices details from the DB\"]"));
     }
