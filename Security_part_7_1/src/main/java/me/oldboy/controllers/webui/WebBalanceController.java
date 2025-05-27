@@ -11,7 +11,7 @@ public class WebBalanceController {
 
     @GetMapping("/myBalance")
     public ResponseEntity<String> showMyBalanceToWebPage(){
-        return ResponseEntity.ok().body("My balance from base");
+        return ResponseEntity.ok().body("My balance from DB");
     }
 }
 
