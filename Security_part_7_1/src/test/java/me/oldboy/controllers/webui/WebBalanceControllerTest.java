@@ -15,9 +15,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /*
-    В этот раз в отличие от предыдущих, мы две цепочки безопасности: отдельно для
-    REST и WEB, и тут, при обращении к защищенному endpoint-у, без аутентификации
-    нас перебросит на страницу логина.
+    В этот раз, в отличие от предыдущих, у нас две цепочки безопасности: отдельно для REST и
+    WEB, и тут, при обращении к защищенному endpoint-у, без аутентификации нас перебросит на
+    страницу логина.
 */
 @WebMvcTest(WebBalanceController.class)
 class WebBalanceControllerTest {
