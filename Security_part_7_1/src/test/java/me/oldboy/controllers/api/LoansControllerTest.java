@@ -28,20 +28,16 @@ class LoansControllerTest {
     @SneakyThrows
     @WithMockUser
     void shouldReturnOkWithAuthUserGetLoanDetailsTest() {
-        mockMvc.perform(get("/myLoans"))
+        mockMvc.perform(get("/api/myLoans"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Here are the loan details from the DB"));
     }
 
-    /*
-        Раньше при отсутствии аутентификации мы получали ответ - 4хх, теперь, при текущих
-        настройках цепи безопасности, будет перенаправление запроса или ответ сервера 3хх.
-    */
     @Test
     @SneakyThrows
     void shouldReturn_Unauthorized_WithoutAuthUser_GetLoanDetailsTest() {
-        mockMvc.perform(get("/myLoans"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrlPattern("**/login"));
+        mockMvc.perform(get("/api/myLoans"))
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().string(""));
     }
 }
