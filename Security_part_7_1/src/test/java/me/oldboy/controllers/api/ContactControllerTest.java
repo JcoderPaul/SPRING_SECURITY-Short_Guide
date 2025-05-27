@@ -27,7 +27,7 @@ class ContactControllerTest {
     @Test
     @SneakyThrows
     void shouldReturnOkForEveryOneClientGetContactDetailsTest() {
-       mockMvc.perform(get("/contact"))
+       mockMvc.perform(get("/api/contact"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Get details from DB"));
     }
