@@ -28,22 +28,17 @@ class BalanceControllerTest {
     @SneakyThrows
     @WithMockUser
     void shouldReturn_2xx_WithAuthClient_getBalanceDetails() {
-        mockMvc.perform(get("/myBalance"))
+        mockMvc.perform(get("/api/myBalance"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(content().string("Here are the balance details from the DB"));
     }
 
-    /*
-        Раньше при отсутствии аутентификации мы получали ответ - 4хх, теперь, при текущих
-        настройках цепи безопасности, будет перенаправление запроса или ответ сервера 3хх.
-    */
+
     @Test
     @SneakyThrows
     void shouldReturn_3xx_WithoutAuthClient_getBalanceDetails() {
-        mockMvc.perform(get("/myBalance"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(content().string(""))
-                .andExpect(redirectedUrlPattern("**/login"))    // Мы можем указать некий ожидаемый URL паттерн, например, его окончание
-                .andExpect(redirectedUrl("http://localhost/webui/login"));  // Либо мы можем указать точный адрес перенаправления
+        mockMvc.perform(get("/api/myBalance"))
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().string(""));
     }
 }
