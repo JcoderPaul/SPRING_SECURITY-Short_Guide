@@ -1,6 +1,7 @@
-package me.oldboy.controllers.webui;
+package me.oldboy.unit.controllers.webui;
 
 import lombok.SneakyThrows;
+import me.oldboy.controllers.webui.WebAccountController;
 import me.oldboy.repository.ClientRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
