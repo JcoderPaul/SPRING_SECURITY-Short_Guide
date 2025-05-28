@@ -221,7 +221,12 @@ ________________________________________________________________________________
 Так же важным аспектом является настройка Spring Security так, чтобы он давал [доступ к файлам стилей CSS](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_1/src/main/java/me/oldboy/config/AppSecurityConfig.java#L42) (а то красоты не будет):
 
     *.requestMatchers(antMatcher("/css/**")).permitAll()
-
+________________________________________________________________________________________________________________________
+В текущем приложении мы разделили, обычно единую цепочку фильтров безопасности на две, одна для контроля над REST -
+[AppRestSecurityConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_1/src/main/java/me/oldboy/config/AppRestSecurityConfig.java) и одна для
+управления визуальной частью приложения - [AppWebSecurityConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_1/src/main/java/me/oldboy/config/AppWebSecurityConfig.java).
+Как оказалось это удобно и для общей структуры приложения, а самое главное, позволило максимально качественно протестировать
+весь код (покрытие Class 100%(68/68), Method 90%(218/242), Lines 92%(490/550)) - [тесты](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_7_1/src/test/java/me/oldboy).
 ________________________________________________________________________________________________________________________
 ### Reference Documentation:
 
