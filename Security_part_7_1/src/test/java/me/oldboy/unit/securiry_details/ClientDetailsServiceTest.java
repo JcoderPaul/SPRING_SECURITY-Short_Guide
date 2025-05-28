@@ -1,5 +1,6 @@
-package me.oldboy.config.securiry_details;
+package me.oldboy.unit.securiry_details;
 
+import me.oldboy.config.securiry_details.ClientDetailsService;
 import me.oldboy.exception.EmailNotFoundException;
 import me.oldboy.models.Client;
 import me.oldboy.models.Details;
