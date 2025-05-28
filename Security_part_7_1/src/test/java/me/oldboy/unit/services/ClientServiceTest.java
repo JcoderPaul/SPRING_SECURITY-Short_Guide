@@ -1,4 +1,4 @@
-package me.oldboy.services;
+package me.oldboy.unit.services;
 
 import me.oldboy.dto.client_dto.ClientCreateDto;
 import me.oldboy.dto.client_dto.ClientReadDto;
@@ -8,6 +8,7 @@ import me.oldboy.models.Client;
 import me.oldboy.models.Details;
 import me.oldboy.models.Role;
 import me.oldboy.repository.ClientRepository;
+import me.oldboy.services.ClientService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
