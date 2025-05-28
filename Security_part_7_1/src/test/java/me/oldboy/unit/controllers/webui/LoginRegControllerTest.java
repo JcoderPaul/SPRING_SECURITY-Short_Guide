@@ -1,10 +1,11 @@
-package me.oldboy.controllers.webui;
+package me.oldboy.unit.controllers.webui;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import me.oldboy.config.AppWebSecurityConfig;
 import me.oldboy.config.securiry_details.ClientDetailsService;
 import me.oldboy.config.securiry_details.SecurityClientDetails;
+import me.oldboy.controllers.webui.LoginRegController;
 import me.oldboy.dto.client_dto.ClientCreateDto;
 import me.oldboy.dto.details_dto.DetailsCreateDto;
 import me.oldboy.models.Client;
