@@ -15,7 +15,6 @@ import org.springframework.security.web.SecurityFilterChain;
     ,"me.oldboy.services"
     ,"me.oldboy.repository"
     ,"me.oldboy.config.security_details"
-    ,"me.oldboy.repository"
     ,"me.oldboy.config.auth_config"
 })
 public class TestSecurityConfig {
