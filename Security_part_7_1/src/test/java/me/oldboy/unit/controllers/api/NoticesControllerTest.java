@@ -1,5 +1,6 @@
-package me.oldboy.controllers.api;
+package me.oldboy.unit.controllers.api;
 
+import me.oldboy.controllers.api.NoticesController;
 import me.oldboy.repository.ClientRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
