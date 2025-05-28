@@ -1,6 +1,7 @@
-package me.oldboy.controllers.api;
+package me.oldboy.unit.controllers.api;
 
 import lombok.SneakyThrows;
+import me.oldboy.controllers.api.LoansController;
 import me.oldboy.repository.ClientRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
