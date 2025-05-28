@@ -31,10 +31,7 @@ public class AppRestSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(urlConfig ->	urlConfig.
                         requestMatchers(antMatcher("/api/notices"),
-                                antMatcher("/api/contact"),
-                                antMatcher("/css/**"),
-                                antMatcher("/webui/login"),
-                                antMatcher("/webui/registration"))
+                                antMatcher("/api/contact"))
                         .permitAll()
                         .requestMatchers(antMatcher("/api/myAccount"),
                                 antMatcher("/api/myBalance"),
