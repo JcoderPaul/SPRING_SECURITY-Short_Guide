@@ -1,4 +1,4 @@
-package me.oldboy.config.securiry_details;
+package me.oldboy.config.security_details;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
