@@ -6,6 +6,8 @@ logging:
     root: INFO
     # Так же мы можем настроить логер для конкретного класса
     org.springframework.jdbc.core: TRACE
+#    liquibase.sql: DEBUG
+#    liquibase.changelog: DEBUG
   # Записываем лог в файл
   file.name: Logs/oldboy.log
 
@@ -24,3 +26,7 @@ jpa:
     format_sql: true
     hbm2ddl.auto: validate
   open-in-view: false
+liquibase:
+  enabled: true
+  change_log: classpath:db/changelog/db.changelog-master.yml
+  default_schema: public
