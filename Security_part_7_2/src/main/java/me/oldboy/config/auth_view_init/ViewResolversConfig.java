@@ -1,4 +1,4 @@
-package me.oldboy.config;
+package me.oldboy.config.auth_view_init;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
