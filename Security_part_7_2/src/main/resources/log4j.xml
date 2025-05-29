@@ -28,6 +28,29 @@
         </filter>
     </appender>
 
+    <!-- Liquibase loggers -->
+    <logger name="liquibase">
+        <level value="DEBUG"/>
+    </logger>
+    <logger name="liquibase.executor">
+        <level value="DEBUG"/>
+    </logger>
+    <logger name="liquibase.database">
+        <level value="INFO"/>
+    </logger>
+    <logger name="liquibase.changelog">
+        <level value="DEBUG"/>
+    </logger>
+    <logger name="liquibase.locks">
+        <level value="DEBUG"/>
+    </logger>
+    <logger name="liquibase.history">
+        <level value="DEBUG"/>
+    </logger>
+    <logger name="liquibase.sql">
+        <level value="DEBUG"/>
+    </logger>
+
     <root>
         <level value="info"/>
         <appender-ref ref="log_to_file"/>
