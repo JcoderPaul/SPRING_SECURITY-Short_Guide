@@ -7,12 +7,12 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 import me.oldboy.dto.details_dto.DetailsCreateDto;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @Builder
 public class ClientCreateDto{
+        @NotBlank(message = "Email cannot be blank")
         @Email(message = "Standard e-mail structure - email_name@email_domain.top_lavel_domain (for example: paul@tradsystem.ru)")
         String email;
         @NotBlank(message = "Password cannot be blank")
