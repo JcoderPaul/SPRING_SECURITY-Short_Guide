@@ -68,7 +68,7 @@ class ClientControllerOnlyMockTest {
     void setUp(){
         MockitoAnnotations.openMocks(this);
 
-        testClientReadDto = new ClientReadDto(TEST_EMAIL, Role.USER.name(), TEST_CLIENT_NAME, TEST_CLIENT_SUR_NAME, TEST_AGE);
+        testClientReadDto = new ClientReadDto(TEST_EMAIL, Role.ROLE_USER.name(), TEST_CLIENT_NAME, TEST_CLIENT_SUR_NAME, TEST_AGE);
         testDetailsCreateDto = new DetailsCreateDto(TEST_CLIENT_NAME, TEST_CLIENT_SUR_NAME, TEST_AGE);
         testClientCreateDto = new ClientCreateDto(TEST_EMAIL, TEST_PASS, testDetailsCreateDto);
         notValidCreateClientDto = new ClientCreateDto("we","2", testDetailsCreateDto);
@@ -84,7 +84,7 @@ class ClientControllerOnlyMockTest {
                 .id(1L)
                 .email(TEST_EMAIL)
                 .pass(TEST_PASS)
-                .role(Role.USER)
+                .role(Role.ROLE_USER)
                 .details(testDetails)
                 .build();
     }
