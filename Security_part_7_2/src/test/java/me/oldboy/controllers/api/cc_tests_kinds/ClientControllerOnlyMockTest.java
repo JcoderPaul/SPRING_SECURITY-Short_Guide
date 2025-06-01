@@ -39,8 +39,6 @@ class ClientControllerOnlyMockTest {
 
     /* Для тестирования метода getAdminName() */
     @Mock
-    private SecurityContext mockSecurityContext;
-    @Mock
     private Authentication mockAuthentication;
     @Mock
     private SecurityClientDetails mockClientDetails;
