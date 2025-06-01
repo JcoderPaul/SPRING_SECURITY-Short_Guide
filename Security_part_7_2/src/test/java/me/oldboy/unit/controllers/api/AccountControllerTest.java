@@ -1,4 +1,4 @@
-package me.oldboy.controllers.api;
+package me.oldboy.unit.controllers.api;
 
 import lombok.SneakyThrows;
 import me.oldboy.config.security_config.AppSecurityConfig;
