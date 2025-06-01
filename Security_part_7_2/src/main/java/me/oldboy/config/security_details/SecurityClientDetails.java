@@ -12,8 +12,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class SecurityClientDetails implements UserDetails {
 
 	private Client client;
