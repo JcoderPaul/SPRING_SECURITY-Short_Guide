@@ -18,7 +18,7 @@ import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 import java.util.Set;
 
 @Configuration
-@ComponentScan("me.oldboy")
+@ComponentScan("me.oldboy.config")
 @EnableWebMvc
 @RequiredArgsConstructor
 public class ViewResolversConfig implements WebMvcConfigurer {
