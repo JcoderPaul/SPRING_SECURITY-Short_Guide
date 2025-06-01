@@ -1,4 +1,4 @@
-package me.oldboy.controllers.api;
+package me.oldboy.unit.controllers.api;
 
 import me.oldboy.config.security_config.AppSecurityConfig;
 import org.junit.jupiter.api.BeforeEach;
