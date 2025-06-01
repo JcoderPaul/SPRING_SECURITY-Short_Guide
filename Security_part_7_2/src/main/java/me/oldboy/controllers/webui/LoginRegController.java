@@ -2,12 +2,12 @@ package me.oldboy.controllers.webui;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import me.oldboy.config.security_details.SecurityClientDetails;
 import me.oldboy.dto.client_dto.ClientCreateDto;
 import me.oldboy.dto.details_dto.DetailsCreateDto;
 import me.oldboy.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -36,7 +36,7 @@ public class LoginRegController {
 
     @GetMapping("/hello")
     public String getHelloPage(Model model,
-                               @AuthenticationPrincipal UserDetails userDetails){
+                               @AuthenticationPrincipal SecurityClientDetails userDetails){
         model.addAttribute("user", userDetails);
         return "templates/hello.html";
     }
