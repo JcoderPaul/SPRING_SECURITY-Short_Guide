@@ -1,4 +1,4 @@
-package me.oldboy.controllers.api.cc_tests_kinds;
+package me.oldboy.unit.controllers.api.cc_tests_kinds;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
