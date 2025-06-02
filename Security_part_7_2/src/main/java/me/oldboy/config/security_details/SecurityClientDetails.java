@@ -23,8 +23,8 @@ public class SecurityClientDetails implements UserDetails {
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		authorities.add(new SimpleGrantedAuthority(client.getRole().name()));
 		authorities.addAll(client.getListOfAuth().stream()
-												 .map(auth -> new SimpleGrantedAuthority(auth.getAuthName()))
-												 .collect(Collectors.toList()));
+				.map(auth -> new SimpleGrantedAuthority(auth.getAuthName()))
+				.collect(Collectors.toList()));
 		return authorities;
 	}
     /* Два следующих метода объясняют системе безопасности откуда брать имя/пароль для аутентификации */
