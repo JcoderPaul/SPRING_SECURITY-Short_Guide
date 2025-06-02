@@ -12,12 +12,12 @@ ________________________________________________________________________________
 отличия Roles от Authorities внесем изменения в структуру нашей базы данных.
 
 Добавление наших вариантов "допусков" - Authorities в приложение:
-- Шаг 1. - Добавим сущность Auth, и создадим таблицу "authorities" в БД (пусть у нас будет 5-ть вариантов допусков).
-- Шаг 2. - Создадим в БД таблицу "clients_authorities", связывающую наших Client с их вариантами "допусков" - Auth.
+- Шаг 1. - Добавим сущность [Auth](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/java/me/oldboy/models/Auth.java), и создадим таблицу ["authorities"](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/DOC/SQL/scripts.sql#L55) в БД (пусть у нас будет 5-ть вариантов допусков).
+- Шаг 2. - Создадим в БД таблицу ["clients_authorities"](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/DOC/SQL/scripts.sql#L66), связывающую наших [Client](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/java/me/oldboy/models/Client.java) с их вариантами "допусков" - [Auth](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/java/me/oldboy/models/Auth.java).
 - Шаг 3. - Пропишем каждой сущности их связь, в данной ситуации пусть будет ManyToMany, повторим материал, хотя вариант 
 OneToMany тоже подойдет. И так, прописали связи, задали вариант загрузки допусков вызванному клиенту как Fetch.EAGER
-- Шаг 4. - Теперь необходимо прогрузить наши допуски в SecurityClientDetails нашу реализацию UserDetails, вносим изменения 
-в код метода *.getAuthorities().
+- Шаг 4. - Теперь необходимо прогрузить наши допуски в [SecurityClientDetails](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/java/me/oldboy/config/security_details/SecurityClientDetails.jav) нашу реализацию UserDetails, вносим изменения 
+в код метода [*.getAuthorities()](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/java/me/oldboy/config/security_details/SecurityClientDetails.java#L22).
 
       @Override
       public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -29,15 +29,15 @@ OneToMany тоже подойдет. И так, прописали связи, �
         return authorities;
       }
 
-- Шаг 5. - Немного изменим структуру файла Role.java определяющего роли клиентов (Client), добавим к названиям префикс ROLE_ 
-(внесем те же изменения в БД см. scripts.sql);
-- Шаг 6. - Корректируем цепочку фильтров в AppSecurityConfig.java, применяем методы *.hasRole() и *.hasAuthority() к 
-разным эндпоинтам.
+- Шаг 5. - Немного изменим структуру файла [Role.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/java/me/oldboy/models/Role.java) определяющего роли клиентов (Client), добавим к названиям префикс ROLE_ 
+(внесем те же изменения в БД см. [scripts.sql](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/resources/db/changelog/db.changelog-5.0.sql));
+- Шаг 6. - Корректируем цепочку фильтров в [AppSecurityConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/java/me/oldboy/config/security_config/AppSecurityConfig.java), применяем методы *.hasRole() и *.hasAuthority() к 
+разным эндпоинтам. Так же для удобства тестирования мы разделили ранее "единую цепь защиты" на две.
 - Шаг 7. - Для проверки работы внесенных изменений запускаем приложение в Debug режиме, можно увидеть список допусков и 
-ролей аутентифицированного пользователя, прилетающий из AuthenticationEventListener.java в консоль:
+ролей аутентифицированного пользователя, прилетающий из [AuthenticationEventListener.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/java/me/oldboy/config/auth_event_listener/AuthenticationEventListener.java) в консоль:
 
       Login attempt with username: admin@test.com [ROLE_ADMIN, MORE BAD ACTION, READ]  
-                                   me.oldboy.config.securiry_details.SecurityClientDetails@ff2d420 		
+                                   me.oldboy.config.security_details.SecurityClientDetails@ff2d420 		
                                    Success: true
 
 Фактически "допуски" - Authorities, это более узкие права (правила), которые позволяют пользователю взаимодействовать с 
@@ -47,13 +47,13 @@ OneToMany тоже подойдет. И так, прописали связи, �
 ________________________________________________________________________________________________________________________
 Поскольку мы перевели наше "Boot" приложение в "non Boot" формат нам необходимо настроить конфигурацию, взаимодействие 
 с Thymeleaf и страницы отображения, а также их "симпатичную часть" - css файлы:
-- Шаг 1. - Добавляем Thymeleaf зависимости в проект см. build.gradle.
-- Шаг 2. - Добавляем в каталог WEB-INF папку views, тут будут находиться HTML страницы отображения.
-- Шаг 3. - Добавляем в каталог webapp папку static, тут будут находиться CSS файлы определяющий "красоту" наших frontend страниц.
-- Шаг 4. - Создаем конфигурацию имплементирующую WebMvcConfigurer и определяющую работу отображений см. ViewResolversConfig.java;
+- Шаг 1. - Добавляем Thymeleaf зависимости в проект см. [build.gradle](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/build.gradle#L63).
+- Шаг 2. - Добавляем в каталог WEB-INF папку [views](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_7_2/src/main/webapp/WEB-INF/views), тут будут находиться HTML страницы отображения.
+- Шаг 3. - Добавляем в каталог webapp папку [static](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_7_2/src/main/webapp/static), тут будут находиться CSS файлы определяющий "красоту" наших frontend страниц.
+- Шаг 4. - Создаем конфигурацию имплементирующую WebMvcConfigurer и определяющую работу отображений см. [ViewResolversConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/java/me/oldboy/config/auth_view_init/ViewResolversConfig.java), в нем явно пришлось задать кодировку возвращаемых view и тип контента;
 ________________________________________________________________________________________________________________________
 Тонкие моменты для первопроходцев:
-- Для настройки статических ресурсов отображений нам нужно переопределить метод *.addResourceHandlers() из интерфейса 
+- Для настройки статических ресурсов отображений нам нужно переопределить метод [*.addResourceHandlers()](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/java/me/oldboy/config/auth_view_init/ViewResolversConfig.java#L60) из интерфейса 
 WebMvcConfigurer (для нашего случая):
 
       @Override
@@ -65,7 +65,7 @@ WebMvcConfigurer (для нашего случая):
 - После аутентификации пользователь попадает на простую страницу, где отображается информация об аутентифицированном 
 пользователе. При чем в двух форматах, через атрибут модели и через специальный тег Thymeleaf-а из Security контекста.
 И если в Spring Boot приложении мы, как всегда, наблюдаем "магию" авто-конфигурирования, то тут нам понадобилось добавить
-bean и прокинуть его в SpringTemplateEngine:
+bean и прокинуть его в [SpringTemplateEngine](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/java/me/oldboy/config/auth_view_init/ViewResolversConfig.java#L37):
 
       @Bean
       public SpringTemplateEngine templateEngine() {
@@ -82,16 +82,30 @@ bean и прокинуть его в SpringTemplateEngine:
       }
 
 Данная ситуация и рекомендации описаны тут [Thymeleaf - Spring Security integration modules](https://github.com/thymeleaf/thymeleaf-extras-springsecurity).
+- Так же в тестах, "вдруг", вместо ожидаемой UTF-8, мы стали получать непонятную кодировку страниц в ответ на запросы.
+Для решения данной задачи, пришлось явно прописать настройки в [ThymeleafViewResolver](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/java/me/oldboy/config/auth_view_init/ViewResolversConfig.java#L51):
+
+      @Override
+      public void configureViewResolvers(ViewResolverRegistry registry) {
+        ThymeleafViewResolver resolver = new ThymeleafViewResolver();
+        resolver.setTemplateEngine(templateEngine());
+        resolver.setCharacterEncoding("UTF-8");
+        resolver.setContentType("text/html; charset=UTF-8");
+        registry.viewResolver(resolver);
+      }
 ________________________________________________________________________________________________________________________
 И так, на данном этапе у нас реализовано и переработано все из предшествующих частей:
-- подключен Spring Security модуль;
-- реализована from base Authentication (PostgeSQL);
-- реализована Custom Login Form;
-- реализован пользовательский AuthenticationProvider, UserDetail и UserDetailsService;
-- реализована Remember-Me аутентификация (ключи хранятся в БД);
+- подключен [Spring Security](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/java/me/oldboy/config/security_config/AppSecurityConfig.java) модуль;
+- реализована from [base Authentication](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/java/me/oldboy/config/security_config/AppSecurityConfig.java#L77) (PostgeSQL);
+- реализована [Custom Login Form](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/java/me/oldboy/config/security_config/AppSecurityConfig.java#L51);
+- реализован пользовательский AuthenticationProvider, [UserDetail](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/java/me/oldboy/config/security_details/SecurityClientDetails.java) и [UserDetailsService](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/java/me/oldboy/config/security_details/ClientDetailsService.java);
+- реализована [Remember-Me аутентификация](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/java/me/oldboy/config/security_config/AppSecurityConfig.java#L48) ([ключи хранятся в БД](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/DOC/SQL/persistent_logins_token.sql));
 - включена генерация CSRF-токена;
-- включена CORS защита;
+- включена [CORS защита](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/main/java/me/oldboy/config/auth_view_init/AuthBeanConfig.java#L25);
 - применены как Roles, так и Authorities;
+________________________________________________________________________________________________________________________
+Код протестирован в нескольких режимах [unit](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_7_2/src/test/java/me/oldboy/unit) и [integration](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_7_2/src/test/java/me/oldboy/integration) - (глубина покрытия Class 90%(74/82), Method 85%(248/290), Line 89%(598/668)).
+В интеграционных тестах применялся [Testcontainer](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/test/java/me/oldboy/config/test_data_source/TestContainerInit.java) с [PostgerSQL](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_7_2/src/main/resources/db/changelog) БД и миграционным фреймворком [Liquibase](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_7_2/src/test/java/me/oldboy/config/test_data_source/TestDataSourceConfig.java#L66).
 ________________________________________________________________________________________________________________________
 ### Reference Documentation:
 
