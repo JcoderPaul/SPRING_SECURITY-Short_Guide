@@ -48,8 +48,6 @@ class ClientControllerTest {
     /* Для тестирования методов getAllClient() и  registrationClient()*/
     @MockitoBean
     private ClientService clientService;
-    @InjectMocks
-    private ClientController clientController;
 
     @Autowired
     private WebApplicationContext webAppContext;
