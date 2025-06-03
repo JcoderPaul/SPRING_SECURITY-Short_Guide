@@ -6,14 +6,21 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 @Builder
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "clients")
 public class Client {
+
+    public Client(Long id, String email, String pass, Role role, Details details) {
+        this.id = id;
+        this.email = email;
+        this.pass = pass;
+        this.role = role;
+        this.details = details;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
