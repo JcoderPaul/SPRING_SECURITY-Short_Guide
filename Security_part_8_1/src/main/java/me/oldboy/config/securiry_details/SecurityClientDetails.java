@@ -24,7 +24,7 @@ public class SecurityClientDetails implements UserDetails {
 		authorities.add(new SimpleGrantedAuthority(client.getRole().name()));
 		authorities.addAll(client.getListOfAuth().stream()
 				.map(auth -> new SimpleGrantedAuthority(auth.getAuthName()))
-				.collect(Collectors.toList()));
+				.toList());
 		return authorities;
 	}
 
