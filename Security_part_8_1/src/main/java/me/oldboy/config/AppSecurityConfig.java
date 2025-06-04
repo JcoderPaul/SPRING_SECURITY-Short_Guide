@@ -48,24 +48,25 @@ public class AppSecurityConfig {
 				    .addFilterAfter(new MyAuthoritiesLoggingAfterFilter(), UsernamePasswordAuthenticationFilter.class)
 				    .addFilterAt(new MyAuthoritiesLoggingAtFilter(), UsernamePasswordAuthenticationFilter.class)
 				    .authorizeHttpRequests(urlConfig ->
-						urlConfig.requestMatchers(antMatcher("/notices"),
-												  antMatcher("/contact"),
+						urlConfig.requestMatchers(antMatcher("/api/notices"),
+												  antMatcher("/api/contact"),
 												  antMatcher("/css/**"),
 												  antMatcher("/webui/login"),
 												  antMatcher("/webui/registration")).permitAll()
-								  .requestMatchers(antMatcher("/myAccount"),
-												   antMatcher("/myBalance"),
-												   antMatcher("/myLoans"),
+								  .requestMatchers(antMatcher("/api/myAccount"),
+												   antMatcher("/api/myBalance"),
+												   antMatcher("/api/myLoans"),
 												   antMatcher("/webui/hello")).authenticated()
-								  .requestMatchers(antMatcher("/admin/**")).hasRole("ADMIN")
-								  .requestMatchers(antMatcher("/myCards")).hasAuthority("READ")
+								  .requestMatchers(antMatcher("/api/admin/**")).hasRole("ADMIN")
+								  .requestMatchers(antMatcher("/api/myCards")).hasAuthority("READ")
 								  .anyRequest().authenticated())
 				.rememberMe((remember) -> remember.rememberMeParameter("remember-me")
-												  .tokenRepository(persistentTokenRepository)
-												  .key("myKey")
-												  .alwaysRemember(true))
+						.tokenRepository(persistentTokenRepository)
+						.key("myKey")
+						.alwaysRemember(true))
 				.formLogin(login -> login.loginPage("/webui/login")
-						                 .defaultSuccessUrl("/webui/hello"));
+						.defaultSuccessUrl("/webui/hello")
+						.permitAll());
 
 		return httpSecurity.build();
 	}
