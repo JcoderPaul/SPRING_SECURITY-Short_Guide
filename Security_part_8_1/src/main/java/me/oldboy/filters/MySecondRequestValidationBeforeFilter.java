@@ -21,12 +21,14 @@ token-a, если еще более точно - проверить, есть л
 который через конструктор внедряем сюда, см. ниже.
 */
 @Slf4j
-@AllArgsConstructor
 public class MySecondRequestValidationBeforeFilter implements Filter {
 
 	private static final String REMEMBER_ME = "remember-me";
+	private RememberMeUserNameExtractor rememberMeUserNameExtractor;
 
-	private final RememberMeUserNameExtractor rememberMeUserNameExtractor;
+	public MySecondRequestValidationBeforeFilter(RememberMeUserNameExtractor rememberMeUserNameExtractor) {
+		this.rememberMeUserNameExtractor = rememberMeUserNameExtractor;
+	}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -34,15 +36,15 @@ public class MySecondRequestValidationBeforeFilter implements Filter {
 
 		Cookie[] cookies = req.getCookies();
 		if(cookies == null || Arrays.stream(cookies)
-				                    .filter(cookie -> REMEMBER_ME.equals(cookie.getName()))
-				                    .findFirst()
-				                    .isEmpty()) {
+				.filter(cookie -> REMEMBER_ME.equals(cookie.getName()))
+				.findFirst()
+				.isEmpty()) {
 			log.info(" \n *** 2 - Log MySecondRequestValidationBeforeFilter method *** \n" +
-					 " *** User try to authentication! Have no Remember-Me cookies! *** ");
+					" *** User try to authentication! Have no Remember-Me cookies! *** ");
 		} else {
-			var t = rememberMeUserNameExtractor.getUserNameFromToken(req);
-					                   t.ifPresent(userName -> log.info(" \n *** 2 - Log MySecondRequestValidationBeforeFilter method *** \n" +
-					                                                   " *** User " + userName + " is already authenticated by Remember-Me Token! *** "));
+			rememberMeUserNameExtractor.getUserNameFromToken(req)
+					.ifPresent(userName -> log.info(" \n *** 2 - Log MySecondRequestValidationBeforeFilter method *** \n" +
+							" *** User " + userName + " is already authenticated by Remember-Me Token! *** "));
 		}
 		chain.doFilter(request, response);
 	}
