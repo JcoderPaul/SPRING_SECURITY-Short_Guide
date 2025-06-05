@@ -1,10 +1,11 @@
-package me.oldboy.filters;
+package me.oldboy.unit.filters;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.SneakyThrows;
+import me.oldboy.filters.MySecondRequestValidationBeforeFilter;
 import me.oldboy.filters.utils.RememberMeUserNameExtractor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
