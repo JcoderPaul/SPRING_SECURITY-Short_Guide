@@ -1,9 +1,10 @@
-package me.oldboy.filters;
+package me.oldboy.unit.filters;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import lombok.SneakyThrows;
+import me.oldboy.filters.MyAuthoritiesLoggingAtFilter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
