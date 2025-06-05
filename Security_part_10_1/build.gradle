@@ -1,0 +1,106 @@
+plugins {
+    id 'java'
+    id 'war'
+    id "io.freefair.lombok" version "8.3"
+    id "com.github.ben-manes.versions" version "0.51.0"
+}
+
+apply from: 'version.gradle'
+apply plugin: 'war'
+
+war {
+    enabled=true
+}
+
+group 'me.oldboy'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    /* Основные зависимости Spring */
+    implementation "org.springframework:spring-context:${versions.spring}"
+    implementation "org.springframework:spring-webmvc:${versions.spring}"
+    implementation "org.springframework:spring-beans:${versions.spring}"
+
+    /* Зависимость позволяющая использовать функционал Spring JPA */
+    implementation "org.springframework.security:spring-security-web:${versions.security}"
+    implementation "org.springframework.security:spring-security-config:${versions.security}"
+    implementation "org.springframework.security:spring-security-taglibs:${versions.security}"
+
+    /* Зависимость позволяющая использовать функционал Spring JPA */
+    implementation "org.springframework.data:spring-data-jpa:${versions.data_jpa}"
+
+    /* Подключаем функционал Hibernate и провайдера валидации */
+    implementation "org.hibernate:hibernate-core:${versions.hibernate}"
+    implementation "org.hibernate:hibernate-validator:${versions.validator}"
+
+    /* Зависимость PostgreSQL */
+    implementation "org.postgresql:postgresql:${versions.postgres}"
+
+    /* Зависимость позволяющая в контроллерах принимать JSON запросы */
+    implementation "com.fasterxml.jackson.core:jackson-databind:${versions.jackson}"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:${versions.jackson}"
+    /*
+    Ошибка "Type definition error: [simple type, class java.time.LocalDate]" обычно возникает в
+    контексте сериализации и десериализации объектов в Java, особенно при работе с библиотеками,
+    такими как Jackson или JAXB. Эта ошибка указывает на то, что библиотека не может правильно
+    обработать тип LocalDate из пакета java.time.
+
+    Как раз ее мы и поймали, поэтому добавляем зависимость для поддержки Java 8 Date and Time API:
+    */
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${versions.jackson}"
+
+    /* Зависимость позволяющая читать YAML файлы, у нас ведь nonBoot приложение и такое удовольствие нам не доступно из коробки, вроде как */
+    implementation "org.yaml:snakeyaml:${versions.snakeyaml}"
+
+    /* Зависимость отвечающая за работу аннотаций и сервлетов */
+    implementation "jakarta.servlet:jakarta.servlet-api:${versions.jakarta_servlet_api}"
+    implementation "jakarta.validation:jakarta.validation-api:${versions.jakarta_validation}"
+
+    /* Зависимость отвечающая за работу шаблонов отображения */
+    implementation "org.thymeleaf:thymeleaf-spring6:${versions.thymeleaf}"
+    implementation "org.thymeleaf.extras:thymeleaf-extras-springsecurity6:${versions.thymeleaf}"
+
+    /* Подключим функционал позволяющий нам работать с JWT */
+    implementation "io.jsonwebtoken:jjwt-api:${versions.jjwt}"
+    implementation "io.jsonwebtoken:jjwt-root:${versions.jjwt}"
+    runtimeOnly "io.jsonwebtoken:jjwt-impl:${versions.jjwt}"
+    runtimeOnly "io.jsonwebtoken:jjwt-jackson:${versions.jjwt}"
+
+    /* Подключим библиотеку Mapstruct */
+    implementation "org.projectlombok:lombok-mapstruct-binding:${versions.lombok_map_struct}"
+    implementation "org.mapstruct:mapstruct:${versions.mapstruct}"
+    implementation "org.mapstruct:mapstruct-processor:${versions.mapstruct}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${versions.mapstruct}",
+            "org.projectlombok:lombok-mapstruct-binding:${versions.lombok_map_struct}"
+
+    /* Подключим log4j провайдер */
+    implementation "org.slf4j:slf4j-log4j12:${versions.slf4j_log4j_binding}"
+
+    /* Блок пакетов обслуживающий тесты */
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:${versions.jupiter}"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${versions.jupiter}"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:${versions.jupiter}"
+
+    /* Подключим все для тестов Testcontainers */
+    testImplementation "org.testcontainers:postgresql:${versions.testcontainers}"
+    testImplementation "org.testcontainers:junit-jupiter:${versions.testcontainers}"
+
+    /* Подключим Mockito и AssertJ */
+    testImplementation "org.mockito:mockito-core:${versions.mockito}"
+    testRuntimeOnly "org.mockito:mockito-core:${versions.mockito}"
+    testImplementation "org.mockito:mockito-junit-jupiter:${versions.mockito}"
+    testImplementation "org.assertj:assertj-core:${versions.assertj}"
+    testRuntimeOnly "org.assertj:assertj-core:${versions.assertj}"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+wrapper {
+    gradleVersion '8.2.1'
+}
