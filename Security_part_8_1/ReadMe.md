@@ -515,7 +515,7 @@ ________________________________________________________________________________
 
 И естественно автоматически чиститься БД. Для неокрепшего ума это выглядит феерично!
 ________________________________________________________________________________________________________________________
-[Тесты](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_8_1/src/test) приложения и [особенно фильтров](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_8_1/src/test/java/me/oldboy/unit/filters) (покрытие Class 94% (74/78), Method 80% (232/290), Line 82% (546/662))
+Тесты приложения [модульные](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_8_1/src/test/java/me/oldboy/unit), [интеграционные](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_8_1/src/test/java/me/oldboy/integration) и [особенно фильтров](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_8_1/src/test/java/me/oldboy/unit/filters) с применением [CapturedOutput](https://docs.spring.io/spring-boot/3.3/api/java/org/springframework/boot/test/system/CapturedOutput.html) (покрытие Class 94% (74/78), Method 80% (232/290), Line 82% (546/662))
 ________________________________________________________________________________________________________________________
 ### Key Class and Methods:
 
