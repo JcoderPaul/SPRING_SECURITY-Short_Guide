@@ -16,5 +16,4 @@ public class MyAuthoritiesLoggingAtFilter implements Filter {
 				      " *** Method is in progress *** ");
 		chain.doFilter(request, response);
 	}
-
 }
