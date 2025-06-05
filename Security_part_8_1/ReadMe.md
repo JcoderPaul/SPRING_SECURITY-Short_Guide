@@ -515,6 +515,8 @@ ________________________________________________________________________________
 
 И естественно автоматически чиститься БД. Для неокрепшего ума это выглядит феерично!
 ________________________________________________________________________________________________________________________
+[Тесты](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_8_1/src/test) приложения и [особенно фильтров](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_8_1/src/test/java/me/oldboy/unit/filters) (покрытие Class 94% (74/78), Method 80% (232/290), Line 82% (546/662))
+________________________________________________________________________________________________________________________
 ### Key Class and Methods:
 
 * [Class HttpSecurity](https://docs.spring.io/spring-security/site/docs/5.0.0.M5/api/org/springframework/security/config/annotation/web/builders/HttpSecurity.html#addFilterBefore(javax.servlet.Filter,%20java.lang.Class))
