@@ -3,6 +3,8 @@ package me.oldboy.filters;
 import jakarta.servlet.*;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.oldboy.filters.utils.RememberMeUserNameExtractor;
@@ -19,7 +21,7 @@ token-a, если еще более точно - проверить, есть л
 который через конструктор внедряем сюда, см. ниже.
 */
 @Slf4j
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class MySecondRequestValidationBeforeFilter implements Filter {
 
 	private static final String REMEMBER_ME = "remember-me";
@@ -38,11 +40,10 @@ public class MySecondRequestValidationBeforeFilter implements Filter {
 			log.info(" \n *** 2 - Log MySecondRequestValidationBeforeFilter method *** \n" +
 					 " *** User try to authentication! Have no Remember-Me cookies! *** ");
 		} else {
-			rememberMeUserNameExtractor.getUserNameFromToken(req)
-					                   .ifPresent(userName -> log.info(" \n *** 2 - Log MySecondRequestValidationBeforeFilter method *** \n" +
+			var t = rememberMeUserNameExtractor.getUserNameFromToken(req);
+					                   t.ifPresent(userName -> log.info(" \n *** 2 - Log MySecondRequestValidationBeforeFilter method *** \n" +
 					                                                   " *** User " + userName + " is already authenticated by Remember-Me Token! *** "));
 		}
-
 		chain.doFilter(request, response);
 	}
 }
