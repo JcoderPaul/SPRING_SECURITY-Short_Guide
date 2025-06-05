@@ -46,7 +46,6 @@ public class MyFirstRememberMeBeforeFilter implements Filter {
 						 " is already authenticated by Remember-Me Token! *** ");
 			}
 		}
-
 		chain.doFilter(request, response);
 	}
 }
