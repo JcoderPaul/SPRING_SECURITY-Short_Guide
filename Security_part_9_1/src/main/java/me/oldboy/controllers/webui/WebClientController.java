@@ -6,7 +6,7 @@ import me.oldboy.dto.card_dto.CardReadDto;
 import me.oldboy.dto.contact_dto.ContactReadDto;
 import me.oldboy.dto.loan_dto.LoanReadDto;
 import me.oldboy.dto.transaction_dto.TransactionReadDto;
-import me.oldboy.models.client_info.mapper.ClientMapper;
+import me.oldboy.mapper.ClientMapper;
 import me.oldboy.models.client.Client;
 import me.oldboy.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
