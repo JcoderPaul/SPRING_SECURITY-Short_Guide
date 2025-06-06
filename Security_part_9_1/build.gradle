@@ -50,6 +50,7 @@ dependencies {
 
     /* Блок пакетов обслуживающий тесты */
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     /* Подключим все для тестов Testcontainers */
