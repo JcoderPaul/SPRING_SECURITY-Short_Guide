@@ -26,6 +26,12 @@ dependencies {
 
     implementation "org.postgresql:postgresql:${versions.postgres}"
 
+    /* Зависимость миграционного фреймворка */
+    implementation 'org.liquibase:liquibase-core'
+
+    /* Зависимость закрывает проблему с "замещением" Hibernate Validation в изолированных тестах */
+    implementation "org.glassfish:jakarta.el:${versions.glassfish}"
+
     /* Подключим Hibernate */
     implementation "org.hibernate:hibernate-core:${versions.hibernate}"
     implementation "org.hibernate:hibernate-validator:${versions.validator}"
@@ -54,8 +60,11 @@ dependencies {
     testImplementation "org.mockito:mockito-core:${versions.mockito}"
     testRuntimeOnly "org.mockito:mockito-core:${versions.mockito}"
     testImplementation "org.mockito:mockito-junit-jupiter:${versions.mockito}"
+
     testImplementation "org.assertj:assertj-core:${versions.assertj}"
     testRuntimeOnly "org.assertj:assertj-core:${versions.assertj}"
+
+    testImplementation "org.testcontainers:postgresql:${versions.testcontainers}"
 }
 
 test {
