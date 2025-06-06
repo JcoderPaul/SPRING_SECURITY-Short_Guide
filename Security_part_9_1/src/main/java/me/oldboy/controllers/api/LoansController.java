@@ -7,9 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 public class LoansController {
-	
 	@GetMapping("/myLoans")
-	public String getLoanDetails(String input) {
+	public String getLoanDetails() {
 		return "Here are the loan details from the DB";
 	}
 
