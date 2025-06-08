@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 @RestController
 @AllArgsConstructor
 @NoArgsConstructor
-@RequestMapping("/api-v1/admin") // Задаем общий префикс для всех эндпоинтов этого контроллера
+@RequestMapping("/api/admin") // Задаем общий префикс для всех эндпоинтов этого контроллера
 public class ClientController {
 
     @Autowired
