@@ -75,8 +75,8 @@ class JwtTokenGeneratorAndAfterFilterTest {
         /* Проверяем логи */
         assertThat(output).contains("-- 3 - Start JwtTokenGenerator or AfterFilter");
 
+        /* В наличии - "contains" */
         assertThat(output).contains("URL from JwtTokenGenerator or AfterFilter: " + testPath);
-
         assertThat(output).contains("After zeroing authFromForm: " + null);
 
         assertThat(output).contains("-- 3 - Finish JwtTokenGenerator or AfterFilter");
@@ -100,8 +100,8 @@ class JwtTokenGeneratorAndAfterFilterTest {
         /* Здесь можно также проверить логирование */
         assertThat(output).contains("-- 3 - Start JwtTokenGenerator or AfterFilter");
 
+        /* Отсутствуют - "doesNotContain" */
         assertThat(output).doesNotContain("URL from JwtTokenGenerator or AfterFilter: " + testPathNotHtml);
-
         assertThat(output).doesNotContain("After zeroing authFromForm: " + null);
 
         assertThat(output).contains("-- 3 - Finish JwtTokenGenerator or AfterFilter");
