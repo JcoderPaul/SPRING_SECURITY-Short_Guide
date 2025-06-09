@@ -1,6 +1,5 @@
 package me.oldboy.unit.controllers.webui;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import me.oldboy.config.auth_event_listener.AuthenticationEventListener;
 import me.oldboy.config.securiry_details.ClientDetailsService;
@@ -13,7 +12,6 @@ import me.oldboy.models.client.Role;
 import me.oldboy.models.client_info.Details;
 import me.oldboy.repository.*;
 import me.oldboy.services.ClientService;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -77,13 +75,7 @@ class LoginRegControllerTest {
     private UserDetails testUserDetails;
     private ClientCreateDto testClientCreateDto, noValidClientCreateDto;
     private DetailsCreateDto testDetailsCreateDto, noValidDetailsCreateDto;
-    private static ObjectMapper objectMapper;
     private String testJwt;
-
-    @BeforeAll
-    static void setStaticContent(){
-        objectMapper = new ObjectMapper();
-    }
 
     @BeforeEach
     void setTestData(){
@@ -285,13 +277,5 @@ class LoginRegControllerTest {
                 .andExpect(flash().attributeExists("errorsDetails"));
 
         verifyNoInteractions(mockClientService);
-    }
-
-    @Test
-    void postMainPage() {
-    }
-
-    @Test
-    void getMainPage() {
     }
 }
