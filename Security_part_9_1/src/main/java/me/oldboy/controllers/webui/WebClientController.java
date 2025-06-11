@@ -1,6 +1,7 @@
 package me.oldboy.controllers.webui;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.oldboy.dto.card_dto.CardReadDto;
 import me.oldboy.dto.contact_dto.ContactReadDto;
@@ -23,20 +24,21 @@ import java.util.Optional;
 
 @Slf4j
 @Controller
+@AllArgsConstructor
+@NoArgsConstructor
 @RequestMapping("/webui")
-@RequiredArgsConstructor
 public class WebClientController {
 
     @Autowired
-    private final ClientService clientService;
+    private ClientService clientService;
     @Autowired
-    private final ContactService contactService;
+    private ContactService contactService;
     @Autowired
-    private final BalanceService balanceService;
+    private BalanceService balanceService;
     @Autowired
-    private final CardService cardService;
+    private CardService cardService;
     @Autowired
-    private final LoanService loanService;
+    private LoanService loanService;
 
     @GetMapping("/account")
     public String clientAccount(Model model, @CurrentSecurityContext SecurityContextHolder securityContextHolder){
