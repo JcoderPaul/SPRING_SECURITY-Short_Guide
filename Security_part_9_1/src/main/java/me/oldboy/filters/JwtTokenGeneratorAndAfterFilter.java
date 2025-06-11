@@ -56,14 +56,14 @@ public class JwtTokenGeneratorAndAfterFilter extends OncePerRequestFilter {
 									.add("authorities", populateAuthorities(authentication.getAuthorities()))
 									.build();
 
-				String jwt = Jwts.builder()
+				String jwtToken = Jwts.builder()
 								 .claims(currentClaims)
 								 .issuedAt(new Date())
 								 .expiration(new Date((new Date()).getTime() + 300_000_000))
 								 .signWith(key)
 								 .compact();
 
-				response.setHeader(SecurityConstants.JWT_HEADER, jwt);
+				response.setHeader(SecurityConstants.JWT_HEADER, jwtToken);
 
 				/* Чистим данные аутентификации сохраненные в AuthenticationEventListener */
 				if(isHtmlPage(request)) {
