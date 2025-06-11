@@ -6,7 +6,8 @@ import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.oldboy.config.auth_event_listener.AuthenticationEventListener;
 import me.oldboy.constants.SecurityConstants;
@@ -20,7 +21,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.crypto.SecretKey;
@@ -28,16 +32,17 @@ import java.nio.charset.StandardCharsets;
 
 @Slf4j
 @Controller
+@AllArgsConstructor
+@NoArgsConstructor
 @RequestMapping("/webui")
-@RequiredArgsConstructor
 public class LoginRegController {
 
     @Autowired
-    private final ClientService clientService;
+    private ClientService clientService;
     @Autowired
-    private final JwtSaver jwtSaver;
+    private JwtSaver jwtSaver;
     @Autowired
-    private final AuthenticationEventListener authenticationEventListener;
+    private AuthenticationEventListener authenticationEventListener;
 
     @GetMapping("/login")
     public String clientLoginPage(HttpServletRequest request) {
