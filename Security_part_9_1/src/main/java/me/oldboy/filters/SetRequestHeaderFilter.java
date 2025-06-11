@@ -1,8 +1,14 @@
 package me.oldboy.filters;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import lombok.RequiredArgsConstructor;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpFilter;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.oldboy.constants.SecurityConstants;
 import me.oldboy.filters.utils.JwtSaver;
@@ -12,16 +18,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.IOException;
 
 @Slf4j
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class SetRequestHeaderFilter extends HttpFilter {
 
     @Autowired
-    private final JwtSaver jwtSaver;
-
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-
-    }
+    private JwtSaver jwtSaver;
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -59,11 +60,6 @@ public class SetRequestHeaderFilter extends HttpFilter {
             chain.doFilter(req, resp);
             log.info("-- 1 - Finish set request header filter" + " - have no JWT!");
         }
-
-    }
-
-    @Override
-    public void destroy() {
 
     }
 }
