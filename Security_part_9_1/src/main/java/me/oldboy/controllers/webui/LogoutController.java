@@ -2,6 +2,8 @@ package me.oldboy.controllers.webui;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.oldboy.config.auth_event_listener.AuthenticationEventListener;
@@ -15,14 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
 @Controller
+@AllArgsConstructor
+@NoArgsConstructor
 @RequestMapping("/webui")
-@RequiredArgsConstructor
 public class LogoutController {
 
     @Autowired
-    private final AuthenticationEventListener authenticationEventListener;
+    private AuthenticationEventListener authenticationEventListener;
     @Autowired
-    private final JwtSaver jwtSaver;
+    private JwtSaver jwtSaver;
 
     @PostMapping("/logout")
     public String logOut(Authentication authentication,
