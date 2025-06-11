@@ -29,9 +29,6 @@ dependencies {
     /* Зависимость миграционного фреймворка */
     implementation 'org.liquibase:liquibase-core'
 
-    /* Зависимость закрывает проблему с "замещением" Hibernate Validation в изолированных тестах */
-    implementation "org.glassfish:jakarta.el:${versions.glassfish}"
-
     /* Подключим Hibernate */
     implementation "org.hibernate:hibernate-core:${versions.hibernate}"
     implementation "org.hibernate:hibernate-validator:${versions.validator}"
