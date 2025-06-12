@@ -45,7 +45,7 @@ public class LoginRegController {
     private AuthenticationEventListener authenticationEventListener;
 
     @GetMapping("/login")
-    public String clientLoginPage(HttpServletRequest request) {
+    public String clientLoginPage() {
         Authentication authentication = authenticationEventListener.getAuthenticationAfterFormLogin();
         if (authentication != null){
 
@@ -96,7 +96,7 @@ public class LoginRegController {
     }
 
     @PostMapping("/main")
-    public String postMainPage(HttpServletRequest request, HttpServletResponse response){
+    public String postMainPage(HttpServletResponse response){
         log.info("Redirect to - /main.html - from @PostMapping(/main)");
         log.info("Response header from @PostMapping(/main): " + response.getHeader(SecurityConstants.JWT_HEADER));
 
@@ -104,7 +104,7 @@ public class LoginRegController {
     }
 
     @GetMapping("/main")
-    public String getMainPage(HttpServletRequest request){
+    public String getMainPage(){
         log.info("Redirect to - /main.html - from @GetMapping(/main)");
 
         return "/main.html";
