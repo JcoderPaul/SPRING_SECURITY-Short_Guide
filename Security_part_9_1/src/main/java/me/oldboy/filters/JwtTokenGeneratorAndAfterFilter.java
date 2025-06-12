@@ -52,16 +52,16 @@ public class JwtTokenGeneratorAndAfterFilter extends OncePerRequestFilter {
 				SecretKey key = Keys.hmacShaKeyFor(SecurityConstants.JWT_KEY.getBytes(StandardCharsets.UTF_8));
 
 				Claims currentClaims = Jwts.claims()
-									.subject(authentication.getName())
-									.add("authorities", populateAuthorities(authentication.getAuthorities()))
-									.build();
+						.subject(authentication.getName())
+						.add("authorities", populateAuthorities(authentication.getAuthorities()))
+						.build();
 
 				String jwtToken = Jwts.builder()
-								 .claims(currentClaims)
-								 .issuedAt(new Date())
-								 .expiration(new Date((new Date()).getTime() + 300_000_000))
-								 .signWith(key)
-								 .compact();
+						.claims(currentClaims)
+						.issuedAt(new Date())
+						.expiration(new Date((new Date()).getTime() + 300_000_000))
+						.signWith(key)
+						.compact();
 
 				response.setHeader(SecurityConstants.JWT_HEADER, jwtToken);
 
@@ -87,14 +87,16 @@ public class JwtTokenGeneratorAndAfterFilter extends OncePerRequestFilter {
 	private boolean isHtmlPage(HttpServletRequest request){
 		String findPath = request.getServletPath();
 		List<String> filteringUrl = List.of("/favicon.ico" ,
-				                            "/css/main_menu.css",
-				                            "/css/center_of_page.css",
-				                            "/css/header_footer.css",
-				                            "/css/login_form.css",
-				                            "/css/reg_form.css");
+				"/css/main_menu.css",
+				"/css/center_of_page.css",
+				"/css/header_footer.css",
+				"/css/login_form.css",
+				"/css/reg_form.css");
+
 		Optional<String> mayBeFindUrl = filteringUrl.stream()
-				                                    .filter(url -> url.equals(findPath))
-				                                    .findFirst();
+				.filter(url -> url.equals(findPath))
+				.findFirst();
+
 		if(mayBeFindUrl.isPresent()){
 			return false;
 		} else {
