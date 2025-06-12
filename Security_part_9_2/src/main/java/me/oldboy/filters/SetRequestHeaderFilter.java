@@ -2,6 +2,8 @@ package me.oldboy.filters;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.oldboy.filters.utils.JwtSaver;
@@ -16,16 +18,12 @@ import static me.oldboy.constants.SecurityConstants.JWT_HEADER;
 import static me.oldboy.constants.SecurityConstants.EMAIL_COOKIE;
 
 @Slf4j
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class SetRequestHeaderFilter extends HttpFilter {
 
     @Autowired
-    private final JwtSaver jwtSaver;
-
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-
-    }
+    private JwtSaver jwtSaver;
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -61,11 +59,5 @@ public class SetRequestHeaderFilter extends HttpFilter {
             chain.doFilter(req, resp);
             log.info("-- 1 - Finish set request header filter" + " - have no JWT!");
         }
-
-    }
-
-    @Override
-    public void destroy() {
-
     }
 }
