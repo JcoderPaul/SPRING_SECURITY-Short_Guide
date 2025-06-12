@@ -1,10 +1,15 @@
 package me.oldboy.filters;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpFilter;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.oldboy.filters.utils.JwtSaver;
 import me.oldboy.http_servlet_wrapper.CustomHttpServletRequestWrapper;
@@ -14,8 +19,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Optional;
 
-import static me.oldboy.constants.SecurityConstants.JWT_HEADER;
 import static me.oldboy.constants.SecurityConstants.EMAIL_COOKIE;
+import static me.oldboy.constants.SecurityConstants.JWT_HEADER;
 
 @Slf4j
 @AllArgsConstructor
