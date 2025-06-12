@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @AutoConfigureMockMvc
-class LogoutControllerTest extends IntegrationTestBase {
+class LogoutControllerTestIT extends IntegrationTestBase {
 
     @Autowired
     private LogoutController logoutController;
