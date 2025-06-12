@@ -64,21 +64,21 @@ public class AppSecurityConfig {
 								"/webui/registration",
 								"/webui/bye",
 								"/webui/jwt_token",
-								"/notices",
+								"/api/notices",
 								"/css/*.css")
 						.permitAll()
-						.requestMatchers(antMatcher("/myAccount"),
-								antMatcher("/myBalance"),
-								antMatcher("/myLoans"),
+						.requestMatchers(antMatcher("/api/myAccount"),
+								antMatcher("/api/myBalance"),
+								antMatcher("/api/myLoans"),
 								antMatcher("/webui/account"),
 								antMatcher("/webui/balance"),
 								antMatcher("/webui/loans"),
 								antMatcher("/webui/contacts"),
 								antMatcher("/webui/main")).authenticated()
-						.requestMatchers(antMatcher("/admin/**"))
+						.requestMatchers(antMatcher("/api/admin/**"))
 						.hasRole("ADMIN")
 						.requestMatchers(antMatcher("/webui/cards"),
-								antMatcher("/myCards"))
+								antMatcher("/api/myCards"))
 						.hasAuthority("READ")
 						.anyRequest().authenticated())
 				    .formLogin(login -> login.loginPage("/webui/login")
