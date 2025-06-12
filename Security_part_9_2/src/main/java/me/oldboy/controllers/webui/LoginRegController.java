@@ -14,6 +14,7 @@ import me.oldboy.dto.details_dto.DetailsCreateDto;
 import me.oldboy.filters.utils.JwtSaver;
 import me.oldboy.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -39,10 +40,18 @@ public class LoginRegController {
 
     @GetMapping("/login")
     public String getLoginPage(HttpServletResponse response) {
+        Authentication authentication = authenticationEventListener.getAuthenticationAfterFormLogin();
+        if (authentication != null){
 
-            log.info("Redirect to - client_forms/login.html - from @GetMapping('/login')");
+            log.info("Redirect to - /webui/jwt_token - from @GetMapping(login)");
+
+            return "redirect:/webui/jwt_token";
+        } else {
+
+            log.info("Redirect to - client_forms/login.html - from @GetMapping(login)");
 
             return "client_forms/login.html";
+        }
     }
 
     @GetMapping("/jwt_token")
