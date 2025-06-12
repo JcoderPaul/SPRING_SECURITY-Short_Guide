@@ -6,7 +6,6 @@ import me.oldboy.exception.EmailNotFoundException;
 import me.oldboy.models.client.Client;
 import me.oldboy.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -31,5 +30,4 @@ public class ClientDetailsService implements UserDetailsService {
 		}
 		return new SecurityClientDetails(mayBeClient.get());
 	}
-
 }
