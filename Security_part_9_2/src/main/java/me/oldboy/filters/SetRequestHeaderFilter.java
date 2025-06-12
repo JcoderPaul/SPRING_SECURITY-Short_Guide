@@ -42,8 +42,8 @@ public class SetRequestHeaderFilter extends HttpFilter {
         Cookie[] clientReqCookies = req.getCookies();
         if(clientReqCookies != null){
             Optional<Cookie> emailCookie = Arrays.stream(clientReqCookies)
-                                                 .filter(cookie -> EMAIL_COOKIE.equals(cookie.getName()))
-                                                 .findFirst();
+                    .filter(cookie -> EMAIL_COOKIE.equals(cookie.getName()))
+                    .findFirst();
             if (emailCookie.isPresent()) {
                 userEmail = emailCookie.get().getValue();
             }
