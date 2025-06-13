@@ -30,7 +30,7 @@ import static org.springframework.security.web.util.matcher.AntPathRequestMatche
 @Configuration
 @EnableWebSecurity(debug = true) // позволяет фиксировать происходящее в режиме отладки
 @EnableMethodSecurity
-@ComponentScan("me.oldboy")
+@ComponentScan("me.oldboy.config.main_config")
 public class AppSecurityConfig {
 
 	private final String KEY = "myKey";
@@ -51,14 +51,14 @@ public class AppSecurityConfig {
 				    .addFilterBefore(new JwtTokenValidatorAndBeforeFilter(), UsernamePasswordAuthenticationFilter.class)
 				    .addFilterAfter(new JwtTokenGeneratorAndAfterFilter(), UsernamePasswordAuthenticationFilter.class)
 				    .authorizeHttpRequests(urlConfig -> urlConfig
-							      .requestMatchers(antMatcher("/regClient"),
-								                   antMatcher("/loginClient")).permitAll()
-								  .requestMatchers(antMatcher("/myAccount"),
-												   antMatcher("/myBalance"),
-										  		   antMatcher("/myContact"),
-												   antMatcher("/myLoans")).authenticated()
-								  .requestMatchers(antMatcher("/myCards"),
-										           antMatcher("/admin/**")).hasAnyAuthority("READ", "ADMIN")
+							      .requestMatchers(antMatcher("/api/regClient"),
+								                   antMatcher("/api/loginClient")).permitAll()
+								  .requestMatchers(antMatcher("/api/myAccount"),
+												   antMatcher("/api/myBalance"),
+										  		   antMatcher("/api/myContact"),
+												   antMatcher("/api/myLoans")).authenticated()
+								  .requestMatchers(antMatcher("/api/myCards"),
+										           antMatcher("/api/admin/**")).hasAnyAuthority("READ", "ADMIN")
 								  .anyRequest().authenticated());
 
 		return httpSecurity.build();
