@@ -33,12 +33,21 @@ dependencies {
     /* Зависимость позволяющая использовать функционал Spring JPA */
     implementation "org.springframework.data:spring-data-jpa:${versions.data_jpa}"
 
+    /* Зависимость позволяющая использовать функционал JDBC Template */
+    implementation "org.springframework:spring-jdbc:${versions.spring}"
+
+    /* Зависимость отвечающая за работу AOP функционала */
+    implementation "org.aspectj:aspectjweaver:${versions.aspectj}"
+
     /* Подключаем функционал Hibernate и провайдера валидации */
     implementation "org.hibernate:hibernate-core:${versions.hibernate}"
     implementation "org.hibernate:hibernate-validator:${versions.validator}"
 
     /* Зависимость PostgreSQL */
     implementation "org.postgresql:postgresql:${versions.postgres}"
+
+    /* Зависимость миграционного фреймворка */
+    implementation "org.liquibase:liquibase-core:${versions.liquibase}"
 
     /* Зависимость позволяющая в контроллерах принимать JSON запросы */
     implementation "com.fasterxml.jackson.core:jackson-databind:${versions.jackson}"
@@ -80,10 +89,17 @@ dependencies {
     /* Подключим log4j провайдер */
     implementation "org.slf4j:slf4j-log4j12:${versions.slf4j_log4j_binding}"
 
+    /* Зависимость закрывает проблему с "замещением" Hibernate Validation в изолированных тестах */
+    implementation "org.glassfish:jakarta.el:${versions.glassfish}"
+
     /* Блок пакетов обслуживающий тесты */
-    testImplementation "org.junit.jupiter:junit-jupiter-engine:${versions.jupiter}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${versions.jupiter}"
     testImplementation "org.junit.jupiter:junit-jupiter-api:${versions.jupiter}"
     testImplementation "org.junit.jupiter:junit-jupiter-params:${versions.jupiter}"
+
+    /* Зависимости отвечающие за работу со Spring тестами */
+    testImplementation "org.springframework:spring-test:${versions.spring}"
+    testImplementation "org.springframework.security:spring-security-test:${versions.security}"
 
     /* Подключим все для тестов Testcontainers */
     testImplementation "org.testcontainers:postgresql:${versions.testcontainers}"
@@ -93,8 +109,11 @@ dependencies {
     testImplementation "org.mockito:mockito-core:${versions.mockito}"
     testRuntimeOnly "org.mockito:mockito-core:${versions.mockito}"
     testImplementation "org.mockito:mockito-junit-jupiter:${versions.mockito}"
+
     testImplementation "org.assertj:assertj-core:${versions.assertj}"
     testRuntimeOnly "org.assertj:assertj-core:${versions.assertj}"
+
+    testImplementation "org.hamcrest:hamcrest:${versions.hamcrest}"
 }
 
 test {
