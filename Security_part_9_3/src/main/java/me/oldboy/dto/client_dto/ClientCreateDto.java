@@ -9,10 +9,9 @@ import me.oldboy.dto.details_dto.DetailsCreateDto;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @Builder
 public class ClientCreateDto{
+        @NotBlank(message = "Email cannot be blank")
         @Email(message = "Standard e-mail structure - email_name@email_domain.top_lavel_domain (for example: paul@tradsystem.ru)")
         String email;
         @NotBlank(message = "Password cannot be blank")
@@ -21,4 +20,28 @@ public class ClientCreateDto{
         /* @CheckDetails */
         @Valid
         DetailsCreateDto details;
+
+        public String getEmail() {
+                return email;
+        }
+
+        public void setEmail(String email) {
+                this.email = email;
+        }
+
+        public String getPassword() {
+                return password;
+        }
+
+        public void setPassword(String password) {
+                this.password = password;
+        }
+
+        public DetailsCreateDto getDetails() {
+                return details;
+        }
+
+        public void setDetails(DetailsCreateDto details) {
+                this.details = details;
+        }
 }
