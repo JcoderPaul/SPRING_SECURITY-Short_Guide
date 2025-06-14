@@ -41,7 +41,7 @@ public class UserPassValidatorAndAfterLogoutFilter extends OncePerRequestFilter 
 		CachedBodyHttpServletRequest cachedBodyHttpServletRequest =
 				new CachedBodyHttpServletRequest(request);
 
-		if(cachedBodyHttpServletRequest.getServletPath().matches("/loginClient")){
+		if(cachedBodyHttpServletRequest.getServletPath().matches("/api/loginClient")){
 			ObjectMapper objectMapper = new ObjectMapper();
 			ClientAuthRequest clientAuthRequest =
 					objectMapper.readValue(cachedBodyHttpServletRequest.getInputStream(), ClientAuthRequest.class);
@@ -64,6 +64,6 @@ public class UserPassValidatorAndAfterLogoutFilter extends OncePerRequestFilter 
 
 	@Override
 	protected boolean shouldNotFilter(HttpServletRequest request) {
-		return request.getServletPath().equals("/regClient");
+		return request.getServletPath().equals("/api/regClient");
 	}
 }
