@@ -10,6 +10,7 @@ ext {
             'hibernate':'6.6.5.Final',
             'validator':'8.0.2.Final',
             'snakeyaml':'2.3',
+            'aspectj':'1.9.22.1',
             'slf4j_log4j_binding':'2.0.16',
             'mapstruct':'1.6.0',
             'lombok_map_struct':'0.2.0',
@@ -18,6 +19,9 @@ ext {
             'testcontainers': '1.19.1',
             'mockito': '5.12.0',
             'assertj': '3.26.0',
-            'jupiter': '5.12.1'
+            'jupiter': '5.11.4',
+            'liquibase':'4.32.0',
+            'glassfish':'4.0.2',
+            'hamcrest':'3.0'
     ]
 }
