@@ -33,16 +33,16 @@ public class JwtTokenGeneratorAndAfterFilter extends OncePerRequestFilter {
 			SecretKey key = Keys.hmacShaKeyFor(SecurityConstants.JWT_KEY.getBytes(StandardCharsets.UTF_8));
 
 			Claims currentClaims = Jwts.claims()
-								.add("username", authentication.getPrincipal())
-								.add("authorities", populateAuthorities(authentication.getAuthorities()))
-								.build();
+					.add("username", authentication.getPrincipal())
+					.add("authorities", populateAuthorities(authentication.getAuthorities()))
+					.build();
 
 			String jwt = Jwts.builder()
-							 .claims(currentClaims)
-							 .issuedAt(new Date())
-							 .expiration(new Date((new Date()).getTime() + 300_000_000))
-							 .signWith(key)
-							 .compact();
+					.claims(currentClaims)
+					.issuedAt(new Date())
+					.expiration(new Date((new Date()).getTime() + 300_000_000))
+					.signWith(key)
+					.compact();
 
 			response.setHeader(SecurityConstants.JWT_HEADER, jwt);
 		}
