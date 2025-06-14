@@ -59,7 +59,7 @@ public class JwtTokenGeneratorAndAfterFilter extends OncePerRequestFilter {
 
 	@Override
 	protected boolean shouldNotFilter(HttpServletRequest request) {
-		return !request.getServletPath().equals("/loginClient");
+		return !request.getServletPath().equals("/api/loginClient");
 	}
 }
 
