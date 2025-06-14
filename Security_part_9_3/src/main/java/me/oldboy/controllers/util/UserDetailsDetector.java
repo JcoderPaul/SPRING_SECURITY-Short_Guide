@@ -3,9 +3,11 @@ package me.oldboy.controllers.util;
 import me.oldboy.models.client.Client;
 import me.oldboy.services.ClientService;
 import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+@Component
 public class UserDetailsDetector {
     private Long clientId;
     private Long accountNumber;
