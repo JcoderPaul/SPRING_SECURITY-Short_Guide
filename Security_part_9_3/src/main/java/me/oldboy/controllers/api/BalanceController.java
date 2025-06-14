@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,17 +21,19 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @NoArgsConstructor
+@RequestMapping("/api")
 public class BalanceController {
 
 	@Autowired
 	private BalanceService balanceService;
 	@Autowired
 	private ClientService clientService;
+	@Autowired
+	private UserDetailsDetector userDetailsDetector;
 	
 	@GetMapping("/myBalance")
 	public ResponseEntity<List<TransactionReadDto>> getBalanceDetails() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		UserDetailsDetector userDetailsDetector = new UserDetailsDetector();
 		ResponseEntity<List<TransactionReadDto>> balanceList = ResponseEntity.noContent().build();
 
 		if (userDetailsDetector.isUserDetailsNotNull(clientService, authentication)) {
