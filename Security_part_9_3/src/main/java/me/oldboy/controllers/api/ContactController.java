@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
@@ -20,17 +21,19 @@ import java.util.Optional;
 @RestController
 @AllArgsConstructor
 @NoArgsConstructor
+@RequestMapping("/api")
 public class ContactController {
 
 	@Autowired
 	private ClientService clientService;
 	@Autowired
 	private ContactService contactService;
+	@Autowired
+	private UserDetailsDetector userDetailsDetector;
 	
 	@GetMapping("/myContact")
 	public ResponseEntity<ContactReadDto> getContactDetails() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		UserDetailsDetector userDetailsDetector = new UserDetailsDetector();
 		ResponseEntity<ContactReadDto> clientContact = ResponseEntity.noContent().build();
 
 		if(userDetailsDetector.isUserDetailsNotNull(clientService, authentication)) {
