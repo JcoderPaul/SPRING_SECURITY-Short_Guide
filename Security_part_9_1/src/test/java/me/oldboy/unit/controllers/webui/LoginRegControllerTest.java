@@ -151,7 +151,7 @@ class LoginRegControllerTest {
     /* Тест обращения к странице с JWT token не залогиненного пользователя - header "Authorization" отсутствует в response */
     @Test
     @SneakyThrows
-    public void shouldRedirectToContinuePage_WithAuthUser_GetJwtAndContinue_Test() {
+    public void shouldRedirectToLoginPage_WithoutAuthUser_WithAuthUser_GetJwtAndContinue_Test() {
         mockMvc.perform(get("/webui/jwt_token"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/webui/login"))
@@ -160,7 +160,7 @@ class LoginRegControllerTest {
 
     @Test
     @SneakyThrows
-    public void shouldRedirectToLoginPage_WithoutAuthUser_GetJwtAndContinue_Test(CapturedOutput output) {
+    public void shouldRedirectToContinuePage_WithAuthUser_GetJwtAndContinue_Test(CapturedOutput output) {
         mockMvc.perform(get("/webui/jwt_token")
                         .header(JWT_HEADER, testJwt))
                 .andExpect(status().isOk())
