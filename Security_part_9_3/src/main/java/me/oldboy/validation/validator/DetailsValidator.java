@@ -14,9 +14,9 @@ public class DetailsValidator implements ConstraintValidator<CheckDetails, Detai
 
     @Override
     public boolean isValid(DetailsCreateDto enteredDetail, ConstraintValidatorContext context) {
-        boolean isNameNotBlankAndMoreThen2Char = enteredDetail.clientSurName().trim().length() > 2;
-        boolean isSurNameNotBlankAndMoreThen2Char = enteredDetail.clientName().trim().length() > 2;
-        boolean isAgeMoreThenZero = enteredDetail.age() >= 0;
+        boolean isNameNotBlankAndMoreThen2Char = enteredDetail.getClientSurName().trim().length() > 2;
+        boolean isSurNameNotBlankAndMoreThen2Char = enteredDetail.getClientName().trim().length() > 2;
+        boolean isAgeMoreThenZero = enteredDetail.getAge() >= 0;
         if (isAgeMoreThenZero && isNameNotBlankAndMoreThen2Char && isSurNameNotBlankAndMoreThen2Char) {
             return true;
         } else {
