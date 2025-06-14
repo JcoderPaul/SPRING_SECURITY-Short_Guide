@@ -56,7 +56,7 @@ public class JwtTokenValidatorAndBeforeFilter extends OncePerRequestFilter {
 
 	@Override
 	protected boolean shouldNotFilter(HttpServletRequest request) {
-		if(request.getServletPath().equals("/regClient") || request.getServletPath().equals("/loginClient")) {
+		if(request.getServletPath().equals("/api/regClient") || request.getServletPath().equals("/api/loginClient")) {
 			return true;
 		} else {
 			return false;
