@@ -1,5 +1,6 @@
 package me.oldboy.controllers.util;
 
+import me.oldboy.exception.EmptyCurrentClientException;
 import me.oldboy.models.client.Client;
 import me.oldboy.services.ClientService;
 import org.springframework.security.core.Authentication;
@@ -22,12 +23,12 @@ public class UserDetailsDetector {
             if(mayBeClient.isPresent()){
                 clientId = mayBeClient.get().getId();
                 accountNumber = mayBeClient.get().getAccount().getAccountNumber();
+                return true;
             } else {
                 clientId = null;
                 accountNumber = null;
+                return false;
             }
-
-            return true;
         } else {
             return false;
         }
@@ -46,6 +47,10 @@ public class UserDetailsDetector {
     }
 
     public Client getCurrentClient(){
-        return mayBeClient.get();
+        if(mayBeClient.isPresent()){
+            return mayBeClient.get();
+        } else {
+            throw new EmptyCurrentClientException("Have no Client from UserDetailsDetector!");
+        }
     }
 }
