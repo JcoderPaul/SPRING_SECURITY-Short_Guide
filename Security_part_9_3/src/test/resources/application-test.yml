@@ -1,0 +1,13 @@
+logging:
+  level:
+    root: INFO
+    org.springframework.jdbc.core: TRACE
+
+datasource:
+  username: test
+  password: test
+  driver-class-name: org.postgresql.Driver
+liquibase:
+  enabled: true
+  change_log: classpath:db/changelog/db.changelog-master.yml
+  default_schema: public
