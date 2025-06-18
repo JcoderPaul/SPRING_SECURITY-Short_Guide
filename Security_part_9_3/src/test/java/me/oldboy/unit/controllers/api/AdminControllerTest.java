@@ -1,7 +1,6 @@
 package me.oldboy.unit.controllers.api;
 
 import lombok.SneakyThrows;
-import me.oldboy.config.TestWebAppInitializer;
 import me.oldboy.controllers.api.AdminController;
 import me.oldboy.dto.client_dto.ClientReadDto;
 import me.oldboy.models.client.Role;
@@ -10,9 +9,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -29,10 +28,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = {TestWebAppInitializer.class})
+@ContextConfiguration(classes = {AdminController.class})
 class AdminControllerTest {
 
-    @Mock
+    @MockitoBean
     private ClientService clientService;
     @InjectMocks
     private AdminController adminController;
