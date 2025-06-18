@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.SneakyThrows;
-import me.oldboy.config.TestWebAppInitializer;
 import me.oldboy.config.security_details.SecurityClientDetails;
 import me.oldboy.controllers.api.BalanceController;
 import me.oldboy.controllers.util.UserDetailsDetector;
@@ -46,7 +45,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebAppConfiguration
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {TestWebAppInitializer.class})
+@ContextConfiguration(classes = {BalanceController.class})
 class BalanceControllerTest {
 
     @MockitoBean
