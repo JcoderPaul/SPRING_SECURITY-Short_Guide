@@ -3,7 +3,6 @@ package me.oldboy.unit.controllers.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.SneakyThrows;
-import me.oldboy.config.TestWebAppInitializer;
 import me.oldboy.config.security_details.SecurityClientDetails;
 import me.oldboy.controllers.api.CardsController;
 import me.oldboy.controllers.util.UserDetailsDetector;
@@ -44,7 +43,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {TestWebAppInitializer.class})
+@ContextConfiguration(classes = {CardsController.class})
 @WebAppConfiguration
 class CardsControllerTest {
 
