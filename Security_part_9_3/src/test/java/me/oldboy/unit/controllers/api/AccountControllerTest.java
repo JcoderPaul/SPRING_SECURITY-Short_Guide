@@ -3,7 +3,6 @@ package me.oldboy.unit.controllers.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.SneakyThrows;
-import me.oldboy.config.TestWebAppInitializer;
 import me.oldboy.config.security_details.SecurityClientDetails;
 import me.oldboy.controllers.api.AccountController;
 import me.oldboy.controllers.util.UserDetailsDetector;
@@ -45,7 +44,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = {TestWebAppInitializer.class})
+@ContextConfiguration(classes = {AccountController.class})
 class AccountControllerTest {
 
     @MockitoBean
