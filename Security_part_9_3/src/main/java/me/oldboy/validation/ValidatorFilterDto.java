@@ -18,7 +18,7 @@ public class ValidatorFilterDto {
             return instance;
         }
 
-        public <T> void isValidData(T t) {
+        public <T> void isValidData(T t) throws ConstraintViolationException {
             ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
             Validator validator = validatorFactory.getValidator();
             Set<ConstraintViolation<T>> validationResult = validator.validate(t);
