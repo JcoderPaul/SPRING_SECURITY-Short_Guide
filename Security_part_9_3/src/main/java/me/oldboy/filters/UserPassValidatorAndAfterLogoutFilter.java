@@ -5,10 +5,12 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.ConstraintViolationException;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.oldboy.dto.auth_dto.ClientAuthRequest;
+import me.oldboy.exception.EmptyCurrentClientException;
 import me.oldboy.filters.request_wrapper.CachedBodyHttpServletRequest;
 import me.oldboy.models.client.Client;
 import me.oldboy.services.ClientService;
@@ -21,6 +23,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Optional;
@@ -38,17 +41,31 @@ public class UserPassValidatorAndAfterLogoutFilter extends OncePerRequestFilter 
 	public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-		CachedBodyHttpServletRequest cachedBodyHttpServletRequest =
-				new CachedBodyHttpServletRequest(request);
+		CachedBodyHttpServletRequest cachedBodyHttpServletRequest = new CachedBodyHttpServletRequest(request);
 
 		if(cachedBodyHttpServletRequest.getServletPath().matches("/api/loginClient")){
-			ObjectMapper objectMapper = new ObjectMapper();
+
+			if (cachedBodyHttpServletRequest.getInputStream().readAllBytes().length == 0) {
+				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+				response.getWriter().write("Incorrect auth request - empty or null body!");
+				return;
+			}
+
 			ClientAuthRequest clientAuthRequest =
-					objectMapper.readValue(cachedBodyHttpServletRequest.getInputStream(), ClientAuthRequest.class);
+					new ObjectMapper().readValue(cachedBodyHttpServletRequest.getInputStream(), ClientAuthRequest.class);
 
 			if(clientAuthRequest != null){
-				ValidatorFilterDto.getInstance().isValidData(clientAuthRequest);
+
+				try {
+					ValidatorFilterDto.getInstance().isValidData(clientAuthRequest);
+				} catch (ConstraintViolationException exception) {
+					response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+					response.getWriter().write(exception.getMessage());
+					return;
+				}
+
 				Optional<Client> mayByClient = clientService.getClientIfAuthDataCorrect(clientAuthRequest);
+
 				if(mayByClient.isPresent()) {
 					UserDetails client = userDetailsService.loadUserByUsername(mayByClient.get().getEmail());
 					String username = client.getUsername();
