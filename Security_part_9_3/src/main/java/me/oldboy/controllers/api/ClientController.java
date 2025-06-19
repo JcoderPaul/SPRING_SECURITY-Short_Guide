@@ -60,8 +60,6 @@ public class ClientController {
                                          BindingResult bindingResult,
                                          HttpServletResponse response) throws JsonProcessingException {
 
-        ValidatorFilterDto.getInstance().isValidData(clientAuthRequest);
-
         if (bindingResult.hasErrors()) {
             return validateRequestEntity(bindingResult);
         }
