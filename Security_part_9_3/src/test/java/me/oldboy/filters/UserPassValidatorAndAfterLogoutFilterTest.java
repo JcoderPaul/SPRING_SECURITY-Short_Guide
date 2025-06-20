@@ -166,7 +166,7 @@ class UserPassValidatorAndAfterLogoutFilterTest {
         assertThat(authentication).isNull();
         assertThat(mockResponse.getStatus()).isEqualTo(HttpServletResponse.SC_BAD_REQUEST);
 
-        /* Убеждаемся, что chain.doFilter был вызван именно с CachedBodyHttpServletRequest (т.е. с нашим "кэшером запроса") */
+        /* Убеждаемся, что chain.doFilter не вызывался вовсе */
         verifyNoInteractions(mockChain);
     }
 
