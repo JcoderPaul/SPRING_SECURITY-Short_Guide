@@ -9,5 +9,5 @@ datasource:
   driver-class-name: org.postgresql.Driver
 liquibase:
   enabled: true
-  change_log: classpath:db/changelog/db.changelog-master.yml
+  change_log: classpath:db/changelog/db.changelog-master.yaml
   default_schema: public
