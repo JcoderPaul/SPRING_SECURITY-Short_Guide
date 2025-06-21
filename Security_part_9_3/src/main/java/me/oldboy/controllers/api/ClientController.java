@@ -11,7 +11,6 @@ import me.oldboy.dto.auth_dto.ClientAuthRequest;
 import me.oldboy.dto.auth_dto.ClientAuthResponse;
 import me.oldboy.dto.client_dto.ClientCreateDto;
 import me.oldboy.exception.DuplicateClientEmailException;
-import me.oldboy.exception.EmptyCurrentClientException;
 import me.oldboy.models.client.Client;
 import me.oldboy.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
