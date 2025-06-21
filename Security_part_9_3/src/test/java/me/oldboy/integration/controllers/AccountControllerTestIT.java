@@ -22,8 +22,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class AccountControllerTestIT extends TestContainerInit {
 
     @Autowired
-    private AccountController accountController;
-    @Autowired
     private WebApplicationContext webApplicationContext;
     private MockMvc mockMvc;
 
