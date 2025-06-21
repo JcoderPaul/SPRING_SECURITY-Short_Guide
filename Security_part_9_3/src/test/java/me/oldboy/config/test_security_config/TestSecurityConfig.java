@@ -2,6 +2,7 @@ package me.oldboy.config.test_security_config;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import me.oldboy.config.security_config.FilterChainConfig;
 import me.oldboy.filters.JwtTokenGeneratorAndAfterFilter;
 import me.oldboy.filters.JwtTokenValidatorAndBeforeFilter;
 import me.oldboy.filters.UserPassValidatorAndAfterLogoutFilter;
@@ -43,25 +44,7 @@ public class TestSecurityConfig {
 	@Bean
 	@SneakyThrows
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) {
-		httpSecurity
-					.csrf(AbstractHttpConfigurer::disable)
-				    .cors(AbstractHttpConfigurer::disable)
-				    .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
-					.addFilterAfter(new UserPassValidatorAndAfterLogoutFilter(userDetailsService, clientService), LogoutFilter.class)
-				    .addFilterBefore(new JwtTokenValidatorAndBeforeFilter(), UsernamePasswordAuthenticationFilter.class)
-				    .addFilterAfter(new JwtTokenGeneratorAndAfterFilter(), UsernamePasswordAuthenticationFilter.class)
-				    .authorizeHttpRequests(urlConfig -> urlConfig
-							      .requestMatchers(antMatcher("/api/regClient"),
-								                   antMatcher("/api/loginClient")).permitAll()
-								  .requestMatchers(antMatcher("/api/myAccount"),
-												   antMatcher("/api/myBalance"),
-										  		   antMatcher("/api/myContact"),
-												   antMatcher("/api/myLoans")).authenticated()
-								  .requestMatchers(antMatcher("/api/myCards"),
-										           antMatcher("/api/admin/**")).hasAnyAuthority("READ", "ADMIN")
-								  .anyRequest().authenticated());
-
-		return httpSecurity.build();
+		return FilterChainConfig.getSecurityFilterChain(httpSecurity, userDetailsService, clientService);
 	}
 
 	@Bean
