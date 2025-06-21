@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({
+@ComponentScan(basePackages = {
         "me.oldboy.controllers"
         ,"me.oldboy.services"
         ,"me.oldboy.repository"
