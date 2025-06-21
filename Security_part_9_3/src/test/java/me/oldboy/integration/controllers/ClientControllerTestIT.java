@@ -9,9 +9,7 @@ import me.oldboy.dto.client_dto.ClientCreateDto;
 import me.oldboy.dto.client_dto.ClientReadDto;
 import me.oldboy.dto.details_dto.DetailsCreateDto;
 import me.oldboy.integration.annotation.IT;
-import me.oldboy.models.client.Client;
 import me.oldboy.services.ClientService;
-import me.oldboy.test_constant.TestConstantFields;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +20,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.util.List;
-import java.util.Optional;
 
 import static me.oldboy.test_constant.TestConstantFields.*;
 import static org.assertj.core.api.Assertions.assertThat;
