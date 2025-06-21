@@ -1,8 +1,7 @@
-package me.oldboy.integration.controllers;
+package me.oldboy.integration.controllers.account_controller_var;
 
 import lombok.SneakyThrows;
 import me.oldboy.config.test_data_source.TestContainerInit;
-import me.oldboy.controllers.api.AccountController;
 import me.oldboy.integration.annotation.IT;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @IT
-class AccountControllerTestIT extends TestContainerInit {
+class AccountControllerMockMvcIT extends TestContainerInit {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
