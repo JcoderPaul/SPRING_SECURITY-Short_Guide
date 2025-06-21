@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.oldboy.dto.auth_dto.ClientAuthRequest;
+import me.oldboy.exception.ClientServiceException;
 import me.oldboy.exception.EmptyCurrentClientException;
 import me.oldboy.filters.request_wrapper.CachedBodyHttpServletRequest;
 import me.oldboy.models.client.Client;
@@ -64,15 +65,21 @@ public class UserPassValidatorAndAfterLogoutFilter extends OncePerRequestFilter 
 					return;
 				}
 
-				Optional<Client> mayByClient = clientService.getClientIfAuthDataCorrect(clientAuthRequest);
+				try {
+					Optional<Client> mayByClient = clientService.getClientIfAuthDataCorrect(clientAuthRequest);
 
-				if(mayByClient.isPresent()) {
-					UserDetails client = userDetailsService.loadUserByUsername(mayByClient.get().getEmail());
-					String username = client.getUsername();
-					Collection<? extends GrantedAuthority> authorities = client.getAuthorities();
+					if(mayByClient.isPresent()) {
+						UserDetails client = userDetailsService.loadUserByUsername(mayByClient.get().getEmail());
+						String username = client.getUsername();
+						Collection<? extends GrantedAuthority> authorities = client.getAuthorities();
 
-					Authentication auth = new UsernamePasswordAuthenticationToken(username, null, authorities);
-					SecurityContextHolder.getContext().setAuthentication(auth);
+						Authentication auth = new UsernamePasswordAuthenticationToken(username, null, authorities);
+						SecurityContextHolder.getContext().setAuthentication(auth);
+					}
+				} catch (ClientServiceException exception){
+					response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+					response.getWriter().write(exception.getMessage());
+					return;
 				}
 			}
 		}
