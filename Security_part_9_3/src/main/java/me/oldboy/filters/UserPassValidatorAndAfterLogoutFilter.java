@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.oldboy.dto.auth_dto.ClientAuthRequest;
 import me.oldboy.exception.ClientServiceException;
-import me.oldboy.exception.EmptyCurrentClientException;
 import me.oldboy.filters.request_wrapper.CachedBodyHttpServletRequest;
 import me.oldboy.models.client.Client;
 import me.oldboy.services.ClientService;
@@ -24,7 +23,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Optional;
