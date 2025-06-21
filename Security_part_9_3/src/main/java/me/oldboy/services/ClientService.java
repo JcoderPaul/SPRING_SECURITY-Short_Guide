@@ -57,7 +57,7 @@ public class ClientService {
         return clientRepository.findById(userId);
     }
 
-    public Optional<Client> getClientIfAuthDataCorrect(ClientAuthRequest clientAuthRequest){
+    public Optional<Client> getClientIfAuthDataCorrect(ClientAuthRequest clientAuthRequest) throws ClientServiceException {
         Optional<Client> mayBeClient = findByEmail(clientAuthRequest.getUsername());
         if(mayBeClient.isPresent()) {
             if(!passwordEncoder.matches(clientAuthRequest.getPassword(), mayBeClient.get().getPass())){
