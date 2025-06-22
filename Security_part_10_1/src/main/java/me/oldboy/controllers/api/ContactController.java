@@ -100,7 +100,7 @@ public class ContactController {
 	@PostAuthorize("#myCity == returnObject.city")
 	@GetMapping("/user-contact-with-condition/{myCity}")
 	public ContactReadDto getContactsIfConditionIsGood(@Param("myCity") @PathVariable("myCity") String myCity,
-					   @AuthenticationPrincipal UserDetails userDetails) {
+					   			@AuthenticationPrincipal UserDetails userDetails) {
 		String userName = userDetails.getUsername();
 		ContactReadDto readContact = null;
 
