@@ -18,6 +18,9 @@ ext {
             'testcontainers': '1.19.1',
             'mockito': '5.12.0',
             'assertj': '3.26.0',
-            'jupiter': '5.12.1'
+            'jupiter': '5.12.1',
+            'liquibase':'4.32.0',
+            'glassfish':'4.0.2',
+            'hamcrest':'3.0'
     ]
 }
