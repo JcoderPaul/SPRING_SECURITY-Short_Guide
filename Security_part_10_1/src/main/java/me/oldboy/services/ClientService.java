@@ -35,7 +35,7 @@ public class ClientService {
         String encodedPass = passwordEncoder.encode(clientCreateDto.getPassword());
 
         Client toCreateClient = ClientMapper.INSTANCE.mapToClient(clientCreateDto);
-        toCreateClient.setRole(Role.ROLE_USER);
+        toCreateClient.setRole(Role.USER);
         toCreateClient.setPass(encodedPass);
         Client createdClient = clientRepository.save(toCreateClient);
         ClientReadDto toPrintClient = ClientMapper.INSTANCE.mapToClientReadDto(createdClient);
