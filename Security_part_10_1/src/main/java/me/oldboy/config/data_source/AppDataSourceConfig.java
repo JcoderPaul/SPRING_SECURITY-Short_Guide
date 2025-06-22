@@ -1,6 +1,6 @@
-package me.oldboy.config;
+package me.oldboy.config.data_source;
 
-import jakarta.persistence.EntityManagerFactory;
+import liquibase.integration.spring.SpringLiquibase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.oldboy.config.yaml_read_adapter.YamlPropertySourceFactory;
@@ -18,7 +18,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
-import java.util.Properties;
 
 @Slf4j
 @Configuration
@@ -37,29 +36,13 @@ public class AppDataSourceConfig {
     @Value("${datasource.password}")
     private String password;
 
-    /* Настройка Hibernate */
-    @Value("${jpa.properties.hibernate.dialect}")
-    private String dialect;
-    @Value("${jpa.properties.hibernate.show_sql}")
-    private String show_sql;
-    @Value("${jpa.properties.hibernate.format_sql}")
-    private String format_sql;
-    @Value("${jpa.properties.hibernate.hbm2ddl.auto}")
-    private String ddl_auto;
-
-    /*
-    Как это не странно, но настройки проброшенные в этот метод, из YML файла можно опустить, т.е. данный
-    метод с текущей версией Hibernate-a можно вообще не использовать. Будут взяты свойства по умолчанию.
-    */
-    private Properties hibernateProperties() {
-        Properties properties = new Properties();
-        properties.put("hibernate.dialect", dialect);
-        properties.put("hibernate.show_sql", show_sql);
-        properties.put("hibernate.format_sql", format_sql);
-        properties.put("hibernate.hbm2ddl.auto", ddl_auto);
-
-        return properties;
-    }
+    /* Настройка Liquibase */
+    @Value("${liquibase.change_log}")
+    private String changeLogFile;
+    @Value("${liquibase.default_schema}")
+    private String defaultSchema;
+    @Value("${liquibase.enabled}")
+    private String enabledLiquibaseStart;
 
     @Bean
     public DataSource dataSource() {
@@ -71,6 +54,22 @@ public class AppDataSourceConfig {
         dataSource.setPassword(password);
 
         return dataSource;
+    }
+
+    @Bean
+    public SpringLiquibase liquibase() {
+        SpringLiquibase liquibase = new SpringLiquibase();
+        liquibase.setChangeLog(changeLogFile);
+        liquibase.setShouldRun(Boolean.parseBoolean(enabledLiquibaseStart));
+        liquibase.setDefaultSchema(defaultSchema);
+        liquibase.setDataSource(dataSource());
+        try {
+            liquibase.afterPropertiesSet(); // Manually trigger migration
+        } catch (Exception e) {
+            throw new RuntimeException("Liquibase migration failed", e);
+        }
+
+        return liquibase;
     }
 
     @Bean
@@ -87,10 +86,6 @@ public class AppDataSourceConfig {
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
-
-        /* Если удалить метод hibernateProperties(), то и данную установку можно не применять (приложение будет работать) */
-        entityManagerFactoryBean.setJpaProperties(hibernateProperties());
-        entityManagerFactoryBean.setEntityManagerFactoryInterface(EntityManagerFactory.class);
 
         return entityManagerFactoryBean;
     }
