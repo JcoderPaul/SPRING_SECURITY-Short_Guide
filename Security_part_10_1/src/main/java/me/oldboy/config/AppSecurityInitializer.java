@@ -1,4 +1,4 @@
-package me.oldboy.config.security_config;
+package me.oldboy.config;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
