@@ -20,7 +20,7 @@ import static org.springframework.security.web.util.matcher.AntPathRequestMatche
 @Configuration
 @EnableWebSecurity(debug = true) // позволяет фиксировать происходящее в режиме отладки
 @EnableMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
-@ComponentScan("me.oldboy")
+@ComponentScan("me.oldboy.config.main_config")
 public class AppSecurityConfig {
 
 	@Bean
@@ -30,13 +30,13 @@ public class AppSecurityConfig {
 					.csrf(AbstractHttpConfigurer::disable)
 				    .cors(AbstractHttpConfigurer::disable)
 				    .authorizeHttpRequests(urlConfig -> urlConfig
-							      .requestMatchers(antMatcher("/regClient")).permitAll()
-								  .requestMatchers(antMatcher("/myAccountInfo"),
-												   antMatcher("/myBalance"),
-										  		   antMatcher("/myContact"),
-												   antMatcher("/myLoans")).authenticated()
-								  .requestMatchers(antMatcher("/myCards"),
-										           antMatcher("/admin/**")).hasAnyAuthority("READ", "ROLE_ADMIN")
+							      .requestMatchers(antMatcher("/api/regClient")).permitAll()
+								  .requestMatchers(antMatcher("/api/myAccount"),
+												   antMatcher("/api/myBalance"),
+										  		   antMatcher("/api/myContact"),
+												   antMatcher("/api/myLoans")).authenticated()
+								  .requestMatchers(antMatcher("/api/myCards"),
+										           antMatcher("/api/admin/**")).hasAnyAuthority("READ", "ROLE_ADMIN")
 								  .anyRequest().authenticated())
 					.httpBasic(Customizer.withDefaults())
 					.formLogin(Customizer.withDefaults());
