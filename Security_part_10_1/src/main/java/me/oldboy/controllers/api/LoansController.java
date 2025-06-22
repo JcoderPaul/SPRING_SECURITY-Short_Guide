@@ -105,8 +105,12 @@ public class LoansController {
 	*/
 	@PreFilter(filterTarget = "dtoList", value = "filterObject.clientId == #userDetails.client.id")
 	@PostMapping("/save-all-loans")
-	public ResponseEntity<String> saveAllMyRequestLoan(@Param("dtoList") @RequestBody List<LoanCreateDto> dtoList,
-														@Param("userDetails") @AuthenticationPrincipal SecurityClientDetails userDetails){
+	public ResponseEntity<String> saveAllMyRequestLoan(@Param("dtoList")
+													   @RequestBody
+													   List<LoanCreateDto> dtoList,
+													   @Param("userDetails")
+													   @AuthenticationPrincipal
+													   SecurityClientDetails userDetails){
 
 		String prnResponseAsSting = "Operation is failed!";
 		if(loanService.saveAllMyLoans(dtoList, userDetails)){
