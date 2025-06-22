@@ -88,7 +88,7 @@ ________________________________________________________________________________
 
 В методе configure (HttpSecurity http) задается тип авторизации и доступ. Сделаем так, чтобы добавлять животных (вызывать 
 метод *.addAnimal()) мог вызывать только admin, но не user. Для этого используем аннотацию @PreAuthorize - поставим ее 
-непосредственно над методом, мы уже сделали это см. выше класс AnimalController. B все же выделим:
+непосредственно над методом, мы уже сделали это см. выше класс AnimalController. И все же выделим:
 
         @PreAuthorize("hasAuthority('ROLE_ADMIN')")
         @PostMapping("/animal")
@@ -98,21 +98,21 @@ ________________________________________________________________________________
           return animal;
         }
 
-В аннотации прописан, что добавлять животных может только пользователь с правом ROLE_ADMIN. Любой другой клиент приложения
+В аннотации прописано, что добавлять животных может только пользователь с правом ROLE_ADMIN. Любой другой клиент приложения
 при попытке добавить животное, получит 403 ответ от сервиса (сервера).
 
 Аннотация @PreAuthorize может защищать любые методы: сервисов, контроллеров, dao (repository) и т.д.
 
 ### @PreAuthorize (практика).
 
-- Создадим метод читающий все контакты Client-ов из БД *.getAllContacts() в классе ContactController и аннотируем его, как:
+- Создадим метод читающий все контакты Client-ов из БД [*.getAllContacts()](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_10_1/src/main/java/me/oldboy/controllers/api/ContactController.java#L78) в классе [ContactController](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_10_1/src/main/java/me/oldboy/controllers/api/ContactController.java) и аннотируем его, как:
 
         @PreAuthorize("hasRole('ADMIN')")
         @GetMapping("/user-contacts")
 
 Т.е. доступ к endpoint-у "/user-contacts" будет только у клиентов с ролью "ADMIN".
 
-- Создадим метод *.createLoan() в классе LoansController.java, и условия в аннотации @PreAuthorize будут таковыми, что в БД
+- Создадим метод [*.createLoan()](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_10_1/src/main/java/me/oldboy/controllers/api/LoansController.java#L70) в классе [LoansController.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_10_1/src/main/java/me/oldboy/controllers/api/LoansController.java), и условия в аннотации @PreAuthorize будут таковыми, что в БД
 будут сохранены только кредиты с clientId соответствующие ID аутентифицированного клиента.
 
 ________________________________________________________________________________________________________________________
@@ -219,7 +219,7 @@ ________________________________________________________________________________
 
 ### @PostAuthorize (практика).
 
-Проверим все описанное выше для аннотации @PostAuthorize на практике. В классе ContactController добавим метод:
+Проверим все описанное выше для аннотации @PostAuthorize на практике. В классе [ContactController](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_10_1/src/main/java/me/oldboy/controllers/api/ContactController.java) добавим метод:
 
         @PostAuthorize("#myCity == returnObject.city")
         @GetMapping("/user-contact-with-condition/{myCity}")
@@ -330,9 +330,9 @@ Security предоставляет множество других встрое
 ### @PostFilter и @PreFilter (практика).
 
 - Поиграем с аннотацией @PreFilter. Поскольку данные фильтры рассчитаны на работу с коллекциями, недурно было бы узнать, 
-как отправлять коллекцию в метод контроллера в теле POST запроса, данный материал кратко изложен в JSON_and_POST_request.md. 
-Что мы и применили в LoanCreateDto.java - расставили аннотации над геттерами, далее создали метод *.saveAllMyRequestLoan() 
-в LoansController.java, в котором аннотация @PreFilter отсекает кредиты из переданной коллекции не принадлежащие текущему 
+как отправлять коллекцию в метод контроллера в теле POST запроса, данный материал кратко изложен в [JSON_and_POST_request.md](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_10_1/DOC/JSON_Collection_to_POST/JSON_and_POST_request.md). 
+Что мы и применили в LoanCreateDto.java - расставили аннотации над геттерами, далее создали метод [*.saveAllMyRequestLoan()](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_10_1/src/main/java/me/oldboy/controllers/api/LoansController.java#L108) 
+в [LoansController.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_10_1/src/main/java/me/oldboy/controllers/api/LoansController.java), в котором аннотация @PreFilter отсекает кредиты из переданной коллекции не принадлежащие текущему 
 аутентифицированному клиенту. Далее см. по MVC цепочке как двигается запрос и формируется ответ.
 
 - Поиграем с аннотацией @PostFilter. У нас есть таблица loans содержащая поле loan_type - условно тип кредита (на что ушли 
@@ -341,7 +341,7 @@ Security предоставляет множество других встрое
 но мы хотим именно испробовать @PostFilter. Недостаток был описан выше - сначала метод выгребет из БД все записи и только 
 затем сделает необходимые фильтрации, т.е. мы рискуем уронить сервис в случае огромного количества записей. Но аннотация
 @PostFilter все же является частью системы безопасности, и как нам кажется, имеет скорее вспомогательную (доводящую до 
-нужной кондиции) функцию. Ее работу мы тестируем в методе *.getAllLoanByType() класса LoansController.java.
+нужной кондиции) функцию. Ее работу мы тестируем в методе [*.getAllLoanByType()](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_10_1/src/main/java/me/oldboy/controllers/api/LoansController.java#L130) класса [LoansController.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_10_1/src/main/java/me/oldboy/controllers/api/LoansController.java).
 
 ________________________________________________________________________________________________________________________
 ### Часть 4. - Аннотация @EnableMethodSecurity (теория).
@@ -356,7 +356,7 @@ ________________________________________________________________________________
 нам использовать декларативный способ защиты отдельных методов приложения). 
 
 @EnableMethodSecurity - функциональный интерфейс, который нам нужен наряду с @EnableWebSecurity для создания и
-настройки безопасности приложения и получения авторизации метода, пример класса конфигурации (AppSecurityConfig):
+настройки безопасности приложения и получения авторизации метода, пример класса конфигурации ([AppSecurityConfig](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_10_1/src/main/java/me/oldboy/config/security_config/AppSecurityConfig.java)):
 
          @EnableWebSecurity
          @EnableMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
@@ -408,7 +408,7 @@ ________________________________________________________________________________
 
 ### @Secured (практика).
 
-Далеко ходить не будем, давайте защитим аннотацией метод *.getAllLoanByType() класса LoansController.java. На нем мы 
+Далеко ходить не будем, давайте защитим аннотацией метод [*.getAllLoanByType()](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_10_1/src/main/java/me/oldboy/controllers/api/LoansController.java#L130) класса [LoansController.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_10_1/src/main/java/me/oldboy/controllers/api/LoansController.java). На нем мы 
 отрабатывали аннотацию @PostFilter, а теперь добавим еще и средство защиты в виде проверки права доступа "ROLE_". Пусть,
 у нас, данный метод будет доступен только для клиентов с правами ADMIN. 
 ________________________________________________________________________________________________________________________
