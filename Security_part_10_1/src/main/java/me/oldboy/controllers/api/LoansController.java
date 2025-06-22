@@ -3,7 +3,7 @@ package me.oldboy.controllers.api;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import me.oldboy.config.securiry_details.SecurityClientDetails;
+import me.oldboy.config.security_details.SecurityClientDetails;
 import me.oldboy.controllers.util.UserDetailsDetector;
 import me.oldboy.dto.loan_dto.LoanCreateDto;
 import me.oldboy.dto.loan_dto.LoanReadDto;
@@ -29,6 +29,7 @@ import java.util.Optional;
 @RestController
 @AllArgsConstructor
 @NoArgsConstructor
+@RequestMapping("/api")
 public class LoansController {
 
 	@Autowired
