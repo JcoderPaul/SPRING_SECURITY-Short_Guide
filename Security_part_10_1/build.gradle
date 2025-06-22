@@ -37,6 +37,9 @@ dependencies {
     implementation "org.hibernate:hibernate-core:${versions.hibernate}"
     implementation "org.hibernate:hibernate-validator:${versions.validator}"
 
+    /* Зависимость миграционного фреймворка */
+    implementation "org.liquibase:liquibase-core:${versions.liquibase}"
+
     /* Зависимость PostgreSQL */
     implementation "org.postgresql:postgresql:${versions.postgres}"
 
@@ -80,10 +83,17 @@ dependencies {
     /* Подключим log4j провайдер */
     implementation "org.slf4j:slf4j-log4j12:${versions.slf4j_log4j_binding}"
 
+    /* Зависимость закрывает проблему с "замещением" Hibernate Validation в изолированных тестах */
+    implementation "org.glassfish:jakarta.el:${versions.glassfish}"
+
     /* Блок пакетов обслуживающий тесты */
     testImplementation "org.junit.jupiter:junit-jupiter-engine:${versions.jupiter}"
     testImplementation "org.junit.jupiter:junit-jupiter-api:${versions.jupiter}"
     testImplementation "org.junit.jupiter:junit-jupiter-params:${versions.jupiter}"
+
+    /* Зависимости отвечающие за работу со Spring тестами */
+    testImplementation "org.springframework:spring-test:${versions.spring}"
+    testImplementation "org.springframework.security:spring-security-test:${versions.security}"
 
     /* Подключим все для тестов Testcontainers */
     testImplementation "org.testcontainers:postgresql:${versions.testcontainers}"
@@ -95,6 +105,8 @@ dependencies {
     testImplementation "org.mockito:mockito-junit-jupiter:${versions.mockito}"
     testImplementation "org.assertj:assertj-core:${versions.assertj}"
     testRuntimeOnly "org.assertj:assertj-core:${versions.assertj}"
+
+    testImplementation "org.hamcrest:hamcrest:${versions.hamcrest}"
 }
 
 test {
