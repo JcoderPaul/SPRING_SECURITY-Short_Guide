@@ -68,7 +68,7 @@ public class LoansController {
 	@PreAuthorize("#loanCreateDto.clientId == #userDetails.client.id")
 	@PostMapping("/createLoan")
 	public ResponseEntity<?> createLoan(@Param("loanCreateDto") @RequestBody LoanCreateDto loanCreateDto,
-			@Param("userDetails") @AuthenticationPrincipal SecurityClientDetails userDetails){
+						@Param("userDetails") @AuthenticationPrincipal SecurityClientDetails userDetails){
 
 		/*
 		В качестве теста, 'чего же там парсит SpEL' применим простой код и посмотрим в debug-e:
