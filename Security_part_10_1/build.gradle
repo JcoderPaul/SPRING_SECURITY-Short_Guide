@@ -90,7 +90,7 @@ dependencies {
     implementation "org.glassfish:jakarta.el:${versions.glassfish}"
 
     /* Блок пакетов обслуживающий тесты */
-    testImplementation "org.junit.jupiter:junit-jupiter-engine:${versions.jupiter}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${versions.jupiter}"
     testImplementation "org.junit.jupiter:junit-jupiter-api:${versions.jupiter}"
     testImplementation "org.junit.jupiter:junit-jupiter-params:${versions.jupiter}"
 
@@ -117,5 +117,5 @@ test {
 }
 
 wrapper {
-    gradleVersion '8.2.1'
+    gradleVersion '8.14.2'
 }
