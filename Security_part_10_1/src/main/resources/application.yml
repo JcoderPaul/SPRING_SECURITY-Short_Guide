@@ -30,3 +30,7 @@ jpa:
     format_sql: true
     hbm2ddl.auto: validate
   open-in-view: false
+liquibase:
+  enabled: true
+  change_log: classpath:db/changelog/db.changelog-master.yaml
+  default_schema: public
