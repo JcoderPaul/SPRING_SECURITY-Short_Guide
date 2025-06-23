@@ -26,22 +26,7 @@ public class AppSecurityConfig {
 	@Bean
 	@SneakyThrows
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) {
-		httpSecurity
-					.csrf(AbstractHttpConfigurer::disable)
-				    .cors(AbstractHttpConfigurer::disable)
-				    .authorizeHttpRequests(urlConfig -> urlConfig
-							      .requestMatchers(antMatcher("/api/regClient")).permitAll()
-								  .requestMatchers(antMatcher("/api/myAccount"),
-												   antMatcher("/api/myBalance"),
-										  		   antMatcher("/api/myContact"),
-												   antMatcher("/api/myLoans")).authenticated()
-								  .requestMatchers(antMatcher("/api/myCards"),
-										           antMatcher("/api/admin/**")).hasAnyAuthority("READ", "ROLE_ADMIN")
-								  .anyRequest().authenticated())
-					.httpBasic(Customizer.withDefaults())
-					.formLogin(Customizer.withDefaults());
-
-		return httpSecurity.build();
+		return FilterChainConfig.getSecurityFilterChain(httpSecurity);
 	}
 
 	/* Bean который будет помогать в работе с шифрованием/чтением паролей */
