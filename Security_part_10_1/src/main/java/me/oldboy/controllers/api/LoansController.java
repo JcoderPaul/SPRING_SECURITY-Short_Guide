@@ -90,6 +90,8 @@ public class LoansController {
 		if(mayBeClient.isPresent()){
 			loanCreateDto.setClientId(mayBeClient.get().getId());
 			newLoanId = loanService.saveLoan(loanCreateDto);
+		} else {
+			return ResponseEntity.badRequest().body("");
 		}
 		return ResponseEntity.ok().body(newLoanId);
 	}
