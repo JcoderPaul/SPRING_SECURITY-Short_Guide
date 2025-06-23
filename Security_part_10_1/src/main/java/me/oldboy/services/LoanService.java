@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import me.oldboy.config.security_details.SecurityClientDetails;
 import me.oldboy.dto.loan_dto.LoanCreateDto;
 import me.oldboy.dto.loan_dto.LoanReadDto;
+import me.oldboy.exception.ClientServiceException;
+import me.oldboy.exception.SecurityClientDetailsException;
 import me.oldboy.mapper.LoanMapper;
 import me.oldboy.models.client.Client;
 import me.oldboy.models.money.Loan;
@@ -51,6 +53,8 @@ public class LoanService {
 
         if(mayBeClient.isPresent()){
             createNewLoan.setClient(mayBeClient.get());
+        } else {
+            throw new ClientServiceException("Can not find clientId = " + loanCreateDto.getClientId());
         }
 
         return loanRepository.save(createNewLoan).getLoanId();
@@ -61,8 +65,11 @@ public class LoanService {
         List<Loan> toSaveLoansList = loanCreateDto.stream()
                                                   .map(LoanMapper.INSTANCE::mapToLoan)
                                                   .toList();
-
-        toSaveLoansList.forEach(loan -> loan.setClient(userDetails.getClient()));
+        if(userDetails.getClient() != null) {   // Данная ситуация маловероятна и все же...
+            toSaveLoansList.forEach(loan -> loan.setClient(userDetails.getClient()));
+        } else {
+            throw new SecurityClientDetailsException("There was probably an authentication error!");
+        }
 
         return loanRepository.saveAllMyLoans(toSaveLoansList);
     }
