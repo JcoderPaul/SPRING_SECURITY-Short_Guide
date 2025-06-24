@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Slf4j
 @Configuration
 @EnableWebSecurity(debug = true) // позволяет фиксировать происходящее в режиме отладки
-@EnableMethodSecurity
+@EnableMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 @ComponentScan("me.oldboy.config.test_main")
 public class TestSecurityConfig {
 
