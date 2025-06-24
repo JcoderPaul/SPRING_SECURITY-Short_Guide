@@ -19,7 +19,7 @@ public class FilterChainConfig {
                                 antMatcher("/api/myContact"),
                                 antMatcher("/api/myLoans")).authenticated()
                         .requestMatchers(antMatcher("/api/myCards"),
-                                antMatcher("/api/admin/**")).hasAnyAuthority("READ", "ROLE_ADMIN")
+                                antMatcher("/api/admin/**")).hasAnyAuthority("READ", "ADMIN")
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .formLogin(Customizer.withDefaults());
