@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @NoArgsConstructor
-@RequestMapping("/api/admin") // Задаем общий префикс для всех эндпоинтов этого контроллера
+@RequestMapping("/api/admin")
 public class AdminController {
 
     @Autowired
