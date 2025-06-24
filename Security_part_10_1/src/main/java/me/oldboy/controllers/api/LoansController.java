@@ -127,7 +127,7 @@ public class LoansController {
 	У нас несколько видов (см. loans_scripts.sql поле loan_type). Через переменную пути запроса - "совсем не красиво" -
 	но мы изучаем, передаем один из возможных типов и видим результат фильтра в виде JSON объекта (коллекции).
 	*/
-	@Secured("ROLE_ADMIN") // Эта аннотация из раздела о защите по правам доступа, теперь метод могут использовать только ADMIN-ы
+	@Secured("ADMIN") // Эта аннотация из раздела о защите по правам доступа, теперь метод могут использовать только ADMIN-ы
 	@PostFilter("filterObject.loanType == #loanType")
 	@GetMapping("/get-all-loans-by-type/{loanType}")
 	public List<LoanReadDto> getAllLoanByType(@Param("loanType") @PathVariable("loanType") String loanType){
