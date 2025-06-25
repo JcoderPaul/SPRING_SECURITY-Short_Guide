@@ -1,0 +1,59 @@
+.form-signin{
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+	background-color: #CCCCCC;
+}
+
+.reg_button_zone {
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+	background-color: #999999;
+}
+
+.form-control{
+	display: block;
+	width: 98%;
+	font-size: larger;
+	line-height: 1.25;
+	border: 1px solid rgba(0,0,0,.15);
+	color: #495057;
+	background-clip: padding-box;
+	border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+}
+
+.form-signin-heading{
+	position:relative
+}
+
+.dab_credentials{
+	position:relative;
+	font-size: larger;
+	color:#FF0000;
+	background-color: #FFFF00;
+}
+
+.style-button{
+	width: 100%;
+	font-size: larger;
+	font-weight: bold;
+}
+
+.button {
+	display: inline-block;
+	padding: 3px 86px;
+	font-size: large;
+	color: #000000;
+	background-color: #EBEBEB;
+	text-decoration: none;
+	border-radius: 2px;
+	transition: background-color 0.3s;
+	font-weight: bold;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+}
+
+.button:hover {
+	background-color: #E0E0E0;
+}
