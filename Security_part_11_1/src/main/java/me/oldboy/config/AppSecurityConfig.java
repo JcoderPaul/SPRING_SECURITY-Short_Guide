@@ -92,11 +92,11 @@ public class AppSecurityConfig {
 		return userRequest -> {
 			/* Извлекаем email из userRequest */
 			String email = userRequest.getIdToken().getClaim("email");
-            /*
-            Как вариант, тут можно создать user-a, если он не зарегистрирован в БД - userService.create.
-            Но на данном этапе мы извлекаем существующего пользователя из таблицы users нашей БД с его
-            Authorities (не из Google сервиса), предполагая что он есть.
-            */
+			/*
+				Как вариант, тут можно создать user-a, если он не зарегистрирован в БД - userService.create.
+				Но на данном этапе мы извлекаем существующего пользователя из таблицы users нашей БД с его
+				Authorities (не из Google сервиса), предполагая что он есть.
+			*/
 			UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 			/* Мы должны вернуть DefaultOidcUser - создаем его из полученного UserDetails и idToken-a */
 			DefaultOidcUser oidcUser = new DefaultOidcUser(userDetails.getAuthorities(), userRequest.getIdToken());
@@ -104,13 +104,13 @@ public class AppSecurityConfig {
 			Set<Method> userDetailsMethods = Set.of(UserDetails.class.getMethods());
 
 			/* Можно подставить AbstractAuthenticationToken вместо AppSecurityConfig */
-            ClassLoader appSecConfigClassLoader = AbstractAuthenticationToken.class.getClassLoader();
+			ClassLoader appSecConfigClassLoader = AbstractAuthenticationToken.class.getClassLoader();
 			/*
-            Теперь самое сложное - вернуть прокси, который в случае обращения к UserDetails
-            вернет его, а в случае обращения к OidcUser вернет уже его реализацию. И тут очень
-            к стати нам то, что и тот и другой интерфейсы и мы можем использовать динамический
-            прокси.
-            */
+				Теперь самое сложное - вернуть прокси, который в случае обращения к UserDetails
+				вернет его, а в случае обращения к OidcUser вернет уже его реализацию. И тут очень
+				к стати нам то, что и тот и другой интерфейсы и мы можем использовать динамический
+				прокси.
+			*/
 			return (OidcUser) Proxy.newProxyInstance(appSecConfigClassLoader,
 					new Class[]{UserDetails.class, OidcUser.class},
 					(proxy, method, args) -> userDetailsMethods.contains(method)
