@@ -82,10 +82,10 @@ ________________________________________________________________________________
   - [Часть 6. - Аннотация @RolesAllowed (теория).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_10_1#%D1%87%D0%B0%D1%81%D1%82%D1%8C-6---%D0%B0%D0%BD%D0%BD%D0%BE%D1%82%D0%B0%D1%86%D0%B8%D1%8F-rolesallowed-%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D1%8F)
 ________________________________________________________________________________________________________________________
 
-- Security_part_11_1 - Применение OAuth2 в защите приложений (начало) **(Spring Boot)**.
-  - Часть 1. - OAuth2 (Google as Authorization service).
-  - Часть 2. - Согласование данных из OAuth2.0 сервиса с нашим web-приложением.
-  - Часть 3. - OAuth2 (GitHub as Authorization service).
+- [Security_part_11_1 - Применение OAuth2 в защите приложений (начало) **(Spring Boot)**.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_11_1)
+  - [Часть 1. - OAuth2 (Google as Authorization service).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_11_1#%D1%87%D0%B0%D1%81%D1%82%D1%8C-1---oauth2-google-as-authorization-service)
+  - [Часть 2. - Согласование данных из OAuth2.0 сервиса с нашим web-приложением.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_11_1#%D1%87%D0%B0%D1%81%D1%82%D1%8C-2---%D1%81%D0%BE%D0%B3%D0%BB%D0%B0%D1%81%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-%D0%B8%D0%B7-oauth20-%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%B0-%D1%81-%D0%BD%D0%B0%D1%88%D0%B8%D0%BC-web-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%D0%BC)
+  - [Часть 3. - OAuth2 (GitHub as Authorization service).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_11_1#%D1%87%D0%B0%D1%81%D1%82%D1%8C-3---oauth2-github-as-authorization-service)
 - Security_part_11_2 - Применение OAuth2 в защите приложений (продолжение) **(Spring Boot)**.
   - Часть 4. - Применение KeyCloak в качестве OAuth2 сервиса авторизации.
 - Security_part_11_3 - Применение OAuth2 в защите сервиса ресурсов (окончание) **(non Boot)**.
