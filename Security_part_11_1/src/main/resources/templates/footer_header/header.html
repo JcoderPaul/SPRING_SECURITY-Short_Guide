@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.thymeleaf.org ">
+  
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Header</title>
+
+<link href="../../css/header_footer.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div th:fragment="header">
+  <table align="center">
+    <tr bgcolor="#999999">
+      <td width="650"><div align="center" class="style-data"> <strong> Вы вошли как: <span class="style_user_name" th:text="${#authentication.principal.username}">Username</span> </strong></div></td>
+      <td width="200"><div align="center" class="style-button"> <strong><a class="link" href="/webui/contacts">CONTACTS</a></strong> </div></td>
+      <td width="200"><div align="center" class="style-button"> <strong><a class="link" href="/webui/logout">LOGOUT</a></strong> </div></td>
+    </tr>
+  </table>
+</div>
+
+</body>
+</html>
