@@ -164,7 +164,7 @@ ________________________________________________________________________________
 
 - Шаг 6. - Получаем "ClientID" и генерируем "Client secrets" (они нам, как и ранее понадобятся при настройке application.yml):
 
-!G[itHub_Get_OAuth_app_ClientId_and_ClientSecret](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/DOC/pic/with_github/6_GitHub_Get_OAuth_app_ClientId_and_ClientSecret.jpg)
+![GitHub_Get_OAuth_app_ClientId_and_ClientSecret](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/DOC/pic/with_github/6_GitHub_Get_OAuth_app_ClientId_and_ClientSecret.jpg)
 
 - Шаг 7. - Прописываем необходимые данные в application.yml (поскольку мы используем 2-а сервера авторизации их мы и указываем):
 
