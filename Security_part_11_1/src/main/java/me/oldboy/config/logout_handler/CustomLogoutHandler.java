@@ -13,7 +13,8 @@ import org.springframework.stereotype.Component;
 public class CustomLogoutHandler implements LogoutHandler {
 
     @Override
-    public void logout(HttpServletRequest request, HttpServletResponse response,
+    public void logout(HttpServletRequest request,
+                       HttpServletResponse response,
                        Authentication authentication) {
         System.out.println("User logged out: " + (authentication != null ? authentication.getName() : "Unknown"));
         SecurityContextHolder.clearContext();
