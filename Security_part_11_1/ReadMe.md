@@ -73,7 +73,7 @@ ________________________________________________________________________________
 
 Теперь нужно настроить Spring Security нашего приложение для работы с Google OAuth.
 
-- Шаг 1. - Настраиваем файла свойств application.yml:
+- Шаг 1. - Настраиваем файла свойств [application.yml](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/src/main/resources/application.yml):
 
       security:
         oauth2:
@@ -85,12 +85,12 @@ ________________________________________________________________________________
                 redirectUri: http://localhost:8080/login/oauth2/code/google
                 scope: openid,email,profile
 
-- Шаг 2. - Настраиваем наш файл конфигураций безопасности AppSecurityConfig.java:
+- Шаг 2. - Настраиваем наш файл конфигураций безопасности [AppSecurityConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/src/main/java/me/oldboy/config/AppSecurityConfig.java):
   
       .oauth2Login(oauthConfig -> oauthConfig.loginPage("/webui/login")
 										     .defaultSuccessUrl("/webui/main"));
 
-- Шаг 3. - Настраиваем нашу Login форму (login.html и login_form.css), так, чтобы совмещать два вида входа в наше приложение:
+- Шаг 3. - Настраиваем нашу Login форму ([login.html](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/src/main/resources/templates/client_forms/login.html) и [login_form.css](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/src/main/resources/static/css/login_form.css)), так, чтобы совмещать два вида входа в наше приложение:
 
       <div class="reg_button_zone">
           <a href="/oauth2/authorization/google" class="button">Login with Google</a></td></tr>
@@ -109,7 +109,7 @@ ________________________________________________________________________________
 - Шаг 5. - Настраиваем взаимодействие нашего приложения (сервиса) с полученными из сервиса аутентификации учетными данными - 
 настраиваем OAuth2LoginConfigurer. Очень важный момент в том, что возвращая сервисом OAuth информация может не совпадать с
 той, которую "понимает" наше приложение. Скорее всего полученные данные будут близки по содержанию к применяемым в нашем 
-приложении, но их все равно нужно адаптировать, этим у нас будет заниматься метод - *.oidcUserService() класса AppSecurityConfig.
+приложении, но их все равно нужно адаптировать, этим у нас будет заниматься метод - *.oidcUserService() класса [AppSecurityConfig](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/src/main/java/me/oldboy/config/AppSecurityConfig.java).
 
 Несложно увидеть, если включить режим DEBUG в SecurityConfig, какой набор фильтров при текущей настройке filter chain у нас 
 используется:
@@ -162,11 +162,11 @@ ________________________________________________________________________________
 
 ![GitHub_Register_new_OAuth_app](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/DOC/pic/with_github/5_GitHub_Register_new_OAuth_app.jpg)
 
-- Шаг 6. - Получаем "ClientID" и генерируем "Client secrets" (они нам, как и ранее понадобятся при настройке application.yml):
+- Шаг 6. - Получаем "ClientID" и генерируем "Client secrets" (они нам, как и ранее понадобятся при настройке [application.yml](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/src/main/resources/application.yml)):
 
 ![GitHub_Get_OAuth_app_ClientId_and_ClientSecret](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/DOC/pic/with_github/6_GitHub_Get_OAuth_app_ClientId_and_ClientSecret.jpg)
 
-- Шаг 7. - Прописываем необходимые данные в application.yml (поскольку мы используем 2-а сервера авторизации их мы и указываем):
+- Шаг 7. - Прописываем необходимые данные в [application.yml](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/src/main/resources/application.yml) (поскольку мы используем 2-а сервера авторизации их мы и указываем):
 
           security:
             oauth2:
@@ -190,14 +190,14 @@ ________________________________________________________________________________
 
 - Шаг 9. - Проблема несовпадения учетных данных возвращаемых с GitHub и тех, что используется нашим приложением (сервисом)
 всплыла вновь, но на этот раз на нужно настроить наш кастомный OAuth2UserService, у нас уже есть один *.userInfoEndpoint(),
-добавляем еще один и передаем в него наш CustomOAuth2UserService.java:
+добавляем еще один и передаем в него наш [CustomOAuth2UserService.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/src/main/java/me/oldboy/config/security_ext/CustomOAuth2UserService.java):
 
         .oauth2Login(oauthConfig -> oauthConfig.loginPage("/webui/login")
                                                .defaultSuccessUrl("/webui/main")
                                                .userInfoEndpoint(userInfo -> userInfo.oidcUserService(oidcUserService()))
                                                .userInfoEndpoint(userInfo -> userInfo.userService(customOAuth2UserService)))
 
-- Шаг 10. - Настроим CustomOAuth2UserService.java так, что бы он возвращал понятные аутентификационные данные с нашими 
+- Шаг 10. - Настроим [CustomOAuth2UserService.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/src/main/java/me/oldboy/config/security_ext/CustomOAuth2UserService.java) так, что бы он возвращал понятные аутентификационные данные с нашими 
 "ролями" и "разрешениями", а не теми, что возвращает сервер авторизации (т.е. адаптируем их) см. реализацию класса сервиса.
 
 Настройка закончена, запускаем приложение и проверяем работу всех типов (и сервисов) аутентификации.
