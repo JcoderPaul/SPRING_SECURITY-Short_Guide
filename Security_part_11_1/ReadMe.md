@@ -31,23 +31,23 @@ GitHub и т.д.). Обратимся к ранее изученным мате�
 - Шаг 1. - Переходим на ["Credentials page"](https://console.cloud.google.com/apis/credentials).
 - Шаг 3. - Из раздела "Select a project":
 
-![Select_a_project](DOC/pic/with_google/1_Select_a_project.jpg)
+![Select_a_project](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/DOC/pic/with_google/1_Select_a_project.jpg)
 
 - Шаг 4. - Создаем новый проект:
 
-![New_project](DOC/pic/with_google/2_New_project.jpg)
+![New_project](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/DOC/pic/with_google/2_New_project.jpg)
 
 - Шаг 5. - Выбираем созданный проект (можно и через "Select a project"):
 
-![Select_created_project](DOC/pic/with_google/3_Select_created_project.jpg)
+![Select_created_project](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/DOC/pic/with_google/3_Select_created_project.jpg)
 
 - Шаг 6. - Создаем параметры входа (Credentials) для нашего приложения (мы же помним, что теперь оно клиент):
 
-![Auth_client_ID](DOC/pic/with_google/4_Auth_client_ID.jpg)
+![Auth_client_ID](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/DOC/pic/with_google/4_Auth_client_ID.jpg)
 
 - Шаг 7. - Однако на данном шаге, нам придется настроить "разрешения". Конфигурируем разрешения (ограничения) для нашего приложения (сервиса):
 
-![Configure_consent_screen](DOC/pic/with_google/5_Configure_consent_screen.jpg)
+![Configure_consent_screen](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/DOC/pic/with_google/5_Configure_consent_screen.jpg)
 
 - Шаг 8. - Вводим данные приложения: название приложения и контактную инф., выбираем External - Доступно любому тестовому 
 пользователю с учетной записью Google и еще раз вводим свой e-mail (или контактный email), соглашаемся с политикой Google API и 
@@ -58,7 +58,7 @@ GitHub и т.д.). Обратимся к ранее изученным мате�
 
 - Шаг 9. - Выбираем Web-application:
 
-![Create_OAuth_client_ID_step_1](DOC/pic/with_google/6_Create_OAuth_client_ID_step_1.jpg)
+![Create_OAuth_client_ID_step_1](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/DOC/pic/with_google/6_Create_OAuth_client_ID_step_1.jpg)
 
 - Шаг 10. - Именно тут, в разделе "Create OAuth client ID", мы должны ввести redirect_URI: http://localhost:8080/login/oauth2/code/google. 
 Этот адрес можно найти в документации по [Spring Security](https://docs.spring.io/spring-security/reference/index.html), а именно [Core Configuration](https://docs.spring.io/spring-security/reference/servlet/oauth2/login/core.html) или еще точнее ["Setting the Redirect URI"](https://docs.spring.io/spring-security/reference/servlet/oauth2/login/core.html#oauth2login-sample-redirect-uri). Конечно мы его можем изменить сообразно настройкам 
@@ -142,29 +142,29 @@ ________________________________________________________________________________
 - Шаг 0. - Заходим в наш аккаунт GitHub (аутентифицируемся).
 - Шаг 1. - Переходим в пункт меню Settings (настройки):
 
-![GitHub_Settings](DOC/pic/with_github/1_GitHub_Settings.jpg)
+![GitHub_Settings](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/DOC/pic/with_github/1_GitHub_Settings.jpg)
 
 - Шаг 2. - В основном меню (слева) находим и выбираем пункт меню Developer settings (настройки разработчика):
 
-![GitHub_Developer_Settings](DOC/pic/with_github/2_GitHub_Developer_Settings.jpg)
+![GitHub_Developer_Settings](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/DOC/pic/with_github/2_GitHub_Developer_Settings.jpg)
 
 - Шаг 3. - В появившемся меню выбираем пункт "OAuth Apps":
 
-![GitHub_OAuth_Apps](DOC/pic/with_github/3_GitHub_OAuth_Apps.jpg)
+![GitHub_OAuth_Apps](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/DOC/pic/with_github/3_GitHub_OAuth_Apps.jpg)
 
 - Шаг 4. - Поскольку вы читаете этот раздел, то вероятно, вы проходите эти шаги впервые, поэтому у вас скорее всего 
 нет приложений использующих GitHub в качестве сервера авторизации, а значит искомая кнопка "New OAuth app" будет в 
 центре экрана. Если же вы уже делали нечто подобное, но забыли как это было, то кнопка может находиться вверху справа:
 
-![GitHub_New_OAuth_app](DOC/pic/with_github/4_GitHub_New_OAuth_app.jpg)
+![GitHub_New_OAuth_app](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/DOC/pic/with_github/4_GitHub_New_OAuth_app.jpg)
 
 - Шаг 5. - Заполняем форму "Register a new OAuth app" и жмем кнопку "Register application" (см. внимательно callback URL):
 
-![GitHub_Register_new_OAuth_app](DOC/pic/with_github/5_GitHub_Register_new_OAuth_app.jpg)
+![GitHub_Register_new_OAuth_app](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/DOC/pic/with_github/5_GitHub_Register_new_OAuth_app.jpg)
 
 - Шаг 6. - Получаем "ClientID" и генерируем "Client secrets" (они нам, как и ранее понадобятся при настройке application.yml):
 
-![GitHub_Get_OAuth_app_ClientId_and_ClientSecret](DOC/pic/with_github/6_GitHub_Get_OAuth_app_ClientId_and_ClientSecret.jpg)
+!G[itHub_Get_OAuth_app_ClientId_and_ClientSecret](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_1/DOC/pic/with_github/6_GitHub_Get_OAuth_app_ClientId_and_ClientSecret.jpg)
 
 - Шаг 7. - Прописываем необходимые данные в application.yml (поскольку мы используем 2-а сервера авторизации их мы и указываем):
 
