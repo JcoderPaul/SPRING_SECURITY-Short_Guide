@@ -445,6 +445,8 @@ ________________________________________________________________________________
 - Spring SecurityContext привязан к потоку. По умолчанию контекст безопасности не распространяется на дочерние потоки, 
 это нужно помнить.
 ________________________________________________________________________________________________________________________
+Отсюда и далее, в оставшихся частях, будут, по большей части, проводиться [интеграционные тесты](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_10_1/src/test).   
+________________________________________________________________________________________________________________________
 ### Key Class and Methods:
 
 * [org.springframework.security.access.prepost](https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/access/prepost/package-summary.html)
