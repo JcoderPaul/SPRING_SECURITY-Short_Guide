@@ -111,7 +111,7 @@ class WebClientControllerTestIT extends IntegrationTestBaseConnection {
     @Test
     @SneakyThrows
     @WithUserDetails(value = EXIST_EMAIL, userDetailsServiceBeanName = "clientDetailsService")
-    void shouldReturnCardsPage_ClientLoans_Test() {
+    void shouldReturnLoansPage_ClientLoans_Test() {
         mockMvc.perform(get("/webui/loans"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(view().name("main_items/loans.html"))
