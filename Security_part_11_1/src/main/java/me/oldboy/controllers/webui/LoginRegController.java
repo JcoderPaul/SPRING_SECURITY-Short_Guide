@@ -28,10 +28,9 @@ public class LoginRegController {
 
     @GetMapping("/login")
     public String getLoginPage() {
+        log.info("Redirect to - client_forms/login.html - from @GetMapping('/login')");
 
-            log.info("Redirect to - client_forms/login.html - from @GetMapping('/login')");
-
-            return "client_forms/login.html";
+        return "client_forms/login.html";
     }
 
     @GetMapping("/main")
