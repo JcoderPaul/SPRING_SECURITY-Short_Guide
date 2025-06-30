@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="../css/login_form.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="client-form">
+<form th:action="@{/webui/logout}" class="form-signin" method="post" >
+    <h2 align="center" class="form-signin-heading" >Are you sure?</h2>
+    <div align="center"> <button class="style-button" type="submit" > YES </button> </div>
+</form>
+</div>
+
+</body>
+</html>
