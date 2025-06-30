@@ -3,8 +3,6 @@ package me.oldboy.controllers.webui;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import me.oldboy.config.auth_event_listener.AuthenticationEventListener;
-import me.oldboy.constants.SecurityConstants;
 import me.oldboy.dto.client_dto.ClientCreateDto;
 import me.oldboy.dto.details_dto.DetailsCreateDto;
 import me.oldboy.services.ClientService;
@@ -29,7 +27,7 @@ public class LoginRegController {
     private final ClientService clientService;
 
     @GetMapping("/login")
-    public String getLoginPage(HttpServletResponse response) {
+    public String getLoginPage() {
 
             log.info("Redirect to - client_forms/login.html - from @GetMapping('/login')");
 
