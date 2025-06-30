@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class LogoutController {
 
+    @GetMapping("/exit")
+    public String exitApp(){
+        return "client_forms/logout.html";
+    }
+
     @PostMapping("/logout")
     public String logOut(){
         return "redirect:/webui/bye";
