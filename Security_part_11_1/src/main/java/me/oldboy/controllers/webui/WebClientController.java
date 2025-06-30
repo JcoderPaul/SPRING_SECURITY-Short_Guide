@@ -1,7 +1,9 @@
 package me.oldboy.controllers.webui;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import me.oldboy.controllers.utils.UserDetailsDetector;
 import me.oldboy.dto.card_dto.CardReadDto;
 import me.oldboy.dto.contact_dto.ContactReadDto;
 import me.oldboy.dto.loan_dto.LoanReadDto;
@@ -12,7 +14,6 @@ import me.oldboy.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,29 +25,30 @@ import java.util.Optional;
 @Slf4j
 @Controller
 @RequestMapping("/webui")
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class WebClientController {
 
     @Autowired
-    private final ClientService clientService;
+    private ClientService clientService;
     @Autowired
-    private final ContactService contactService;
+    private ContactService contactService;
     @Autowired
-    private final BalanceService balanceService;
+    private BalanceService balanceService;
     @Autowired
-    private final CardService cardService;
+    private CardService cardService;
     @Autowired
-    private final LoanService loanService;
+    private LoanService loanService;
+    @Autowired
+    private UserDetailsDetector userDetailsDetector;
 
     @GetMapping("/account")
-    public String clientAccount(Model model, @CurrentSecurityContext SecurityContextHolder securityContextHolder){
-        Authentication authentication = securityContextHolder.getContext().getAuthentication();
-        UserDetailsDetector userDetailsDetector = new UserDetailsDetector();
-
-        if(userDetailsDetector.isUserDetailsNotNull(clientService, authentication)) {
-            long clientId = userDetailsDetector.getClientId();
-            long accountNumber = userDetailsDetector.getAccountNumber();
-            Client currentClient = userDetailsDetector.getCurrentClient();
+    public String clientAccount(Model model, @CurrentSecurityContext(expression = "authentication") Authentication authentication){
+        Optional<Client> mayBeFoundClient = userDetailsDetector.getClientFromBase(clientService, authentication);
+        if(mayBeFoundClient.isPresent()) {
+            long clientId = mayBeFoundClient.get().getId();
+            long accountNumber = mayBeFoundClient.get().getAccount().getAccountNumber();
+            Client currentClient = mayBeFoundClient.get();
 
             model.addAttribute("client", ClientMapper.INSTANCE.mapToClientReadDto(currentClient));
             model.addAttribute("account_number", accountNumber);
@@ -65,13 +67,11 @@ public class WebClientController {
     }
 
     @GetMapping("/contacts")
-    public String clientContact(Model model, @CurrentSecurityContext SecurityContextHolder securityContextHolder){
-        Authentication authentication = securityContextHolder.getContext().getAuthentication();
-        UserDetailsDetector userDetailsDetector = new UserDetailsDetector();
-
-        if(userDetailsDetector.isUserDetailsNotNull(clientService, authentication)) {
-            long clientId = userDetailsDetector.getClientId();
-            String clientEmail = userDetailsDetector.getClientEmail();
+    public String clientContact(Model model, @CurrentSecurityContext(expression = "authentication") Authentication authentication){
+        Optional<Client> mayBeFoundClient = userDetailsDetector.getClientFromBase(clientService, authentication);
+        if(mayBeFoundClient.isPresent()) {
+            long clientId = mayBeFoundClient.get().getId();
+            String clientEmail = mayBeFoundClient.get().getEmail();
 
             Optional<ContactReadDto> mayBeContact = contactService.readContact(clientId);
             if(mayBeContact.isPresent()){
@@ -86,13 +86,11 @@ public class WebClientController {
     }
 
     @GetMapping("/balance")
-    public String clientBalance(Model model, @CurrentSecurityContext SecurityContextHolder securityContextHolder){
-        Authentication authentication = securityContextHolder.getContext().getAuthentication();
-        UserDetailsDetector userDetailsDetector = new UserDetailsDetector();
-
-        if(userDetailsDetector.isUserDetailsNotNull(clientService, authentication)) {
-            long clientId = userDetailsDetector.getClientId();
-            long accountNumber = userDetailsDetector.getAccountNumber();
+    public String clientBalance(Model model, @CurrentSecurityContext(expression = "authentication") Authentication authentication){
+        Optional<Client> mayBeFoundClient = userDetailsDetector.getClientFromBase(clientService, authentication);
+        if(mayBeFoundClient.isPresent()) {
+            long clientId = mayBeFoundClient.get().getId();
+            long accountNumber = mayBeFoundClient.get().getAccount().getAccountNumber();
 
             model.addAttribute("account_number", accountNumber);
 
@@ -108,13 +106,11 @@ public class WebClientController {
     }
 
     @GetMapping("/cards")
-    public String clientCards(Model model, @CurrentSecurityContext SecurityContextHolder securityContextHolder){
-        Authentication authentication = securityContextHolder.getContext().getAuthentication();
-        UserDetailsDetector userDetailsDetector = new UserDetailsDetector();
-
-        if(userDetailsDetector.isUserDetailsNotNull(clientService, authentication)) {
-            long clientId = userDetailsDetector.getClientId();
-            long accountNumber = userDetailsDetector.getAccountNumber();
+    public String clientCards(Model model, @CurrentSecurityContext(expression = "authentication") Authentication authentication){
+        Optional<Client> mayBeFoundClient = userDetailsDetector.getClientFromBase(clientService, authentication);
+        if(mayBeFoundClient.isPresent()) {
+            long clientId = mayBeFoundClient.get().getId();
+            long accountNumber = mayBeFoundClient.get().getAccount().getAccountNumber();
 
             model.addAttribute("account_number", accountNumber);
 
@@ -130,13 +126,11 @@ public class WebClientController {
     }
 
     @GetMapping("/loans")
-    public String clientLoans(Model model, @CurrentSecurityContext SecurityContextHolder securityContextHolder){
-        Authentication authentication = securityContextHolder.getContext().getAuthentication();
-        UserDetailsDetector userDetailsDetector = new UserDetailsDetector();
-
-        if(userDetailsDetector.isUserDetailsNotNull(clientService, authentication)){
-            long clientId = userDetailsDetector.getClientId();
-            long accountNumber = userDetailsDetector.getAccountNumber();
+    public String clientLoans(Model model, @CurrentSecurityContext(expression = "authentication") Authentication authentication){
+        Optional<Client> mayBeFoundClient = userDetailsDetector.getClientFromBase(clientService, authentication);
+        if(mayBeFoundClient.isPresent()){
+            long clientId = mayBeFoundClient.get().getId();
+            long accountNumber = mayBeFoundClient.get().getAccount().getAccountNumber();
 
             model.addAttribute("account_number", accountNumber);
 
@@ -149,47 +143,5 @@ public class WebClientController {
         }
 
         return "main_items/loans.html";
-    }
-
-    private class UserDetailsDetector{
-        private Long clientId;
-        private Long accountNumber;
-        private String clientEmail;
-        private Optional<Client> mayBeClient;
-
-        protected boolean isUserDetailsNotNull(ClientService clientService, Authentication authentication){
-            if(authentication != null && clientService != null){
-                clientEmail = authentication.getName();
-                mayBeClient = clientService.findByEmail(clientEmail);
-
-                if(mayBeClient.isPresent()){
-                    clientId = mayBeClient.get().getId();
-                    accountNumber = mayBeClient.get().getAccount().getAccountNumber();
-                } else {
-                    clientId = null;
-                    accountNumber = null;
-                }
-
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        protected String getClientEmail(){
-            return clientEmail;
-        }
-
-        protected Long getClientId(){
-            return clientId;
-        }
-
-        protected Long getAccountNumber(){
-            return accountNumber;
-        }
-
-        protected Client getCurrentClient(){
-            return mayBeClient.get();
-        }
     }
 }
