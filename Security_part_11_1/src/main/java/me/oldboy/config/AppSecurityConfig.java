@@ -12,7 +12,6 @@ import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserRequest;
@@ -50,13 +49,18 @@ public class AppSecurityConfig {
 	@SneakyThrows
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) {
 		httpSecurity
-				.csrf(AbstractHttpConfigurer::disable) // Отключаем CSRF
 				.authorizeHttpRequests(urlConfig -> urlConfig
 						.requestMatchers("/webui/login",
 								"/webui/registration",
 								"/webui/bye",
 								"/notices",
 								"/css/*.css").permitAll()
+						/*
+							Необходим чтобы не было прилета "Request received for
+							GET '/.well-known/appspecific/com.chrome.devtools.json'"
+							при работе в браузере в режиме отладки
+						*/
+						.requestMatchers("/.well-known/**").permitAll()
 						.requestMatchers(antMatcher("/myAccount"),
 								antMatcher("/myBalance"),
 								antMatcher("/myLoans"),
@@ -69,13 +73,14 @@ public class AppSecurityConfig {
 						.requestMatchers(antMatcher("/webui/cards"),
 								antMatcher("/myCards")).hasAuthority("READ")
 						.anyRequest().authenticated())
+				.formLogin(login -> login.loginPage("/webui/login").permitAll()
+						.defaultSuccessUrl("/webui/main"))
 				.logout(logout -> logout.logoutUrl("/webui/logout")
 						.logoutSuccessUrl("/webui/bye")
 						.addLogoutHandler(customLogoutHandler)
 						.deleteCookies("JSESSIONID")
-						.invalidateHttpSession(true))
-				.formLogin(login -> login.loginPage("/webui/login")
-						.defaultSuccessUrl("/webui/main"))
+						.invalidateHttpSession(true)
+						.permitAll())
 				.oauth2Login(oauthConfig -> oauthConfig.loginPage("/webui/login")
 						.defaultSuccessUrl("/webui/main")
 						.userInfoEndpoint(userInfo -> userInfo.oidcUserService(oidcUserService()))
@@ -111,11 +116,13 @@ public class AppSecurityConfig {
 				к стати нам то, что и тот и другой интерфейсы и мы можем использовать динамический
 				прокси.
 			*/
-			return (OidcUser) Proxy.newProxyInstance(appSecConfigClassLoader,
+			OidcUser returnUser = (OidcUser) Proxy.newProxyInstance(appSecConfigClassLoader,
 					new Class[]{UserDetails.class, OidcUser.class},
 					(proxy, method, args) -> userDetailsMethods.contains(method)
 							? method.invoke(userDetails, args)
 							: method.invoke(oidcUser, args));
+
+			return returnUser;
 		};
 	}
 }
