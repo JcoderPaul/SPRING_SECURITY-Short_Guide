@@ -28,9 +28,6 @@ public class LoginRegController {
     @Autowired
     private final ClientService clientService;
 
-    @Autowired
-    private final AuthenticationEventListener authenticationEventListener;
-
     @GetMapping("/login")
     public String getLoginPage(HttpServletResponse response) {
 
