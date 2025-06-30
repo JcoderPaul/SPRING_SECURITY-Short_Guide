@@ -39,14 +39,6 @@ public class LoginRegController {
             return "client_forms/login.html";
     }
 
-    @PostMapping("/main")
-    public String postMainPage(HttpServletResponse response){
-        log.info("Redirect to - /main.html - from @PostMapping(/main)");
-        log.info("Response header from @PostMapping(/main): " + response.getHeader(SecurityConstants.JWT_HEADER));
-
-        return "/main.html";
-    }
-
     @GetMapping("/main")
     public String getMainPage(){
         log.info("Redirect to - /main.html - from @GetMapping(/main)");
