@@ -21,11 +21,11 @@ ________________________________________________________________________________
 локальную версию под "админиской учеткой" и перейти в master realm - именно отсюда мы экспортируем все данные. Заходим в 
 раздел Realm settings:
 
-![KeyCloak_export_data](DOC/pic/27_KeyCloak_export_data.jpg)
+![KeyCloak_export_data](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/27_KeyCloak_export_data.jpg)
 
 Далее выбираем сохранить все доступные данные:
 
-![KeyCloak_export_include_all](DOC/pic/28_KeyCloak_export_include_all.jpg)
+![KeyCloak_export_include_all](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/28_KeyCloak_export_include_all.jpg)
 
 Указываем папку куда сохраняем данные и либо меняем имя *.JSON файла, либо оставляем как есть и жмем "Save". Теперь у нас 
 есть, то что мы импортируем в пустой KeyCloak развернутый в Docker-e и не будем тратить время на основную настройку.
