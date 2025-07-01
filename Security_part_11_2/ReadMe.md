@@ -56,8 +56,8 @@ ________________________________________________________________________________
 
 Рассмотрим два варианта развертывания нашего сервиса авторизации: 
 
-- [Вариант 1. - установка KeyCloak на локальную машину, настройка и запуск](DOC/KeyCloak_on_local_PC.md);
-- [Вариант 2. - развертывание KeyCloak в Docker контейнере, настройка и запуск](DOC/KeyCloak_run_on_Docker.md);
+- [Вариант 1. - установка KeyCloak на локальную машину, настройка и запуск](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/KeyCloak_on_local_PC.md);
+- [Вариант 2. - развертывание KeyCloak в Docker контейнере, настройка и запуск](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/KeyCloak_run_on_Docker.md);
 
 #### Настроим наше "клиентское" приложение (Client App):
 
