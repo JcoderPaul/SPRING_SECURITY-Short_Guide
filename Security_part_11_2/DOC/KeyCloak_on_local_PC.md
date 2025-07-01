@@ -51,24 +51,24 @@ ________________________________________________________________________________
 - Шаг 5. - Заходим в KeyCloak по адресу заданной настройки: http://localhost:9100/
 - Шаг 6. - Задаем значения временного администратора (пароль/логин), пусть будет (admin/admin):
 
-![KeyCloak_first_start](DOC/pic/1_KeyCloak_first_start.jpg)
+![KeyCloak_first_start](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/1_KeyCloak_first_start.jpg)
 
 - Шаг 7. - Заходим в систему под созданной временной учетной записью администратора:
 
-![KeyCloak_user_logIn_form](DOC/pic/2_KeyCloak_user_logIn_form.jpg)
+![KeyCloak_user_logIn_form](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/2_KeyCloak_user_logIn_form.jpg)
 
 - Шаг 8. - При первом входе в систему, мы получим предупреждение, что стартовый аккаунт временный и его лучше заменить, т.е. создать новый с правами ROLE_ADMIN для "master realm".
 - Шаг 9. - Делаем согласно пунктам меню:
 
-![KeyCloak_make_new_admin](DOC/pic/3_KeyCloak_make_new_admin.jpg)
+![KeyCloak_make_new_admin](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/3_KeyCloak_make_new_admin.jpg)
 
 Заходим в пользователя и корректируем необходимые пункты меню, а точнее: задаем пароль и роли:
 
-![KeyCloak_new_admin_config](DOC/pic/4_KeyCloak_new_admin_config.jpg)
+![KeyCloak_new_admin_config](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/4_KeyCloak_new_admin_config.jpg)
 
 Если с разделом "Credentials" все более менее понятно, то в разделе "Role mapping", не все так однозначно, и роль ROLE_ADMIN немного "спрятана" добавляем новую роль через "Assign role" и попадаем в меню выбора:
 
-![KeyCloak_new_admin_role_assign](DOC/pic/5_KeyCloak_new_admin_role_assign.jpg)
+![KeyCloak_new_admin_role_assign](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/5_KeyCloak_new_admin_role_assign.jpg)
 
 Выбираем "Filter by realm role", далее роль ADMIN и жмем "Assign". Новый админ создан. Так же можно создать и обычного пользователя данного сервиса.
 
@@ -86,11 +86,11 @@ ________________________________________________________________________________
 
 - Шаг 1. - Выбираем раздел "Manage realm" и кнопку "Create realm":
 
-![KeyCloak_create_new_realm](DOC/pic/6_KeyCloak_create_new_realm.jpg)
+![KeyCloak_create_new_realm](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/6_KeyCloak_create_new_realm.jpg)
 
 - Шаг 2. - Задаем имя будущего realm-a и жмем "Create":
 
-![KeyCloak_enter_name_and_create](DOC/pic/7_KeyCloak_enter_name_and_create.jpg)
+![KeyCloak_enter_name_and_create](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/7_KeyCloak_enter_name_and_create.jpg)
 
 Теперь наш новый realm в котором мы будем настраивать взаимодействие с нашим back-end приложением имеет вполне конкретный адрес: [http://localhost:9100/admin/master/console/#/SpringSecProject-OAuth-Test-Realm](http://localhost:9100/admin/master/console/#/SpringSecProject-OAuth-Test-Realm).
 ________________________________________________________________________________________________________________________
@@ -101,17 +101,17 @@ ________________________________________________________________________________
 
 - Шаг 1. - Выбираем раздел "Clients", жмем кнопку "Create client" и попадаем в раздел описывающий по шагам создаваемого клиента:
 
-![KeyCloak_create_client_1](DOC/pic/8_KeyCloak_create_client_1.jpg)
+![KeyCloak_create_client_1](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/8_KeyCloak_create_client_1.jpg)
 
 - Шаг 2. - Задаем тип клиента, его ID, имя и описание при желании и жмем "Next":
 
-![KeyCloak_create_client_2](DOC/pic/8_KeyCloak_create_client_2.jpg)
+![KeyCloak_create_client_2](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/8_KeyCloak_create_client_2.jpg)
 
 - Шаг 3. - Задаем (оставляем по умолчанию) Standard flow (если смотреть текст под знаком вопроса, то мы увидим, что этот
 тип flow включает стандартную аутентификацию на основе перенаправления OpenID Connect с кодом авторизации. В терминах 
 спецификаций OIDC или OAuth2 мы используем поддержку «Authorization Code Flow» для данного клиента), и снова "Next":
 
-![KeyCloak_create_client_3](DOC/pic/8_KeyCloak_create_client_3.jpg)
+![KeyCloak_create_client_3](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/8_KeyCloak_create_client_3.jpg)
 
 - Шаг 4. - Прописываем Valid redirect URLs (их может быть несколько) и сохраняем данные "Save".
 ________________________________________________________________________________________________________________________
@@ -119,7 +119,7 @@ ________________________________________________________________________________
 
 Для того чтобы использовать Authorization Code Flow нам понадобиться включить этот режим:
 
-![KeyCloak_confidential_set](DOC/pic/9_KeyCloak_confidential_set.jpg)
+![KeyCloak_confidential_set](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/9_KeyCloak_confidential_set.jpg)
 
 Этот переключатель определяет тип клиента OIDC. Когда он включен, тип — конфиденциальный доступ. Когда он выключен, 
 тип — публичный доступ. В старой версии интерфейса KeyCloak это был переключатель Access Type. Из работы с Google и 
@@ -127,12 +127,12 @@ GitHub сервисами аутентификации мы помним, что
 нужны будут clientId и clientSecret, первый мы задали сами при создании клиента, но если забыли, то можно глянуть в 
 Clients -> Settings:
 
-![KeyCloak_klient_id](DOC/pic/10_KeyCloak_klient_id.jpg)
+![KeyCloak_klient_id](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/10_KeyCloak_klient_id.jpg)
 
 Требуемый Client Secret можно найти в разделе Clients -> Credentials, в текущей версии программы от спрятан, но доступен 
 для просмотра и копирования:
 
-![KeyCloak_client_secret](DOC/pic/11_KeyCloak_client_secret.jpg)
+![KeyCloak_client_secret](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/11_KeyCloak_client_secret.jpg)
 
 Именно с помощью них при запуске всей нашей цепи безопасности клиентское приложение Client получит "код авторизации" и затем 
 "обменяет" его на токен доступа у сервера авторизации (впервые мы это опробовали на сервисе авторизации Google):
@@ -147,11 +147,11 @@ ________________________________________________________________________________
 через клиентское приложение, т.е. обычный пользователь может и не иметь доступ к KeyCloak. Пока мы не используем приложение, а делаем все
 через интерфейс сервиса авторизации (можно отметить, что email верифицирован):
 
-![KeyCloak_create_simple_user](DOC/pic/12_KeyCloak_create_simple_user.jpg)
+![KeyCloak_create_simple_user](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/12_KeyCloak_create_simple_user.jpg)
 
 Задаем пароль клиенту:
 
-![KeyCloak_simple_user_credentials](DOC/pic/13_KeyCloak_simple_user_credentials.jpg)
+![KeyCloak_simple_user_credentials](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/13_KeyCloak_simple_user_credentials.jpg)
 
 ________________________________________________________________________________________________________________________
 ### Этап 6 - Тестирование настроек KeyCloak (с использованием PostMan-а и браузера).
@@ -160,7 +160,7 @@ ________________________________________________________________________________
 обратиться в раздел Realm settings, закладка General и в самом низу, над кнопкой Save есть два списка. Нам нужен -
 OpenID Endpoint Configuration:
 
-![KeyCloak_openID_endpoints](DOC/pic/17_KeyCloak_openID_endpoints.jpg)
+![KeyCloak_openID_endpoints](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/17_KeyCloak_openID_endpoints.jpg)
 
 Тут в JSON формате мы найдем основное настройки нашего realm-a, а так же точки доступа применяемые при взаимодействии 
 Client App и Auth service, соответственно нами при ручном тестировании процесса получения и обмена client authorization 
@@ -181,7 +181,7 @@ code на access token.
 В Postman проведем предварительные настройки параметров (это те параметры, которые должен отправить Client или клиентское 
 приложение к серверу авторизации):
 
-![KeyCloak_get_req_auth_code_setting](DOC/pic/14_KeyCloak_get_req_auth_code_setting.jpg)
+![KeyCloak_get_req_auth_code_setting](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/14_KeyCloak_get_req_auth_code_setting.jpg)
 
 И тогда окончательный вид запроса, который мы теперь будем делать в браузере выглядит, так:
 
@@ -196,7 +196,7 @@ code на access token.
 
 И так мы делам запрос не в PostMan, а в браузере и попадаем на страницу авторизации KeyCloak:
 
-![KeyCloak_brouser_resp_form](DOC/pic/15_KeyCloak_brouser_resp_form.jpg)
+![KeyCloak_brouser_resp_form](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/15_KeyCloak_brouser_resp_form.jpg)
 
 Вводим данные регулярного пользователя, что создали на пятом этапе и авторизуемся. KeyCloak перенаправит нас на страницу redirect-a,
 но поскольку ее нет, и никто обработать ответ пока не может, то мы получим некий стандартный ответ в браузере, о невозможности отобразить 
@@ -218,7 +218,7 @@ code на access token.
 Обычно весь процесс "получения и обмена" одних "ключей" на другие происходит между "Client app" и "Auth сервисом" довольно 
 быстро. По умолчанию данный диапазон равен 1 min, и в KeyCloak его можно настраивать - Client Login Timeout, см:
 
-![KeyCloak_client_login_timeout](DOC/pic/16_KeyCloak_client_login_timeout.jpg)
+![KeyCloak_client_login_timeout](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/16_KeyCloak_client_login_timeout.jpg)
 
 Эту особенность мы упомянули для того, чтобы в процессе текущего и дальнейшего тестирования избежать "непоняток" с 
 невозможностью провести обмен "кода клиента" на "ключи доступа" из-за короткого срока жизни первого. Когда все отлажено 
@@ -236,7 +236,7 @@ code на access token.
 В нашем PostMan-e подготовим все к запросу, т.к. все предварительные параметры запроса нам известны, кроме "кода аутентификации",
 который мы должны "живенько" получить на первом шаге этого раздела и подставить в соответствующий параметр данного запроса:
 
-![KeyCloak_get_access_token](DOC/pic/18_KeyCloak_get_access_token.jpg)
+![KeyCloak_get_access_token](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/18_KeyCloak_get_access_token.jpg)
 
 Особенность этого запроса в том, что все данные передаются сервису аутентификации в теле запроса:
 - grant_type - если грубо то это "протокол безопасности" или взаимодействия всех элементов системы (client app - OAuth service - resource service) см. [OAuth Grant Types](https://oauth.net/2/grant-types/);
@@ -248,7 +248,7 @@ code на access token.
 После отправки запроса сервису мы получим ответ в виде JSON объекта первым ключом которого будет ожидаемый нами "access_token".
 Именно с ним "Client app" обратится к "Resource service":
 
-![Authorization_Code_Flow](DOC/Authorization_Code_Flow.jpg)
+![Authorization_Code_Flow](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/Authorization_Code_Flow.jpg)
 
 И так, мы настроили наш сервер аутентификации KeyCloak для работы с Authorization code flow (по такому же принципу мы можем настроить и протестировать другие "поточные схемы безопасности").
 ________________________________________________________________________________________________________________________
@@ -277,19 +277,19 @@ KeyCloak (если поле scope запроса не содержит openid, �
 
 В разделе "Client scopes" основного меню KeyCloak мы можем найти стандартный расширяемый набор готовых scopes:
 
-![KeyCloak_client_scopes](DOC/pic/19_KeyCloak_client_scopes.jpg)
+![KeyCloak_client_scopes](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/19_KeyCloak_client_scopes.jpg)
 
 Настройки scope-ов уже готовых или вновь созданных мы тоже можем регулировать (см. profile scope):
 
-![KeyCloak_scope_profile_set](DOC/pic/20_KeyCloak_scope_profile_set.jpg)
+![KeyCloak_scope_profile_set](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/20_KeyCloak_scope_profile_set.jpg)
 
 Мы даже можем задавать, какие данные будут передаваться с выбранным scope (см. profile scope):
 
-![KeyCloak_scope_mappers](DOC/pic/21_KeyCloak_scope_mappers.jpg)
+![KeyCloak_scope_mappers](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/21_KeyCloak_scope_mappers.jpg)
 
 И будут ли они добавляться в token-ы в виде claim-ов, например (profile scope username mapper detail):
 
-![KeyCloak_mapper_details](DOC/pic/22_KeyCloak_mapper_details.jpg)
+![KeyCloak_mapper_details](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/22_KeyCloak_mapper_details.jpg)
 
 И так, KeyCloak предоставляет нам достаточно широкий выбор настроек "области доступа" - scope.  
 
@@ -304,11 +304,11 @@ KeyCloak (если поле scope запроса не содержит openid, �
 
 Настроем "Consent screen" предупреждения в KeyCloak ("усилим защиту") в меню Clients -> выбираем наше приложение SpringSecProject-OAuth-Test-Client -> Settings:
 
-![KeyCloak_consent_screen_set](DOC/pic/23_KeyCloak_consent_screen_set.jpg)
+![KeyCloak_consent_screen_set](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/23_KeyCloak_consent_screen_set.jpg)
 
 Используя данные настройки, мы можем активировать предупреждение, в ходе аутентификации на сервере авторизации, для пользователя: 
 
-![KeyCloak_consent_screen_view](DOC/pic/24_KeyCloak_consent_screen_view.jpg)
+![KeyCloak_consent_screen_view](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/24_KeyCloak_consent_screen_view.jpg)
 
 После получения такого "предупреждения" пользователь видит, что клиентское приложение - SpringSecProject-OAuth-Test-Client - 
 пытается получить "доступ до..." и на данном дополнительном шаге может подтвердить или отказаться от своих действий.
@@ -326,11 +326,11 @@ ________________________________________________________________________________
 
 - Шаг 1. - Создадим роли ADMIN и USER (это роли для текущего realm-a, т.е. для клиентского приложения):
 
-![KeyCloak_create_roles](DOC/pic/25_KeyCloak_create_roles.jpg)
+![KeyCloak_create_roles](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/25_KeyCloak_create_roles.jpg)
 
 - Шаг 2. - Зададим созданную роль выбранному клиенту, в нашем сервисе ресурсов пользователь "user3@test.com" имеет роль "USER":
 
-![KeyCloak_assigne_role](DOC/pic/26_KeyCloak_assigne_role.jpg)
+![KeyCloak_assigne_role](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/pic/26_KeyCloak_assigne_role.jpg)
 
 И так роли заданы, теперь дело за малым - настроить наш сервис ресурсов, что бы он работал с нашим настроенным KeyCloak-ом. 
 
