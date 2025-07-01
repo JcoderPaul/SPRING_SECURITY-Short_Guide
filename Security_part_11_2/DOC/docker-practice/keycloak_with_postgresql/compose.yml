@@ -1,0 +1,61 @@
+name: keycloak_with_postgresql
+
+services:
+  postgres:
+    container_name: ${ENV_POSTGRES_CONTAINER_NAME:-postgres_for_keycloak}
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: ${ENV_POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${ENV_POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${ENV_POSTGRES_DB:-keycloak_db}
+    ports:
+      - 5500:5432
+    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d keycloak_db" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - keycloak-db-data:/var/lib/postgresql/data
+    networks:
+      - kc_net
+
+  keycloak:
+    container_name: ${ENV_KC_CONTAINER_NAME:-keycloak}
+    image: quay.io/keycloak/keycloak:26.2.0
+    command:
+      - start-dev
+    ports:
+      - 9100:8080
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${ENV_KC_BOOTSTRAP_ADMIN_USERNAME:-admin}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${ENV_KC_BOOTSTRAP_ADMIN_PASSWORD:-admin}
+      KC_HTTP_PORT: ${ENV_KC_HTTP_PORT:-8080}
+      KC_HOSTNAME_URL: http://localhost:8080
+      KC_HOSTNAME_ADMIN_URL: http://localhost:8080
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/${ENV_POSTGRES_DB:-keycloak_db}
+      KC_DB_USERNAME: ${ENV_POSTGRES_USER}
+      KC_DB_PASSWORD: ${ENV_POSTGRES_PASSWORD}
+      KC_HEALTH_ENABLED: ${ENV_KC_HEALTH_ENABLED}
+      KC_METRICS_ENABLED: ${ENV_KC_METRICS_ENABLED}
+      KC_HOSTNAME_STRICT: ${ENV_KC_HOSTNAME_STRICT}
+      KC_HOSTNAME: ${ENV_KC_HOSTNAME}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:8080/realms/master -m 10 || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - kc_net
+
+volumes:
+  keycloak-db-data:
+
+networks:
+  kc_net:
+    name: ${ENV_NETWORK_NAME}
