@@ -1,0 +1,15 @@
+.link {
+	text-decoration: none;
+	color: #000099;
+}
+
+.style-button {
+	font-size: x-large;
+	font-weight: bold;
+	padding: 10px;
+	text-decoration: none;
+	position: relative;
+	background-color: #CCCCCC;
+	margin: 10px;
+	max-width: 200px;
+}
