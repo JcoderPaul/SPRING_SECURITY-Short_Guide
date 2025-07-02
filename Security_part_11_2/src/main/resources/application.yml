@@ -1,0 +1,52 @@
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        jdbc:
+          core: TRACE
+        security:
+          web:
+            FilterChainProxy: TRACE
+  file.name: Logs/oldboy.log
+
+spring:
+  mvc:
+    format:
+      date: iso
+  datasource:
+    url: jdbc:postgresql://localhost:5437/postgres
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  # Настроим свойства Hibernate
+  jpa:
+    properties.hibernate:
+      batch_size: 50
+      fetch_size: 50
+      show_sql: true
+      format_sql: true
+      hbm2ddl.auto: validate
+    open-in-view: false
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:9100/realms/SpringSecProject-OAuth-Test-Realm
+        registration:
+          google:
+            clientId: ...
+            clientSecret: ...
+            redirectUri: http://localhost:8080/login/oauth2/code/google
+            scope: openid,email,profile
+          github:
+            clientId: ...
+            clientSecret: ...
+            redirectUri: http://localhost:8080/login/oauth2/code/github
+          keycloak:
+            clientId: SpringSecProject-OAuth-Test-Client
+#           clientSecret: c2jKqqHSUOE8JWCRVAEDsf2MeViuYCS1 # Local PC KeyCloak
+            clientSecret: 6xViFDG2RKbAS7drTXCtjhf3r0MbWA2v
+            redirectUri: http://localhost:8080/login/oauth2/code/keycloak
+            scope: openid,profile
