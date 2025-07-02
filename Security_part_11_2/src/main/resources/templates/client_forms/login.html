@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="../css/login_form.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="client-form">
+<form th:action="@{/webui/login}" class="form-signin" method="post" >
+    <h2 align="center" class="form-signin-heading" >Please sign in or registration!</h2>
+
+    <div align="center" class="dab_credentials" th:if="${param.error}"> Wrong password or email! </div>
+    <p>
+    <label for="email"><input id="email" type="text" name="username" class="form-control" placeholder="Email" required> </label>
+    <p>
+    <label for="pass"><input id="pass" type="password" name="password" class="form-control" placeholder="Password" required> </label>
+    <p>
+    <label for="remember-me"> <input type="checkbox" id="remember-me" name="remember-me">Remember me</label>
+    <br>
+    <div align="center"> <button class="style-button" type="submit" > Sign in </button> </div>
+</form>
+</div>
+
+<div class="auth_button_zone">
+    <a href="/oauth2/authorization/google" class="button">Login with Google</a></td></tr>
+</div>
+
+<div class="auth_button_zone">
+    <a href="/oauth2/authorization/github" class="button">Login with GitHub</a></td></tr>
+</div>
+
+<div class="auth_button_zone">
+    <a href="/oauth2/authorization/keycloak" class="button">Login with KeyCloak</a></td></tr>
+</div>
+
+<div class="reg_button_zone">
+<form action="/webui/registration"  method="get">
+    <div align="center"> <button class="style-button" type="submit"> Registration </button> </div>
+</form>
+</div>
+
+</body>
+</html>
