@@ -46,7 +46,7 @@ spring:
             redirectUri: http://localhost:8080/login/oauth2/code/github
           keycloak:
             clientId: SpringSecProject-OAuth-Test-Client
-#           clientSecret: c2jKqqHSUOE8JWCRVAEDsf2MeViuYCS1 # Local PC KeyCloak
-            clientSecret: 6xViFDG2RKbAS7drTXCtjhf3r0MbWA2v
+#            clientSecret: c2jKqqHSUOE8JWCRVAEDsf2MeViuYCS1 # Local PC KeyCloak
+            clientSecret: 6xViFDG2RKbAS7drTXCtjhf3r0MbWA2v # Docker dep. KeyCloak
             redirectUri: http://localhost:8080/login/oauth2/code/keycloak
             scope: openid,profile
