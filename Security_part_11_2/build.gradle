@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '3.3.8'
+    id 'org.springframework.boot' version '3.3.13'
     id "io.spring.dependency-management" version '1.1.7'
     id "io.freefair.lombok" version "8.3"
     id 'java'
@@ -20,11 +20,17 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+
     /* Подключим библиотеку Thymeleaf */
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation "org.thymeleaf.extras:thymeleaf-extras-springsecurity6:${versions.thymeleaf_extras}"
 
     implementation "org.postgresql:postgresql:${versions.postgres}"
+
+    /* Зависимость миграционного фреймворка */
+    implementation 'org.liquibase:liquibase-core'
 
     /* Подключим Hibernate */
     implementation "org.hibernate:hibernate-core:${versions.hibernate}"
@@ -45,6 +51,7 @@ dependencies {
 
     /* Блок пакетов обслуживающий тесты */
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     /* Подключим все для тестов Testcontainers */
@@ -55,6 +62,7 @@ dependencies {
     testImplementation "org.mockito:mockito-core:${versions.mockito}"
     testRuntimeOnly "org.mockito:mockito-core:${versions.mockito}"
     testImplementation "org.mockito:mockito-junit-jupiter:${versions.mockito}"
+
     testImplementation "org.assertj:assertj-core:${versions.assertj}"
     testRuntimeOnly "org.assertj:assertj-core:${versions.assertj}"
 }
@@ -64,5 +72,5 @@ test {
 }
 
 wrapper {
-    gradleVersion '8.2.1'
+    gradleVersion '8.14.2'
 }
