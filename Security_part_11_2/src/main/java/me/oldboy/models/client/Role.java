@@ -1,0 +1,6 @@
+package me.oldboy.models.client;
+
+public enum Role {
+    ROLE_USER,
+    ROLE_ADMIN
+}
