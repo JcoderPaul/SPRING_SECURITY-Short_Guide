@@ -30,7 +30,7 @@ ________________________________________________________________________________
 Указываем папку куда сохраняем данные и либо меняем имя *.JSON файла, либо оставляем как есть и жмем "Save". Теперь у нас 
 есть, то что мы импортируем в пустой KeyCloak развернутый в Docker-e и не будем тратить время на основную настройку.
 
-- Шаг 2. - Разворачиваем KeyCloak в Docker контейнере используя преднастроенный compose.yml. Пароль и логин admin в нем 
+- Шаг 2. - Разворачиваем KeyCloak в Docker контейнере используя преднастроенный [compose.yml](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/docker-practice/keycloak_only/compose.yml). Пароль и логин admin в нем 
 прописаны сразу. Сделаем все максимально просто и "без изысков" с возможностью передачи оных через параметры окружения. 
 Основная особенность это место нахождения файла импорта данных - в той же папке где и docker compose файл, в подпапке 
 ./keycloak. Запускаем 
@@ -84,13 +84,13 @@ KC_DB, KC_DB_URL, KC_DB_USERNAME, KC_DB_PASSWORD и т.д.
 И так, в зависимости от образа KeyCloak (старый или новый), будут по-разному именоваться и переменные окружения. При конфигурировании 
 docker compose файла или изучении уже готового не лишним будет обратиться к официальной документации - ["Запуск Keycloak в контейнере"](https://www.keycloak.org/server/containers).
 
-Исходя из выше изложенных условий мы сконфигурировали compose.yml файл, который разворачивает два контейнера в одной сети
+Исходя из выше изложенных условий мы сконфигурировали [compose.yml](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/docker-practice/keycloak_with_postgresql/compose.yml) файл, который разворачивает два контейнера в одной сети
 и настраивает взаимодействие между ними. Тут действия, как и в первом способе, после того, как контейнеры уже запущены 
 (адреса мы оставили теми же):
-- Шаг 1. - Импортируем доступные данные из realm-export.json.
-- Шаг 2. - Генерируем и копируем Client Secret в application.yml.
+- Шаг 1. - Импортируем доступные данные из [realm-export.json](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/docker-practice/keycloak_only/keycloak/realm-export.json).
+- Шаг 2. - Генерируем и копируем Client Secret в [application.yml](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/src/main/resources/application.yml#L36).
 - Шаг 3. - Добавляем пользователей для тестирования нашего приложения в настройки KeyCloak.
-- Шаг 4. - Запускаем наше приложение и, через кнопку "Login with KeyCloak", добавленную в нашу форму аутентификации - login.html, 
+- Шаг 4. - Запускаем наше приложение и, через кнопку "Login with KeyCloak", добавленную в нашу форму аутентификации - [login.html](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/src/main/resources/templates/client_forms/login.html), 
 проверяем работу KeyCloak сервиса.
 
 Для изучения структуры PostgeSQL БД развернутой в docker контейнере и внесенных нами записей можно обратиться по известному адресу 
