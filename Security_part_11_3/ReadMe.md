@@ -22,7 +22,7 @@ back-end, когда наше приложение будет сервисом �
 - **Authentication Server** - сервис определяющий кому и при каких условиях можно разрешать/запрещать доступ к resource service;
 - **Client application** - посредник, между "Resource server" и "Authentication Server";
 
-![OAuth2_Scheme](DOC/OAuth2_Scheme.jpg)
+![OAuth2_Scheme](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_2/DOC/OAuth2_Scheme.jpg)
 
 ________________________________________________________________________________________________________________________
 ### Часть 5. - Применение KeyCloak в качестве OAuth2 сервиса авторизации для Resource service.
@@ -45,7 +45,7 @@ ________________________________________________________________________________
 - Шаг 2. - отключаем весь "Consent screen", т.к. login форму мы использовать не будем;
 - Шаг 3. - сохраняем настройки;
 
-![KeyCloak_access_set](DOC/pic/1_KeyCloak_access_set.jpg)
+![KeyCloak_access_set](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_3/DOC/pic/1_KeyCloak_access_set.jpg)
 
 #### Этап 2. - Настроим PostMan на запрос token-a к KeyCloak сервису:
 
@@ -65,7 +65,7 @@ ________________________________________________________________________________
 - Шаг 3. - отправляем запрос и получаем ответ от KeyCloak в виде JSON объекта;
 - Шаг 4. - полученный access_token мы можем декодировать и изучить его структуру, но он нам нужен для работы;
 
-![KeyCloak_from_PostMan_request](DOC/pic/2_KeyCloak_from_PostMan_request.jpg)
+![KeyCloak_from_PostMan_request](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_3/DOC/pic/2_KeyCloak_from_PostMan_request.jpg)
 
 #### Этап 3. - Настроим наш сервер ресурсов (Resource service):
 
@@ -123,7 +123,7 @@ ________________________________________________________________________________
 структуры token-ов нам нужно зайти в "Clients", далее выбрать нашего созданного клиента "SpringSecProject-OAuth-Test-Client",
 и мы попадем в раздел "Client details". Тут мы выбираем закладку "Client scopes" и затем в незаметном подменю пункт "Evaluate":
 
-![KeyCloak_client_details_evaluate](DOC/pic/3_KeyCloak_client_details_evaluate.jpg)
+![KeyCloak_client_details_evaluate](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_3/DOC/pic/3_KeyCloak_client_details_evaluate.jpg)
 
 Выбираем пользователя чьи учетные данные передавали в теле запроса к KeyCloak см. выше, username : admin@test.com и 
 смотрим раздел "Generated access token". Нас интересует "ключ" - "realm_access". При этом если пользователю не добавили 
@@ -131,11 +131,11 @@ ________________________________________________________________________________
 "Users", выбираем нужного пользователя, заходим в закладку "Role mapping" и через кнопку "Assign role" добавляем нужную
 роль см.:
 
-![KeyCloak_user_role_mapping](DOC/pic/4_KeyCloak_user_role_mapping.jpg)
+![KeyCloak_user_role_mapping](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_3/DOC/pic/4_KeyCloak_user_role_mapping.jpg)
         
 Тогда в "realm-access" мы увидим добавленную ранее роль (ROLE_ADMIN):
 
-![KeyCloak_client_details_evaluate_2](DOC/pic/5_KeyCloak_client_details_evaluate_2.jpg)
+![KeyCloak_client_details_evaluate_2](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_3/DOC/pic/5_KeyCloak_client_details_evaluate_2.jpg)
 
 Теперь нужно "вытащить" эту роль в коде нашего ресурс сервера (ресурс сервиса) из полученного token-a. Для этого нам 
 понадобиться JwtAuthenticationConverter, причем у него есть стандартная реализация - [OAuth 2.0 Resource Server JWT ](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html)
@@ -151,7 +151,7 @@ GET запрос и обращаемся к любому доступному en
 
         http://localhost:8080/admin/getAllClient
 
-![PostMan_req_to_resource_service](DOC/pic/6_PostMan_req_to_resource_service.jpg)
+![PostMan_req_to_resource_service](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_3/DOC/pic/6_PostMan_req_to_resource_service.jpg)
 
 На этом краткий обзор работы системы безопасности Spring framework-a, пожалуй, закончим.
 ________________________________________________________________________________________________________________________
