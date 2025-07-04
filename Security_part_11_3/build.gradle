@@ -29,9 +29,16 @@ dependencies {
     implementation "org.springframework.security:spring-security-web:${versions.security}"
     implementation "org.springframework.security:spring-security-config:${versions.security}"
     implementation "org.springframework.security:spring-security-taglibs:${versions.security}"
+    implementation "org.springframework.security:spring-security-core:${versions.security}"
 
     /* Зависимость позволяющая использовать функционал OAuth2 для сервиса ресурсов */
-    implementation "org.springframework.boot:spring-boot-starter-oauth2-resource-server:${versions.oauth2_rs}"
+    implementation "org.springframework.security:spring-security-oauth2-resource-server:${versions.security}"
+    implementation "org.springframework.security:spring-security-oauth2-jose:${versions.security}"
+
+    /*
+        Как вариант мы можем использовать имплементацию boot библиотеки вместо вместо двух верхних:
+        implementation "org.springframework.boot:spring-boot-starter-oauth2-resource-server:${versions.oauth2_rs}"
+    */
 
     /* Зависимость позволяющая использовать функционал Spring JPA */
     implementation "org.springframework.data:spring-data-jpa:${versions.data_jpa}"
@@ -88,6 +95,10 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter-engine:${versions.jupiter}"
     testImplementation "org.junit.jupiter:junit-jupiter-api:${versions.jupiter}"
     testImplementation "org.junit.jupiter:junit-jupiter-params:${versions.jupiter}"
+
+    /* Зависимости отвечающие за работу со Spring тестами */
+    testImplementation "org.springframework:spring-test:${versions.spring}"
+    testImplementation "org.springframework.security:spring-security-test:${versions.security}"
 
     /* Подключим все для тестов Testcontainers */
     testImplementation "org.testcontainers:postgresql:${versions.testcontainers}"
