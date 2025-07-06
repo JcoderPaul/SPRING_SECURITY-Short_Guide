@@ -1,0 +1,33 @@
+# Префикс для работы с логерами (их настройки)
+logging:
+  # Зададим уровень логирования корневого логера
+  level:
+    # Будем фиксировать сообщения типа WARN (и все что выше ERROR и FATAL)
+    root: INFO
+    # Так же мы можем настроить логер для конкретного класса
+    org:
+      springframework:
+        jdbc:
+          core: TRACE
+        security:
+          web:
+            FilterChainProxy: DEBUG
+  # Записываем лог в файл
+  file.name: Logs/oldboy.log
+  # Настроим подключение к БД
+datasource:
+  url: jdbc:postgresql://localhost:5437/postgres
+  username: admin
+  password: admin
+  driver-class-name: org.postgresql.Driver
+liquibase:
+  enabled: true
+  change_log: classpath:db/changelog/db.changelog-master.yaml
+  default_schema: public
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9100/realms/SpringSecProject-OAuth-Test-Realm
+          jwk-set-uri: http://localhost:9100/realms/SpringSecProject-OAuth-Test-Realm/protocol/openid-connect/certs
