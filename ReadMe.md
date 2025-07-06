@@ -88,8 +88,8 @@ ________________________________________________________________________________
   - [Часть 3. - OAuth2 (GitHub as Authorization service).](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_11_1#%D1%87%D0%B0%D1%81%D1%82%D1%8C-3---oauth2-github-as-authorization-service)
 - [Security_part_11_2 - Применение OAuth2 в защите приложений (продолжение) **(Spring Boot)**.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_11_2)
   - [Часть 4. - Применение KeyCloak в качестве OAuth2 сервиса авторизации.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_11_2#%D1%87%D0%B0%D1%81%D1%82%D1%8C-4---%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-keycloak-%D0%B2-%D0%BA%D0%B0%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5-oauth2-%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D1%80%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8)
-- Security_part_11_3 - Применение OAuth2 в защите сервиса ресурсов (окончание) **(non Boot)**.
-  - Часть 5. - Применение KeyCloak в качестве OAuth2 сервиса авторизации для Resource service.
+- [Security_part_11_3 - Применение OAuth2 в защите сервиса ресурсов (окончание) **(non Boot)**.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_11_3)
+  - [Часть 5. - Применение KeyCloak в качестве OAuth2 сервиса авторизации для Resource service.](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/tree/master/Security_part_11_3#%D1%87%D0%B0%D1%81%D1%82%D1%8C-5---%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-keycloak-%D0%B2-%D0%BA%D0%B0%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5-oauth2-%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D1%80%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8-%D0%B4%D0%BB%D1%8F-resource-service)
 ________________________________________________________________________________________________________________________
 Док. (ссылки) для изучения:
 - [Spring Boot Reference Documentation](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) ;
