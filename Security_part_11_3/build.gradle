@@ -35,6 +35,9 @@ dependencies {
     implementation "org.springframework.security:spring-security-oauth2-resource-server:${versions.security}"
     implementation "org.springframework.security:spring-security-oauth2-jose:${versions.security}"
 
+    /* В данном случае эта зависимость нужна для тестов, хоть и не явно, что бы создать экземпляр OAuth2AuthenticationToken */
+    implementation "org.springframework.security:spring-security-oauth2-client:${versions.security}"
+
     /*
         Как вариант мы можем использовать имплементацию boot библиотеки вместо вместо двух верхних:
         implementation "org.springframework.boot:spring-boot-starter-oauth2-resource-server:${versions.oauth2_rs}"
