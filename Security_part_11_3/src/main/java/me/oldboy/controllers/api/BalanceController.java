@@ -32,13 +32,14 @@ public class BalanceController {
 	private ClientService clientService;
 	@Autowired
 	private UserDetailsDetector userDetailsDetector;
-	
+
 	@GetMapping("/myBalance")
 	public ResponseEntity<List<TransactionReadDto>> getBalanceDetails() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		ResponseEntity<List<TransactionReadDto>> balanceList = ResponseEntity.noContent().build();
 
-		Optional<Client> mayBeClient = userDetailsDetector.getClientFromBase(clientService,authentication);
+		Optional<Client> mayBeClient = userDetailsDetector.getClientFromBase(clientService, authentication);
+
 		if (mayBeClient.isPresent()) {
 			long clientId = mayBeClient.get().getId();
 
