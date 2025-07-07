@@ -20,9 +20,9 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
-@RequestMapping("/api")
 @AllArgsConstructor
 @NoArgsConstructor
+@RequestMapping("/api")
 public class AccountController {
 
 	@Autowired
@@ -37,7 +37,8 @@ public class AccountController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		ResponseEntity<AccountReadDto> responseAccount = ResponseEntity.noContent().build();
 
-		Optional<Client> mayBeClient =userDetailsDetector.getClientFromBase(clientService,authentication);
+		Optional<Client> mayBeClient = userDetailsDetector.getClientFromBase(clientService, authentication);
+
 		if (mayBeClient.isPresent()) {
 			long clientId = mayBeClient.get().getId();
 
