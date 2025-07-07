@@ -38,7 +38,8 @@ public class CardsController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		ResponseEntity<List<CardReadDto>> clientCards = ResponseEntity.noContent().build();
 
-		Optional<Client> mayBeClient = userDetailsDetector.getClientFromBase(clientService,authentication);
+		Optional<Client> mayBeClient = userDetailsDetector.getClientFromBase(clientService, authentication);
+
 		if(mayBeClient.isPresent()) {
 			long clientId = mayBeClient.get().getId();
 
