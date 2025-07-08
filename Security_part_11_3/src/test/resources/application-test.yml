@@ -1,0 +1,31 @@
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        jdbc:
+          core: TRACE
+        security:
+          web:
+            FilterChainProxy: DEBUG
+            access: DEBUG
+          oauth2:
+            server:
+              resource: DEBUG
+  file.name: Logs/oldboy.log
+
+datasource:
+  username: test
+  password: test
+  driver-class-name: org.postgresql.Driver
+liquibase:
+  enabled: true
+  change_log: classpath:db/changelog/db.changelog-master.yaml
+  default_schema: public
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9100/realms/SpringSecProject-OAuth-Test-Realm
+          jwk-set-uri: http://localhost:9100/realms/SpringSecProject-OAuth-Test-Realm/protocol/openid-connect/certs
