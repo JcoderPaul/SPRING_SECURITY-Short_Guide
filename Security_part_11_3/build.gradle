@@ -100,8 +100,8 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter-params:${versions.jupiter}"
 
     /* Зависимости отвечающие за работу со Spring тестами */
-    testImplementation "org.springframework:spring-test:${versions.spring}"
-    testImplementation "org.springframework.security:spring-security-test:${versions.security}"
+    testImplementation "org.springframework:spring-test:${versions.spring}" /* 6.2.8 */
+    testImplementation "org.springframework.security:spring-security-test:${versions.security}" /* 6.5.1 */
 
     /* Подключим все для тестов Testcontainers */
     testImplementation "org.testcontainers:postgresql:${versions.testcontainers}"
