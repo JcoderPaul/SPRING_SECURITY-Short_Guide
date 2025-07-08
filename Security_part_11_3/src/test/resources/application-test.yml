@@ -3,6 +3,7 @@ logging:
     root: INFO
     org:
       springframework:
+        context: DEBUG
         jdbc:
           core: TRACE
         security:
