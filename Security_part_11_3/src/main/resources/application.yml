@@ -7,11 +7,16 @@ logging:
     # Так же мы можем настроить логер для конкретного класса
     org:
       springframework:
+        context: DEBUG
         jdbc:
           core: TRACE
         security:
           web:
             FilterChainProxy: DEBUG
+            access: DEBUG
+          oauth2:
+            server:
+              resource: DEBUG
   # Записываем лог в файл
   file.name: Logs/oldboy.log
   # Настроим подключение к БД
