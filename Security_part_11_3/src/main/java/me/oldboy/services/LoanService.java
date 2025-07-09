@@ -2,7 +2,6 @@ package me.oldboy.services;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import me.oldboy.config.security_details.SecurityClientDetails;
 import me.oldboy.dto.loan_dto.LoanCreateDto;
 import me.oldboy.dto.loan_dto.LoanReadDto;
 import me.oldboy.exception.LoanServiceException;
