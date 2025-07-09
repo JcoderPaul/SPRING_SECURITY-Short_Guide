@@ -22,6 +22,9 @@ ext {
             'jupiter': '5.11.4',
             'liquibase':'4.32.0',
             'glassfish':'4.0.2',
-            'hamcrest':'3.0'
+            'hamcrest':'3.0',
+            'wiremock':'3.13.1',
+            'nimbus':'10.3',
+            'bitbucket':'0.9.6'
     ]
 }
