@@ -8,8 +8,6 @@ import org.jose4j.jwt.JwtClaims;
 
 import java.util.Map;
 
-import static me.oldboy.test_constant.TestConstantFields.EXIST_EMAIL;
-
 public class JwtTestUtils {
     public static String generateJWT(String mainUser,
                                      RsaJsonWebKey rsaJsonWebKey,
