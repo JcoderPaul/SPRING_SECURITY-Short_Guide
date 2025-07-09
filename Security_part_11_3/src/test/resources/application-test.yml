@@ -28,5 +28,5 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:9100/realms/SpringSecProject-OAuth-Test-Realm
-          jwk-set-uri: http://localhost:9100/realms/SpringSecProject-OAuth-Test-Realm/protocol/openid-connect/certs
+          issuer-uri: http://localhost:8089/auth/realms/test-realm
+          jwk-set-uri: http://localhost:8089/auth/realms/test-realm/protocol/openid-connect/certs
