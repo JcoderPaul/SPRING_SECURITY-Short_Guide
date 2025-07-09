@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -22,13 +23,17 @@ import org.springframework.security.web.SecurityFilterChain;
 public class TestSecurityConfig {
 
 	@Autowired
-	private JwtDecoder jwtDecoder;
-	@Autowired
 	private JwtAuthenticationConverter jwtAuthenticationConverter;
+
+	@Bean
+	public JwtDecoder testJwtDecoder() {
+		// Укажите JWK Set URI, который будет указывать на WireMock
+		return NimbusJwtDecoder.withJwkSetUri("http://localhost:8089/auth/realms/test-realm/protocol/openid-connect/certs").build();
+	}
 
 	@Bean
 	@SneakyThrows
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) {
-		return FilterChainConfig.getSecurityFilterChain(httpSecurity, jwtDecoder, jwtAuthenticationConverter);
+		return FilterChainConfig.getSecurityFilterChain(httpSecurity, testJwtDecoder(), jwtAuthenticationConverter);
 	}
 }
