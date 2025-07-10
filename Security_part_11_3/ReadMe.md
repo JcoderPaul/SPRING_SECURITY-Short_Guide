@@ -81,7 +81,7 @@ ________________________________________________________________________________
         в version.gradle:
         'oauth2_rs':'3.4.5'
 
-- Шаг 2. - прописываем нужные настройки в application.yml:
+- Шаг 2. - прописываем нужные настройки в [application.yml](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_3/src/main/resources/application.yml):
 
         pring:
           security:
@@ -91,7 +91,7 @@ ________________________________________________________________________________
                   issuer-uri: http://localhost:9100/realms/SpringSecProject-OAuth-Test-Realm
                   jwk-set-uri: http://localhost:9100/realms/SpringSecProject-OAuth-Test-Realm/protocol/openid-connect/certs
 
-- Шаг 3. - добавляем нужный bean - JwtDecoder, в файл конфигурации безопасности нашего сервиса ресурсов - AppSecurityConfig.java;
+- Шаг 3. - добавляем нужный bean - [JwtDecoder](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_3/src/main/java/me/oldboy/config/jwt_pwe_config/JwtConfig.java#L26), в файл конфигурации безопасности нашего сервиса ресурсов - [JwtConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_3/src/main/java/me/oldboy/config/jwt_pwe_config/JwtConfig.java);
 - Шаг 4. - запускаем сервис ресурсов - работает;
 
 #### Этап 4. - Проверим отклик сервера ресурсов (Resource service) на GET запрос из PostMan:
@@ -104,7 +104,7 @@ ________________________________________________________________________________
 авторизации нам прилетает JWT token, который наш сервис "не понимает". Но, мы можем "распарсить" полученный token и извлечь 
 например username (у нас это email). Далее мы можем применить его для доработки кода утилитного метода для контроллеров, 
 т.к. email у нас является уникальным полем в БД и через него можно получить необходимые данные для ответа на запрос 
-см. - UserDetailsDetector.java.
+см. - [UserDetailsDetector.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_3/src/main/java/me/oldboy/controllers/util/UserDetailsDetector.java).
 
 После коррекции кода нашего "детектора" и получения возможности извлекать нужные данные из самой БД, мы могли бы пойти 
 путем использованном в [SecurityConfiguration.java](https://github.com/JcoderPaul/Spring_Framework_Lessons/blob/master/Spring_part_22/src/main/java/spring/oldboy/config/SecurityConfiguration.java) 
@@ -113,7 +113,7 @@ ________________________________________________________________________________
 Но мы хотим попробовать извлекать роли прописанные в KeyCloak.
 
 Пока, наш сервис ресурсов не знает откуда доставать роли пользователя и если мы обращаемся к endpoint-ам: "/myBalance", 
-"/myContact" и т.д., то все нормально данные из них доступны без определения ролей, а вот если бы мы захотели получить, 
+"/myContact" и т.д., то все нормально, данные из них доступны без определения ролей, а вот если бы мы захотели получить, 
 например, доступ к "/admin/getAllClient", то получили бы отказ и "403 Forbidden" ответ от сервера. 
 
 Решим этот вопрос!
@@ -138,8 +138,8 @@ ________________________________________________________________________________
 ![KeyCloak_client_details_evaluate_2](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_3/DOC/pic/5_KeyCloak_client_details_evaluate_2.jpg)
 
 Теперь нужно "вытащить" эту роль в коде нашего ресурс сервера (ресурс сервиса) из полученного token-a. Для этого нам 
-понадобиться JwtAuthenticationConverter, причем у него есть стандартная реализация - [OAuth 2.0 Resource Server JWT ](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html)
-Мы реализуем свою в виде bean метода *.jwtAuthenticationConverter() в AppSecurityConfig.java. И теперь, у нас есть доступ 
+понадобиться [JwtAuthenticationConverter](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_3/src/main/java/me/oldboy/config/jwt_pwe_config/JwtConfig.java#L31), причем у него есть стандартная реализация - [OAuth 2.0 Resource Server JWT ](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html)
+Мы реализуем свою в виде bean метода [*.jwtAuthenticationConverter()](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_3/src/main/java/me/oldboy/config/jwt_pwe_config/JwtConfig.java#L31) в [JwtConfig.java](https://github.com/JcoderPaul/SPRING_SECURITY-Short_Guide/blob/master/Security_part_11_3/src/main/java/me/oldboy/config/jwt_pwe_config/JwtConfig.java). И теперь, у нас есть доступ 
 к endpoint-ам разрешенным к просмотру только пользователям с ROLE_ADMIN.
 
 И так, все настроено и запущено, и имитировать работу цепочки взаимодействия "Клиент - Сервер ресурсов - Сервер авторизации" 
